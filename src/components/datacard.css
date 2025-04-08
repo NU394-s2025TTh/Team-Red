@@ -1,0 +1,24 @@
+.data-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+ 
+  .data-card .fridgecontents {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 12px;
+  }
+  
+
+  .data-card .name {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 12px;
+  }
+  
+  
