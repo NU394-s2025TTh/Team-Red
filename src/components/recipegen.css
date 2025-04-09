@@ -1,0 +1,66 @@
+.recipe-generator-container {
+  padding: 1.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.generate-button,
+.save-button {
+  font-size: 1rem;
+  padding: 0.6rem 1.2rem;
+  margin-top: 1rem;
+  background-color: #007aff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.generate-button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+.save-button {
+  margin-top: 1rem;
+  background-color: #28a745;
+}
+
+.save-button:hover {
+  background-color: #218838;
+}
+
+.generate-button:hover {
+  background-color: #005ce6;
+}
+
+.error-message {
+  color: red;
+  margin-top: 1rem;
+}
+
+.placeholder-text {
+  color: #555;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+.recipes-container {
+  margin-top: 2rem;
+}
+
+.recipe-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background-color: #f9f9f9;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.macros {
+  margin-top: 1rem;
+  color: #333;
+}
