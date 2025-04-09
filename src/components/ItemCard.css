@@ -2,9 +2,9 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 16px;
-    max-width: 300px;
-    width: 5vw;
-    height: 5vw;
+    /* max-width: 300px; */
+    width: 5rem;
+    height: 5rem;
     margin: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;

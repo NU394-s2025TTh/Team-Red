@@ -1,6 +1,7 @@
 import React from 'react';
 import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 import { app } from "../firebaseconfig";
+import './AddDelItem.css';
 
 const db = getFirestore(app);
 
@@ -47,7 +48,7 @@ export function DelOneItem({ item, quantity, setQuantity }) {
     };
 
     return (
-        <button onClick={incrementItem}>
+        <button onClick={incrementItem} className="adddel-button">
             -
         </button>
     );
