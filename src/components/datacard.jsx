@@ -3,7 +3,7 @@ import React from 'react';
 
 export function DataCard({ name, fridgecontents }) {
     return (
-        <div className="data-card">
+        <div>
           <p>Hi {name}! Your fridge has the following items:</p>
           <ul>
             {fridgecontents.map((item, index) => (
@@ -13,7 +13,19 @@ export function DataCard({ name, fridgecontents }) {
             ))}
           </ul>
         </div>
-      );
+    );
+  // return (
+  //       <div className="data-card">
+  //         <p>Hi {name}! Your fridge has the following items:</p>
+  //         <ul>
+  //           {fridgecontents.map((item, index) => (
+  //             <li key={index}>
+  //               {item.quantity} {item.unit} of {item.item}
+  //             </li>
+  //           ))}
+  //         </ul>
+  //       </div>
+  //     );
 }
 
 

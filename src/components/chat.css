@@ -5,7 +5,7 @@
   max-width: 700px; /* increased to match recipe card width */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .chat-box {
