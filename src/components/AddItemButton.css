@@ -18,6 +18,7 @@ input {
     margin: 0; /* Remove default margin */
     border: 0;
     padding-left: 0.8rem;
+    font-size: 1rem;
 }
 
 .add-item-input {
@@ -38,9 +39,8 @@ input {
     height: 100%;
     width: 20%;
     text-align: center; /* Centered text */
-    text-decoration: none; /* No underline */
     display: inline-block; /* Get the block element to behave like an inline element */
-    font-size: 16px; /* Set a font size */
+    font-size: 1rem;
     cursor: pointer; /* Pointer/hand icon on hover */
     border-radius: 8px; /* Rounded corners */
     border-top-left-radius: 0;
