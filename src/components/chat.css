@@ -1,0 +1,50 @@
+.chat {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  max-width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.chat-box {
+  margin: 12px 0;
+  min-height: 100px;
+  padding: 8px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+}
+
+.chat-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.button-add {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.button-add:hover {
+  background-color: #45a049;
+}
+
+.button-generate {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.button-generate:hover {
+  background-color: #0069d9;
+}
