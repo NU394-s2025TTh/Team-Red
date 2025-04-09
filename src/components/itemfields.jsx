@@ -17,9 +17,9 @@ export function ItemField() {
 
     try {
       await updateDoc(userRef, {
-        fridge: arrayUnion({ item: inputValue })
+        fridge: arrayUnion({ item: inputValue, quantity: 1, unit: 'unit' }) // add item to fridge array
       });
-      alert(`You added: ${inputValue}`);
+      // alert(`You added: ${inputValue}`);
       setInputValue(''); // clear input field
       
     } catch (error) {

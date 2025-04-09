@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { getFirestore, doc, onSnapshot } from "firebase/firestore";
 import { app } from "../firebaseconfig";
 import { DataCard } from './datacard';
 
@@ -9,10 +9,10 @@ export function DataCardContainer() {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {
-      const userRef = doc(db, "users", "1001");
-      const docSnap = await getDoc(userRef);
+    const userRef = doc(db, "users", "1001");
 
+    // Listen for real-time updates
+    const unsubscribe = onSnapshot(userRef, (docSnap) => {
       if (docSnap.exists()) {
         const data = docSnap.data();
         setUserData({
@@ -24,9 +24,10 @@ export function DataCardContainer() {
           }))
         });
       }
-    }
+    });
 
-    fetchData();
+    // Cleanup the listener on component unmount
+    return () => unsubscribe();
   }, []);
 
   return (
