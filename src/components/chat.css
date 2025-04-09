@@ -2,9 +2,10 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 16px;
-  max-width: 300px;
+  max-width: 700px; /* increased to match recipe card width */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
+  margin: 0 auto;
 }
 
 .chat-box {
@@ -15,6 +16,7 @@
   border-radius: 6px;
 }
 
+/* Buttons */
 .chat-buttons {
   display: flex;
   flex-direction: column;
@@ -22,9 +24,9 @@
 }
 
 .button-add {
-  background-color: #4caf50;
-  color: #fff;
-  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  padding: 0.6rem 1.2rem;
   border-radius: 6px;
   font-weight: bold;
   border: none;
@@ -32,13 +34,13 @@
 }
 
 .button-add:hover {
-  background-color: #45a049;
+  background-color: #218838;
 }
 
 .button-generate {
   background-color: #007bff;
-  color: #fff;
-  padding: 10px;
+  color: white;
+  padding: 0.6rem 1.2rem;
   border-radius: 6px;
   font-weight: bold;
   border: none;
@@ -46,5 +48,31 @@
 }
 
 .button-generate:hover {
-  background-color: #0069d9;
+  background-color: #005ce6;
+}
+
+.recipes-container {
+  margin-top: 1rem;
+}
+
+.recipe-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background-color: #f9f9f9;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.macros {
+  margin-top: 1rem;
+  color: #333;
+}
+
+.text-gray-400 {
+  color: #888;
+}
+
+.text-red-500 {
+  color: red;
 }
