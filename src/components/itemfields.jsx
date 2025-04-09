@@ -11,7 +11,7 @@ export function ItemField() {
   };
 
   const handleButtonClick = async () => {
-    if (!inputValue.trim()) return; // prevent empty submissions
+    if (!inputValue.trim()) return; 
 
     const userRef = doc(db, 'users', '1001');
 

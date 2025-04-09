@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./recipegen.css";
+import { addRecipe } from './addRecipe';
 
 export default function RecipeGenerator({ fridgecontents }) {
   const [recipes, setRecipes] = useState([]);
@@ -45,6 +46,9 @@ export default function RecipeGenerator({ fridgecontents }) {
     }
   };
 
+  
+
+
   return (
     <div className="recipe-generator-container">
       <button
@@ -89,7 +93,9 @@ export default function RecipeGenerator({ fridgecontents }) {
                 Carbs: {recipe.macros?.carbs ?? 0}g
               </p>
 
-              <button className="save-button">Save Recipe</button>
+              <button className="save-button" onClick={() => addRecipe("1001", recipe.title, recipe.ingredients, recipe.instructions, recipe.macros.calories, recipe.macros.protein, recipe.macros.fat, recipe.macros.carbs)}>
+                Save Recipe
+              </button>
             </div>
           ))}
         </div>
