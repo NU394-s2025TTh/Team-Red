@@ -13,9 +13,9 @@ export function ItemCard({ item }) {
                 <h2>{item.item}</h2>
             </div>
             <div className="quantity-container">
-                <AddOneItem item={item} quantity={quantity} setQuantity={setQuantity}/>
-                <p className="quantity">{quantity}</p>
                 <DelOneItem item={item} quantity={quantity} setQuantity={setQuantity}/>
+                <p className="quantity">{quantity}</p>
+                <AddOneItem item={item} quantity={quantity} setQuantity={setQuantity}/>
             </div>
             <p className="unit">{item.unit}</p>
         </div>
