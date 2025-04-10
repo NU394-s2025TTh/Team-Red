@@ -18,7 +18,6 @@ function App() {
           <div className="data-card-content">
             <div className="left-column">
               <DataCardContainer userData={userData} />
-              <AddItemButton />
             </div>
             
             <div className="right-column">
