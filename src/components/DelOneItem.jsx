@@ -45,7 +45,7 @@ export function DelOneItem({ item, quantity, setQuantity }) {
             alert("Failed. Try again.");
         }
     }
-    else if (quantity == 1) {
+    else if (quantity <= 1) {
         //delete item from fridge
         try {
             const userDoc = await getDoc(userRef);

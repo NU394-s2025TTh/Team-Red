@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { doc, onSnapshot, getFirestore } from "firebase/firestore";
 import { app } from "../firebaseconfig";
 
 export function useUserData(userId) {
@@ -9,31 +9,31 @@ export function useUserData(userId) {
   const db = getFirestore(app);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const userRef = doc(db, "users", userId);
-        const docSnap = await getDoc(userRef);
+    const userRef = doc(db, "users", userId);
 
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setUserData({
-            name: data.name,
-            fridgecontents: data.fridge.map((item) => ({
-              item: item.item,
-              quantity: item.quantity,
-              unit: item.unit,
-            })),
-          });
-        } else {
-          setError("User not found");
-        }
-      } catch (err) {
-        setError(err.message);
-      } finally {
+    const unsubscribe = onSnapshot(userRef, (docSnap) => {
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        setUserData({
+          name: data.name,
+          fridgecontents: data.fridge.map((item) => ({
+            item: item.item,
+            quantity: item.quantity,
+            unit: item.unit,
+          })),
+        });
+        setLoading(false);
+      } else {
+        setError("User not found");
         setLoading(false);
       }
-    }
-    fetchData();
+    }, (err) => {
+      console.error("Firestore error:", err);
+      setError(err.message);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
   }, [userId, db]);
 
   return { userData, loading, error };

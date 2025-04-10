@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./recipegen.css";
 import { addRecipe } from './addRecipe';
 
 export default function RecipeGenerator({ fridgecontents }) {
   const [recipes, setRecipes] = useState([]);
+  const [ingredients, setIngredients] = useState(fridgecontents);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    setIngredients(fridgecontents);
+  }, [fridgecontents]); 
 
   const generateRecipe = async () => {
     setLoading(true);
@@ -17,9 +22,9 @@ export default function RecipeGenerator({ fridgecontents }) {
         "https://us-central1-spoonfull-bcfb4.cloudfunctions.net/generateDeepseekRecipe";
 
       const payload = {
-        fridgecontents: Array.isArray(fridgecontents)
-          ? fridgecontents.join(", ")
-          : fridgecontents,
+        fridgecontents: Array.isArray(ingredients)
+          ? ingredients.join(", ")
+          : ingredients,
       };
 
       const response = await fetch(endpoint, {
@@ -45,9 +50,6 @@ export default function RecipeGenerator({ fridgecontents }) {
       setLoading(false);
     }
   };
-
-  
-
 
   return (
     <div className="recipe-generator-container">
