@@ -1,4 +1,4 @@
-import './DataCard.css';
+import '../assets/css/DataCard.css';
 import React from 'react';
 import { ItemCard } from './ItemCard';
 import { AddItemButton } from './additem';

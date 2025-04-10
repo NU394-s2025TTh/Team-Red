@@ -3,7 +3,7 @@ import { DataCardContainer } from './components/DataCardContainer';
 import { AddItemButton } from './components/additem';
 import { useUserData } from "./hooks/useUserData";
 import Chat from './components/chat';
-import './components/container.css';
+import './assets/css/container.css';
 
 function App() {
   const { userData, loading, error } = useUserData("1001");

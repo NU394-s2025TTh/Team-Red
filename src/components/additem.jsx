@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { app } from "../firebaseconfig";
 import { getFirestore, doc, updateDoc, arrayUnion } from "firebase/firestore";
-import './AddItemButton.css'
+import "../assets/css/AddItemButton.css";
 
 export function AddItemButton() {
   const [inputValue, setInputValue] = useState('');

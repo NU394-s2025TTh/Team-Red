@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ItemCard.css';
+import '../assets/css/ItemCard.css';
 
 import { AddOneItem } from './AddOneItem';
 import { DelOneItem } from './DelOneItem';

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './chat.css';
+import '../assets/css/chat.css';
 import { useRecipeGenerator } from "../hooks/useRecipeGenerator";
 import { addRecipe } from './addRecipe';
 

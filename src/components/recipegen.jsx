@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./recipegen.css";
+import "../assets/css/recipegen.css";
 import { addRecipe } from './addRecipe';
 
 export default function RecipeGenerator({ fridgecontents }) {
