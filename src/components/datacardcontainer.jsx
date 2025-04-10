@@ -34,9 +34,6 @@ export function DataCardContainer() {
     <>
       {userData ? (
         <DataCard name={userData.name} fridgecontents={userData.fridgecontents} />
-      ) : (
-        <p>Loading...</p>
-      )}
-    </>
-  );
-}
+      </>
+    );
+  }
