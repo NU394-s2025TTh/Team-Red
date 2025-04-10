@@ -1,0 +1,43 @@
+.item-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    /* max-width: 300px; */
+    width: 5rem;
+    height: 5rem;
+    margin: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  .item-card h2 {
+    margin: 0;
+    padding: 2px;
+    font-size: 1.2rem;
+    /* border: 1px solid #000; */
+  }
+
+  .item-card .quantity-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+}
+
+    .item-card .quantity {
+        font-size: 1rem;
+        color: #555;
+        padding: 6px;
+        margin: 0;
+        /* border: 1px solid #000; */
+    }
+
+  .item-card .unit {
+    
+    font-size: 0.8rem;
+    padding: 8px;
+    padding-top: 0;
+    /* border: 1px solid #000; */
+    margin: 0;
+  }
