@@ -6,7 +6,7 @@ import { AddItemButton } from './additem';
 export function DataCard({ fridgecontents }) {
     return (
         <div className="data-card">
-          <h1>{name}'s Inventory</h1>
+          <h1>{name}Your Inventory:</h1>
           <div className="items-container">
             {fridgecontents.map((item, index) => (
                 <ItemCard item={item} />

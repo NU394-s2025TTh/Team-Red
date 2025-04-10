@@ -9,7 +9,23 @@ function App() {
   const { userData, loading, error } = useUserData("1001");
 
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundColor: 'rgb(199, 218, 207)', minHeight: '100vh' }}>
+      <header className="app-header">
+          {/* Replace the header with the logo */}
+          <img 
+            src="/spoonfull_logo.png" 
+            alt="Spoonfull Logo" 
+            style={{
+              height: '150px', 
+              width: 'auto', 
+              display: 'block',    // Makes the image behave like a block-level element
+              marginLeft: 'auto',  // Automatically adjusts the left margin
+              marginRight: 'auto', // Automatically adjusts the right margin
+              marginBottom: '20px' // Space below the logo
+            }}
+          />
+      </header>
+
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
 
@@ -28,21 +44,6 @@ function App() {
       )}
     </div>
   );
-
-  // return (
-  //   <div className="App">
-  //     {loading && <p>Loading...</p>}
-  //     {error && <p>Error: {error}</p>}
-
-  //     {userData && (
-  //       <>
-  //         <DataCardContainer userData={userData} />
-  //         <AddItemButton />
-  //         <Chat ingredients={userData.fridgecontents.map(item => item.item)} />
-  //       </>
-  //     )}
-  //   </div>
-  // );
 }
 
 export default App;

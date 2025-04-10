@@ -3,6 +3,7 @@
   max-width: 700px;
   margin: 0 auto;
   font-family: Arial, sans-serif;
+  border: 1px solid #006400;
 }
 
 .generate-button,

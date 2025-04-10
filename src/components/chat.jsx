@@ -28,7 +28,7 @@ export default function Chat({ ingredients }) {
         {error && <p className="text-red-500">{error}</p>}
 
         {!loading && recipes.length === 0 && !error && (
-          <p className="text-gray-400">No recipe yet...</p>
+          <p className="text-gray-400">No recipe yet... push the button below to generate</p>
         )}
 
         {recipes.length > 0 && (

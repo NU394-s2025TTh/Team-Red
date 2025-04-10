@@ -3,7 +3,8 @@
     justify-content: space-between;
     align-items: center; /* Center items vertically */
     margin-top: 8px; /* Add some space above the container */
-    border: 1px solid #ccc; /* Light gray border */
+    border: 1px solid #006400;
+    border: 1px solid #006400; /* Light gray border */
     border-radius: 8px; /* Rounded corners */
     padding: 0;
     margin: 0;
@@ -24,8 +25,8 @@ input {
 .add-item-input {
     width: 70%;
     border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px; /* Rounded corners on the left */
-    border-right: 1px solid #ccc; /* Light gray border on the right */
+    border-bottom-left-radius: 8px ; /* Rounded corners on the left */
+    border-right: 1px solid #006400; /* Light gray border on the right */
 }
 
 .add-unit-input {
@@ -34,7 +35,7 @@ input {
 
 .add-item-button {
     background-color: #4CAF50; /* Green background */
-    border: none; /* No border */
+    border: 1px solid #006400;
     color: white; /* White text */
     height: 100%;
     width: 20%;
@@ -47,4 +48,5 @@ input {
     border-bottom-left-radius: 0;
     padding-left: 0.8rem;
     padding-right: 0.8rem;
+    border: 1px solid #006400;
 }
