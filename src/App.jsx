@@ -4,14 +4,17 @@ import { AddItemButton } from './components/additem';
 import { useUserData } from "./hooks/useUserData";
 import Chat from './components/chat';
 import './assets/css/container.css';
+import SignIn from './components/signin';
 
 function App() {
   const { userData, loading, error } = useUserData("1001");
 
   return (
     <div className="App" style={{ backgroundColor: 'rgb(199, 218, 207)', minHeight: '100vh' }}>
-      <header className="app-header">
-          {/* Replace the header with the logo */}
+        < SignIn />
+
+      {/* <header className="app-header">
+         
           <img 
             src="/spoonfull_logo.png" 
             alt="Spoonfull Logo" 
@@ -41,7 +44,7 @@ function App() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
