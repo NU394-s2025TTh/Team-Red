@@ -15,6 +15,15 @@
   background-color: #f9f9f9;
   border-radius: 6px;
 }
+/* mobile styles: shrink margins, padding, and height */
+@media (max-width: 900px) {
+  .chat-box {
+    margin: 6px 0;
+    padding: 4px;
+    min-height: 30px;
+  }
+}
+
 
 /* Buttons */
 .chat-buttons {

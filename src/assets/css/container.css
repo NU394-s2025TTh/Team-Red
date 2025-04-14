@@ -7,6 +7,17 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 900px) {
+  .app-logo {
+    margin-bottom: 0px;
+  }
+
+  .data-card-wrapper {
+    margin: 0 auto;   /* reset the top and bottom margins */
+    padding: 1rem;    /* optional: make padding smaller too */
+  }
+}
+
 .data-card-content {
   display: flex;
   justify-content: space-between;
@@ -24,4 +35,17 @@
 .right-column {
   flex: 1;
   max-width: 700px;
+}
+
+@media (max-width: 900px) {
+  .data-card-content {
+    flex-direction: column;
+     /* center items when stacked, make dynamic for mobile view */
+    align-items: center; 
+  }
+
+  .left-column, .right-column {
+    max-width: 100%;
+    width: 100%;
+  }
 }

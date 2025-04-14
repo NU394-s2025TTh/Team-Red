@@ -3,6 +3,7 @@ import { DataCardContainer } from './components/DataCardContainer';
 import { AddItemButton } from './components/additem';
 import { useUserData } from "./hooks/useUserData";
 import Chat from './components/chat';
+import './App.css';
 import './assets/css/container.css';
 
 function App() {
@@ -10,19 +11,12 @@ function App() {
 
   return (
     <div className="App" style={{ backgroundColor: 'rgb(199, 218, 207)', minHeight: '100vh' }}>
-      <header className="app-header">
+      <header className="App-header">
           {/* Replace the header with the logo */}
           <img 
             src="/spoonfull_logo.png" 
             alt="Spoonfull Logo" 
-            style={{
-              height: '150px', 
-              width: 'auto', 
-              display: 'block',    // Makes the image behave like a block-level element
-              marginLeft: 'auto',  // Automatically adjusts the left margin
-              marginRight: 'auto', // Automatically adjusts the right margin
-              marginBottom: '20px' // Space below the logo
-            }}
+            className="app-logo"
           />
       </header>
 
