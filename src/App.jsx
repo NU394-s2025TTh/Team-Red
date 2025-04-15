@@ -4,6 +4,8 @@ import { AddItemButton } from './components/additem';
 import { useUserData } from "./hooks/useUserData";
 import Chat from './components/chat';
 import './assets/css/container.css';
+import Sidebar from './components/sidebar';
+
 import { RecipeCard } from './components/recipecard';
 
 function App() {
@@ -22,23 +24,38 @@ function App() {
     setRecipes((prevRecipes) => [...prevRecipes, newRecipe]);
   };
 
+  const logout =()=>{
+    localStorage.clear()
+    window.location.reload()
+  }
+
   return (
     <div className="App" style={{ backgroundColor: 'rgb(199, 218, 207)', minHeight: '100vh' }}>
-      <header className="app-header">
-          {/* Replace the header with the logo */}
+
+        < Sidebar />
+      
+        <header className="app-header">
+         
           <img 
             src="/spoonfull_logo.png" 
             alt="Spoonfull Logo" 
             style={{
               height: '150px', 
               width: 'auto', 
-              display: 'block',    // Makes the image behave like a block-level element
-              marginLeft: 'auto',  // Automatically adjusts the left margin
-              marginRight: 'auto', // Automatically adjusts the right margin
-              marginBottom: '20px' // Space below the logo
+              display: 'block',    
+              marginLeft: 'auto',  
+              marginRight: 'auto', 
+              marginBottom: '20px' 
             }}
           />
       </header>
+
+      <div>
+            <h1>Home Page</h1>
+            <button onClick={logout}>Logout</button>
+        </div>
+
+
 
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
