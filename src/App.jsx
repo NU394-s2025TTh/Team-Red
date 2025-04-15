@@ -3,6 +3,7 @@ import { DataCardContainer } from './components/DataCardContainer';
 import { AddItemButton } from './components/additem';
 import { useUserData } from "./hooks/useUserData";
 import Chat from './components/chat';
+import './App.css';
 import './assets/css/container.css';
 import Sidebar from './components/sidebar';
 
@@ -34,20 +35,13 @@ function App() {
 
         < Sidebar />
       
-        <header className="app-header">
+        <header className="App-header">
          
-          <img 
-            src="/spoonfull_logo.png" 
-            alt="Spoonfull Logo" 
-            style={{
-              height: '150px', 
-              width: 'auto', 
-              display: 'block',    
-              marginLeft: 'auto',  
-              marginRight: 'auto', 
-              marginBottom: '20px' 
-            }}
-          />
+        <img 
+          src="/spoonfull_logo.png" 
+          alt="Spoonfull Logo" 
+          className="app-logo"
+        />
       </header>
 
       <div>
