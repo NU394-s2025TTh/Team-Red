@@ -1,17 +1,28 @@
-import React from 'react';
+import {React, useState, useEffect} from 'react';
 import { DataCardContainer } from './components/DataCardContainer';
 import { AddItemButton } from './components/additem';
 import { useUserData } from "./hooks/useUserData";
 import Chat from './components/chat';
 import './assets/css/container.css';
-import SignIn from './components/signin';
-import InventoryPage from './pages/inventory';
 import Sidebar from './components/sidebar';
 
-import { BrowserRouter as Router, Route, Link, Routes, useNavigate } from 'react-router-dom';
+import { RecipeCard } from './components/recipecard';
 
 function App() {
   const { userData, loading, error } = useUserData("1001");
+  console.log("User Data:", userData); // Log the user data to the console
+
+  const [recipes, setRecipes] = useState(userData ? userData.recipes : []);
+
+  useEffect(() => {
+    if (userData) {
+      setRecipes(userData.recipes);
+    }
+  }, [userData]);
+
+  const handleAddRecipe = (newRecipe) => {
+    setRecipes((prevRecipes) => [...prevRecipes, newRecipe]);
+  };
 
   const logout =()=>{
     localStorage.clear()
@@ -61,7 +72,15 @@ function App() {
             </div>
           </div>
         </div>
-      )}  
+      )}
+
+      {userData && (
+        <div>
+        <RecipeCard recipes={recipes} onAddRecipe={handleAddRecipe} />
+      </div>
+    )}
+
+      
     </div>
   );
 }
