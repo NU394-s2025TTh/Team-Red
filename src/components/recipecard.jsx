@@ -26,7 +26,7 @@ export function RecipeCard({ recipes, onAddRecipe }) {
       <div className="recipe-card-container">
         <h2>Your Recipes</h2>
   
-        {/* Recipe cards */}
+        {/* recipe cards */}
         <div className="recipe-card-list">
           {recipes.map((recipe, index) => (
             <div key={index} className="recipe-card" onClick={() => handleCardClick(recipe)}>
@@ -47,7 +47,7 @@ export function RecipeCard({ recipes, onAddRecipe }) {
           </button>
         </div>
   
-        {/* Add New Recipe form modal */}
+        {/* add new recipe form -> modal */}
         {showAddRecipeForm && (
           <div className="modal-overlay">
             <div className="modal-content">
