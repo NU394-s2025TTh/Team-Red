@@ -23,7 +23,7 @@ export function RecipeCard({ recipes, onAddRecipe }) {
     };
   
     return (
-      <div className="recipe-card-container">
+      <div className="recipe-card-container" style={{ marginLeft: '150px' }}>
         <h2>Your Recipes</h2>
   
         {/* recipe cards */}
