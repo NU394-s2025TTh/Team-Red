@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {auth,provider} from "../firebaseconfig";
 import {signInWithPopup} from "firebase/auth";
-import Home from "./home";
+import InventoryPage from "../pages/inventory";
+
 
 
 function SignIn(){
@@ -18,7 +19,7 @@ function SignIn(){
 
 return (
     <div>
-        {value?<Home/>:
+        {value?<InventoryPage/>:
         <button onClick={handleClick}>Sign in With Google</button>
         }
     </div>

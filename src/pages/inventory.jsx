@@ -1,16 +1,11 @@
 import React from 'react';
-import { DataCardContainer } from './components/DataCardContainer';
-import { AddItemButton } from './components/additem';
-import { useUserData } from "./hooks/useUserData";
-import Chat from './components/chat';
-import './assets/css/container.css';
-import SignIn from './components/signin';
-import InventoryPage from './pages/inventory';
-import Sidebar from './components/sidebar';
+import { DataCardContainer } from '../components/DataCardContainer';
+import { useUserData } from "../hooks/useUserData";
+import Chat from '../components/chat';
+import '../assets/css/container.css';
+import Sidebar from '../components/sidebar';
 
-import { BrowserRouter as Router, Route, Link, Routes, useNavigate } from 'react-router-dom';
-
-function App() {
+function InventoryPage() {
   const { userData, loading, error } = useUserData("1001");
 
   const logout =()=>{
@@ -20,10 +15,11 @@ function App() {
 
   return (
     <div className="App" style={{ backgroundColor: 'rgb(199, 218, 207)', minHeight: '100vh' }}>
-
-        < Sidebar />
       
-        <header className="app-header">
+
+       <Sidebar />
+      
+       <header className="app-header">
          
           <img 
             src="/spoonfull_logo.png" 
@@ -31,16 +27,15 @@ function App() {
             style={{
               height: '150px', 
               width: 'auto', 
-              display: 'block',    
-              marginLeft: 'auto',  
-              marginRight: 'auto', 
-              marginBottom: '20px' 
+              display: 'block',    // Makes the image behave like a block-level element
+              marginLeft: 'auto',  // Automatically adjusts the left margin
+              marginRight: 'auto', // Automatically adjusts the right margin
+              marginBottom: '20px' // Space below the logo
             }}
           />
       </header>
 
       <div>
-            <h1>Home Page</h1>
             <button onClick={logout}>Logout</button>
         </div>
 
@@ -66,4 +61,4 @@ function App() {
   );
 }
 
-export default App;
+export default InventoryPage;

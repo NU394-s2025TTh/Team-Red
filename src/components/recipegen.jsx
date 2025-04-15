@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../assets/css/recipegen.css";
 import { addRecipe } from './addRecipe';
 
+
 export default function RecipeGenerator({ fridgecontents }) {
   const [recipes, setRecipes] = useState([]);
   const [ingredients, setIngredients] = useState(fridgecontents);

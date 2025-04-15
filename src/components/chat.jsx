@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import '../assets/css/chat.css';
 import { useRecipeGenerator } from "../hooks/useRecipeGenerator";
 import { addRecipe } from './addRecipe';
+import Loading from './loading';
 
 export default function Chat({ ingredients }) {
   const [added, setAdded] = useState(false);
@@ -24,7 +25,10 @@ export default function Chat({ ingredients }) {
       <div><h3>Fridge AI</h3></div>
 
       <div className="chat-box">
-        {loading && <p>Generating recipe...</p>}
+        {loading &&  <Loading />
+        
+  
+        }
         {error && <p className="text-red-500">{error}</p>}
 
         {!loading && recipes.length === 0 && !error && (
