@@ -21,6 +21,15 @@ export function useUserData(userId) {
             quantity: item.quantity,
             unit: item.unit,
           })),
+          recipes: data.recipes.map((recipe) => ({
+            title: recipe.title,
+            calories: recipe.cal,
+            carbs: recipe.carbs,
+            fat: recipe.fat,
+            ingredients: recipe.ingredients,
+            instructions: recipe.instructions,
+            protein: recipe.protein,
+          })),
         });
         setLoading(false);
       } else {
