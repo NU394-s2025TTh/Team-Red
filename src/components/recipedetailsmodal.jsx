@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './recipe.css';
+import '../assets/css/recipe.css';
 
 function RecipeDetailsModal({ recipe, onClose, onSave }) {
   const [isEditing, setIsEditing] = useState(false);

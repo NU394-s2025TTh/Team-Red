@@ -1,34 +1,53 @@
 import React, { useState } from "react";
-import '../assets/css/chat.css';
+import "../assets/css/chat.css";
 import { useRecipeGenerator } from "../hooks/useRecipeGenerator";
-import { addRecipe } from './addRecipe';
-import Loading from './loading';
+import IngredientSelector from "./ingredientSelector"; // Make sure the filename matches exactly (e.g., IngredientSelector.jsx)
+import { addRecipe } from "./addRecipe";
 
-export default function Chat({ ingredients }) {
-  const [added, setAdded] = useState(false);
+export default function Chat({ ingredients: allIngredients }) {
+  // selectedIngredients holds the user's chosen ingredients
+  const [selectedIngredients, setSelectedIngredients] = useState(allIngredients);
   const { recipes, loading, error, generateRecipe } = useRecipeGenerator();
+  const [saved, setSaved] = useState(false);
 
+  // This function is triggered when the user clicks the generate button.
+  // It uses the currently selected ingredients.
   const handleGenerateRecipe = async () => {
-    if (!ingredients.length) return;
-    await generateRecipe(ingredients);
-    setAdded(false);
+    if (!selectedIngredients.length) return;
+    await generateRecipe(selectedIngredients);
+    setSaved(false);
   };
 
   const handleAddToRecipes = (recipe) => {
     console.log("Saved to DB:", recipe.title);
-    addRecipe("1001", recipe.title, recipe.ingredients, recipe.instructions, recipe.macros.calories, recipe.macros.protein, recipe.macros.fat, recipe.macros.carbs);
-    setAdded(true);
+    addRecipe(
+      "1001",
+      recipe.title,
+      recipe.ingredients,
+      recipe.instructions,
+      recipe.macros.calories,
+      recipe.macros.protein,
+      recipe.macros.fat,
+      recipe.macros.carbs
+    );
+    setSaved(true);
   };
 
   return (
     <div className="chat">
-      <div><h3>Fridge AI</h3></div>
+      <div>
+        <h3>Fridge AI</h3>
+      </div>
 
+      {/* Ingredient selector block: allows user to choose which ingredients to include */}
+      <IngredientSelector 
+        allIngredients={allIngredients} 
+        onSelectionChange={(selected) => setSelectedIngredients(selected)} 
+      />
+
+      {/* Chat box area displays generated recipes */}
       <div className="chat-box">
-        {loading &&  <Loading />
-        
-  
-        }
+        {loading && <p>Generating recipe...</p>}
         {error && <p className="text-red-500">{error}</p>}
 
         {!loading && recipes.length === 0 && !error && (
@@ -63,7 +82,7 @@ export default function Chat({ ingredients }) {
                   Carbs: {recipe.macros?.carbs ?? 0}g
                 </p>
 
-                {!added && (
+                {!saved && (
                   <button
                     className="button-add"
                     onClick={() => handleAddToRecipes(recipe)}

@@ -1,0 +1,39 @@
+/* chat.css or ingredient-selector.css */
+
+/* ========== Ingredient Selector ========== */
+.ingredient-selector {
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  .ingredient-selector h4 {
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  .ingredient-selector ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .ingredient-selector li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+  .ingredient-selector input[type="checkbox"] {
+    margin-right: 0.5rem;
+    transform: scale(1.1);
+  }
+  
+  /* Multi-column optional */
+  @media (min-width: 700px) {
+    .ingredient-selector ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .ingredient-selector li {
+      width: calc(50% - 1rem); /* 2 columns */
+    }
+  }
+  

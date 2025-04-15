@@ -1,3 +1,4 @@
+// src/hooks/useRecipeGenerator.js
 import { useState } from "react";
 
 export function useRecipeGenerator() {
@@ -5,7 +6,7 @@ export function useRecipeGenerator() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const generateRecipe = async (fridgecontents) => {
+  const generateRecipe = async (selectedIngredients) => {
     setLoading(true);
     setError("");
     setRecipes([]);
@@ -15,9 +16,10 @@ export function useRecipeGenerator() {
         "https://us-central1-spoonfull-bcfb4.cloudfunctions.net/generateDeepseekRecipe";
 
       const payload = {
-        fridgecontents: Array.isArray(fridgecontents)
-          ? fridgecontents.join(", ")
-          : fridgecontents,
+        // Use selectedIngredients from the user instead of all the ingredients.
+        fridgecontents: Array.isArray(selectedIngredients)
+          ? selectedIngredients.join(", ")
+          : selectedIngredients,
       };
 
       const response = await fetch(endpoint, {
