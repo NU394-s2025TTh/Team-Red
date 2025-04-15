@@ -22,8 +22,8 @@
     height: auto;
   }
   
-  /* recipes details modal */
-  .recipe-details-modal {
+  /* recipe details modal */
+.recipe-details-modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -32,7 +32,73 @@
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    width: 90%; 
+    max-width: 600px;
+    border-radius: 10px;
+    overflow-y: auto;
+    max-height: 90vh;
   }
+  
+  .recipe-details-modal h2,
+  .recipe-details-modal h3 {
+    font-size: 1.2em;
+  }
+  
+  .recipe-details-modal input,
+  .recipe-details-modal textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .recipe-details-modal textarea {
+    min-height: 100px;
+  }
+  
+  .recipe-details-modal button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  .recipe-details-modal button:hover {
+    background-color: #45a049;
+  }
+  
+  .recipe-details-modal button:nth-of-type(2) {
+    background-color: #f44336;
+  }
+  
+  .recipe-details-modal button:nth-of-type(2):hover {
+    background-color: #e53935;
+  }
+  
+  /* modal for editable nutrition */
+  .nutrition-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  
+  .nutrition-container label {
+    font-weight: bold;
+  }
+  
+  .nutrition-container input {
+    width: 100px;
+    padding: 5px;
+    margin-left: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
   
   /* new recipe form */
   .add-recipe-container {
@@ -55,7 +121,7 @@
     cursor: pointer;
   }
   
-  /* add recipe btn */
+  /* add recipe button */
   .add-recipe-button-container {
     margin-top: 20px;
     text-align: center;
@@ -73,7 +139,7 @@
     background-color: #45a049;
   }
   
-  /* modal overlay for add recipe */
+  /* modal recipe for add overlay */
   .modal-overlay {
     position: fixed;
     top: 0;
@@ -97,12 +163,55 @@
     overflow-y: auto;
   }
   
-  /* cancel btn */
+  /* cancel btn*/
   .add-recipe-container button:nth-of-type(2) {
     background-color: #f44336;
   }
   
   .add-recipe-container button:nth-of-type(2):hover {
     background-color: #e53935;
+  }
+  
+  /* save & cancel btns for modal */
+  .recipe-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  .save-button,
+  .cancel-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .save-button {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .save-button:hover {
+    background-color: #45a049;
+  }
+  
+  .cancel-button {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .cancel-button:hover {
+    background-color: #e53935;
+  }
+  
+  .edit-button {
+    background-color: #ffa500;
+    color: white;
+  }
+  
+  .edit-button:hover {
+    background-color: #e68900;
   }
   
