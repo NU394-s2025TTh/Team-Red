@@ -69,7 +69,9 @@ export default function MainApp( { userId, onLogout } ) {
             </div>
             
             <div className="right-column">
-            <Chat ingredients={fridge?.map(item => item.item) || []} />
+            <Chat ingredients={fridge?.map(item => item.item) || []}
+            userId={userId}
+             />
             </div>
           </div>
         </div>

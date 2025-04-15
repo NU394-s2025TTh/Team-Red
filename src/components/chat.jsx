@@ -4,7 +4,7 @@ import { useRecipeGenerator } from "../hooks/useRecipeGenerator";
 import IngredientSelector from "./ingredientSelector"; // Make sure the filename matches exactly (e.g., IngredientSelector.jsx)
 import { addRecipe } from "./addRecipe";
 
-export default function Chat({ ingredients: allIngredients }) {
+export default function Chat({ ingredients: allIngredients, userId }) {
   // selectedIngredients holds the user's chosen ingredients
   const [selectedIngredients, setSelectedIngredients] = useState(allIngredients);
   const { recipes, loading, error, generateRecipe } = useRecipeGenerator();
@@ -21,7 +21,7 @@ export default function Chat({ ingredients: allIngredients }) {
   const handleAddToRecipes = (recipe) => {
     console.log("Saved to DB:", recipe.title);
     addRecipe(
-      "1001",
+      userId,
       recipe.title,
       recipe.ingredients,
       recipe.instructions,
