@@ -3,20 +3,28 @@ import React from 'react';
 import { ItemCard } from './ItemCard';
 import { AddItemButton } from './additem';
 
-export function DataCard({ fridgecontents }) {
-    return (
-        <div className="data-card">
-          <h1>{name}Your Inventory:</h1>
-          <div className="items-container">
-            {fridgecontents.map((item, index) => (
-                <ItemCard item={item} />
-            ))}
-          </div>
-          <div className="add-item-button-container">
-            <AddItemButton />
-          </div>
-        </div>
-    );
+export function DataCard({ userId, fridge }) {
+  return (
+    <div className="data-card">
+      <h1>Your Inventory:</h1>
+
+      <div className="items-container">
+        {Array.isArray(fridge) && fridge.length > 0 ? (
+          fridge.map((item, index) => (
+            <ItemCard key={index} item={item} userId={userId} />
+          ))
+        ) : (
+          <p>No items in fridge.</p>
+        )}
+      </div>
+      <div className="add-item-button-container">
+        <AddItemButton userId={userId}/>
+      </div>
+    </div>
+  );
+}
+
+
   // return (
   //       <div className="data-card">
   //         <p>Hi {name}! Your fridge has the following items:</p>
@@ -29,6 +37,6 @@ export function DataCard({ fridgecontents }) {
   //         </ul>
   //       </div>
   //     );
-}
+// }
 
 

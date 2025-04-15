@@ -5,9 +5,9 @@ import '../assets/css/AddDelItem.css';
 
 const db = getFirestore(app);
 
-export function DelOneItem({ item, quantity, setQuantity }) {
+export function DelOneItem({ item, quantity, setQuantity, userId }) {
     const incrementItem = async () => {
-        const userRef = doc(db, "users", "1001");
+        const userRef = doc(db, "users", userId);
 
         if (quantity > 1) {
         try {

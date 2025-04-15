@@ -5,11 +5,11 @@ import { DataCard } from './datacard';
 
 const db = getFirestore(app);
 
-export function DataCardContainer() {
+export function DataCardContainer({userId}) {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    const userRef = doc(db, "users", "1001");
+    const userRef = doc(db, "users", userId);
 
     // Listen for real-time updates
     const unsubscribe = onSnapshot(userRef, (docSnap) => {
@@ -17,11 +17,13 @@ export function DataCardContainer() {
         const data = docSnap.data();
         setUserData({
           name: data.name,
-          fridgecontents: data.fridge.map(item => ({
-            item: item.item,
-            quantity: item.quantity,
-            unit: item.unit,
-          }))
+          fridge: Array.isArray(data.fridge)
+          ? data.fridge.map(item => ({
+              item: item.item,
+              quantity: item.quantity,
+              unit: item.unit,
+            }))
+          : []
         });
       }
     });
@@ -33,7 +35,7 @@ export function DataCardContainer() {
   return (
     <>
       {userData ? (
-        <DataCard name={userData.name} fridgecontents={userData.fridgecontents} />
+        <DataCard userId={userId} fridge={userData.fridge} />
       ) : (
         <div>Loading...</div>
       )}

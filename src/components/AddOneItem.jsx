@@ -5,9 +5,9 @@ import '../assets/css/AddDelItem.css';
 
 const db = getFirestore(app);
 
-export function AddOneItem({ item, quantity, setQuantity }) {
+export function AddOneItem({ item, quantity, setQuantity, userId }) {
     const decrementItem = async () => {
-        const userRef = doc(db, "users", "1001");
+        const userRef = doc(db, "users", userId);
 
         try {
             // Get the current fridge array

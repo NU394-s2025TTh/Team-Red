@@ -27,10 +27,10 @@ function InventoryPage() {
             style={{
               height: '150px', 
               width: 'auto', 
-              display: 'block',    // Makes the image behave like a block-level element
-              marginLeft: 'auto',  // Automatically adjusts the left margin
-              marginRight: 'auto', // Automatically adjusts the right margin
-              marginBottom: '20px' // Space below the logo
+              display: 'block',    
+              marginLeft: 'auto',  
+              marginRight: 'auto', 
+              marginBottom: '20px' 
             }}
           />
       </header>

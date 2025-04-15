@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { app } from "../firebaseconfig";
 import { getFirestore, doc, updateDoc, arrayUnion } from "firebase/firestore";
 import "../assets/css/AddItemButton.css";
+//import { useUser } from '../contexts/UserContext';
 
-export function AddItemButton() {
+export function AddItemButton( {userId}) {
   const [inputValue, setInputValue] = useState('');
   const [unitValue, setUnitValue] = useState('');
   const db = getFirestore(app);
@@ -20,7 +21,14 @@ export function AddItemButton() {
     if (!inputValue.trim()) return; // prevent empty submissions
     if (!unitValue.trim()) return; // prevent empty submissions
 
-    const userRef = doc(db, 'users', '1001');
+    //const { userId } = useUser();
+
+    const storedUserId = localStorage.getItem("userId"); 
+    if (!storedUserId) return;
+
+    const userRef = doc(db, 'users', userId);
+
+    //const userRef = doc(db, 'users', storedUserId);
 
     try {
       await updateDoc(userRef, {
@@ -55,3 +63,70 @@ export function AddItemButton() {
     </div>
   );
 }
+
+
+// import React, { useState } from 'react';
+// import { app } from "../firebaseconfig";
+// import { getFirestore, doc, updateDoc, arrayUnion } from "firebase/firestore";
+// import "../assets/css/AddItemButton.css";
+// //import { useUser } from '../contexts/UserContext';
+
+// export function AddItemButton() {
+//   const [inputValue, setInputValue] = useState('');
+//   const [unitValue, setUnitValue] = useState('');
+//   const db = getFirestore(app);
+
+//   const handleInputChange = (event) => {
+//     setInputValue(event.target.value);
+//   };
+
+//   const handleUnitChange = (event) => {
+//     setUnitValue(event.target.value);
+//   }
+
+//   const handleButtonClick = async () => {
+//     if (!inputValue.trim()) return; // prevent empty submissions
+//     if (!unitValue.trim()) return; // prevent empty submissions
+
+//     //const { userId } = useUser();
+
+//     const storedUserId = localStorage.getItem("userId"); 
+//     if (!storedUserId) return;
+
+//     const userRef = doc(db, 'users', "1001");
+
+//     //const userRef = doc(db, 'users', storedUserId);
+
+//     try {
+//       await updateDoc(userRef, {
+//         fridge: arrayUnion({ item: inputValue, quantity: 1, unit: unitValue }) // add item to fridge array
+//       });
+//       setInputValue(''); // clear input field
+//         setUnitValue(''); // clear unit field
+      
+//     } catch (error) {
+//       console.error("Error adding item: ", error);
+//       alert("Failed to add item. Try again.");
+//     }
+//   };
+
+//   return (
+//     <div className="add-item-container">
+//       <input
+//         type="text"
+//         value={inputValue}
+//         onChange={handleInputChange}
+//         placeholder="Add an ingredient"
+//         className="add-item-input"
+//       />
+//       <input
+//         type="text"
+//         value={unitValue}
+//         onChange={handleUnitChange}
+//         placeholder="Unit"
+//         className="add-unit-input"
+//       />
+//       <button onClick={handleButtonClick} className="add-item-button">Submit</button>
+//     </div>
+//   );
+// }
