@@ -85,3 +85,30 @@
 .text-red-500 {
   color: red;
 }
+
+.loading-container{
+
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+
+}
+
+.hourglass{
+
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+
+}
+
+.loading-text{
+
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+
+}
+
+
+

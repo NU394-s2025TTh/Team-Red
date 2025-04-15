@@ -1,0 +1,35 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100px;
+    background-color: #064420;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    box-sizing: border-box;
+  }
+  
+  .sidebar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0;
+  }
+  
+  .icon {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .label {
+    color: white;
+    font-size: 20px;
+    margin-top: 4px;
+    text-align: center;
+  }
+  
+  
