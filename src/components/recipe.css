@@ -1,0 +1,108 @@
+/* recipe card layout */
+.recipe-card-container {
+    padding: 20px;
+  }
+  
+  .recipe-card-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .recipe-card {
+    width: 200px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .recipe-card img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* recipes details modal */
+  .recipe-details-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  /* new recipe form */
+  .add-recipe-container {
+    padding: 20px;
+  }
+  
+  .add-recipe-container input,
+  .add-recipe-container textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .add-recipe-container button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* add recipe btn */
+  .add-recipe-button-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .add-recipe-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .add-recipe-button:hover {
+    background-color: #45a049;
+  }
+  
+  /* modal overlay for add recipe */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+  }
+  
+  /* cancel btn */
+  .add-recipe-container button:nth-of-type(2) {
+    background-color: #f44336;
+  }
+  
+  .add-recipe-container button:nth-of-type(2):hover {
+    background-color: #e53935;
+  }
+  
