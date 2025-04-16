@@ -48,19 +48,26 @@ h2 {
     flex-direction: column;
     padding: 1rem;
     border-radius: 1rem;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    border: 2px solid var(--primary-color);
+    outline: none;
+}
+.input:focus {
+    border: 2px solid var(--accent-color);
 }
 
-button {
+.submit-login-button {
     background-color: var(--primary-color);
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 0.6rem 1.5rem;
     border-radius: 1rem;
     cursor: pointer;
-    font-size: 0.5rem;
+    font-size: 1.2rem;
     margin-top: 10px;
     transition: background-color 0.3s ease;
     }
-    button:hover {
+    .submit-login-button:hover {
         background-color: var(--secondary-color);
 }

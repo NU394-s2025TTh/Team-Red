@@ -73,7 +73,7 @@ export default function Login({ onLogin }) {
   return (
     <div className="login-page">
       <h1>Welcome to Spoonfull!</h1>
-      <h3>Please log in here:</h3>
+      <h3>Please log in to enjoy our service.</h3>
         <form onSubmit={handleSubmit}>
         <div className="login-form-container">
           <div className="input-container">
@@ -94,7 +94,7 @@ export default function Login({ onLogin }) {
               className="input"
             />
           </div>
-          <button type="submit">Submit</button>
+          <button className="submit-login-button" type="submit">Submit</button>
           </div>
         </form>
     </div>
