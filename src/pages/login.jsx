@@ -50,6 +50,7 @@
 // Updated Login.jsx
 import React, { useState } from "react";
 import { addNewUserIfNotExists } from "../components/adduser";
+import "../assets/css/LoginPage.css"
 
 export default function Login({ onLogin }) {
   const [userIdInput, setUserIdInput] = useState("");
@@ -71,26 +72,31 @@ export default function Login({ onLogin }) {
 
   return (
     <div className="login-page">
-      <h2>Login to Spoonfull</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="text"
-            placeholder="Enter user ID"
-            value={userIdInput}
-            onChange={(e) => setUserIdInput(e.target.value)}
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Enter password (ignored)"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+      <h1>Welcome to Spoonfull!</h1>
+      <h3>Please log in here:</h3>
+        <form onSubmit={handleSubmit}>
+        <div className="login-form-container">
+          <div className="input-container">
+            <input
+              type="text"
+              placeholder="Enter user ID"
+              value={userIdInput}
+              onChange={(e) => setUserIdInput(e.target.value)}
+              className="input"
+            />
+          </div>
+          <div className="input-container">
+            <input
+              type="password"
+              placeholder="Enter password (ignored)"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="input"
+            />
+          </div>
+          <button type="submit">Submit</button>
+          </div>
+        </form>
     </div>
   );
 }

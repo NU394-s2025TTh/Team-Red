@@ -1,0 +1,66 @@
+:root {
+    --primary-color: #6A8042;
+    --secondary-color: #1E3006;
+    --accent-color: #ED7A13;
+    --background-color: #FFFADD;
+    --text-color: #1E3006;
+    --placeholder-image: url('../assets/branding/placeholder-image.jpg');
+}
+
+.login-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--background-color);
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom:  0.5rem;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: 0.5rem;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: var(--secondary-color);
+}
