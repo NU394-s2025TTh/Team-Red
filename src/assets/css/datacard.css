@@ -1,9 +1,11 @@
+@import 'styles.css';
+
 .data-card {
-  border: 1px solid #006400;
-  border-radius: 8px;
+  border: 1px solid var(--background-color);
+  border-radius: 0px;
   padding: 16px;
   max-width: 700px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0);
   font-family: Arial, sans-serif;
   }
   
@@ -17,7 +19,7 @@
 
   .data-card .name {
     font-size: 1rem;
-    color: #555;
+    color: var(--secondary-color);
     margin-bottom: 12px;
   }
 

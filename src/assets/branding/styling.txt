@@ -1,0 +1,7 @@
+COLOR PALETTE HEX CODES
+
+light green- #6A8042
+dark green- #1E3006
+light yellow- #FFE787
+off-white- #FFFADD
+orange- #ED7A13

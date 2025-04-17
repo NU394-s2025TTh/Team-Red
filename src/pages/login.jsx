@@ -50,6 +50,8 @@
 // Updated Login.jsx
 import React, { useState } from "react";
 import { addNewUserIfNotExists } from "../components/adduser";
+import "../assets/css/LoginPage.css"
+import { FaSpoon } from "react-icons/fa6";
 
 export default function Login({ onLogin }) {
   const [userIdInput, setUserIdInput] = useState("");
@@ -71,26 +73,32 @@ export default function Login({ onLogin }) {
 
   return (
     <div className="login-page">
-      <h2>Login to Spoonfull</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="text"
-            placeholder="Enter user ID"
-            value={userIdInput}
-            onChange={(e) => setUserIdInput(e.target.value)}
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Enter password (ignored)"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+      <h1>Welcome to Spoonfull!</h1>
+      < FaSpoon className="spoon-icon" />
+      <h3>Please log in to enjoy our service.</h3>
+        <form onSubmit={handleSubmit}>
+        <div className="login-form-container">
+          <div className="input-container">
+            <input
+              type="text"
+              placeholder="Enter user ID"
+              value={userIdInput}
+              onChange={(e) => setUserIdInput(e.target.value)}
+              className="input"
+            />
+          </div>
+          <div className="input-container">
+            <input
+              type="password"
+              placeholder="Enter password (ignored)"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="input"
+            />
+          </div>
+          <button className="submit-login-button" type="submit">Submit</button>
+          </div>
+        </form>
     </div>
   );
 }

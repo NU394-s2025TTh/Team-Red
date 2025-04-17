@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   FaHome,
   FaUser,
@@ -12,14 +13,14 @@ import "../assets/css/sidebar.css";
 export default function Sidebar() {
   return (
     <div className="sidebar">
-      <div className="sidebar-item">
+      <Link to="/" className="sidebar-item">
         <FaHome className="icon" />
         <span className="label">Home</span>
-      </div>
-      <div className="sidebar-item">
+      </Link>
+      <Link to="/profile" className="sidebar-item">
         <FaUser className="icon" />
         <span className="label">Profile</span>
-      </div>
+      </Link>
       <div className="sidebar-item">
         <FaCarrot className="icon" />
         <span className="label">Fridge</span>
