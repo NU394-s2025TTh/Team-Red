@@ -1,0 +1,15 @@
+:root {
+    --primary-color: #6A8042;
+    --secondary-color: #1E3006;
+    --accent-color: #ED7A13;
+    --background-color: #FFFADD;
+    --text-color: #1E3006; /* same as secondary-color, not sure if intentional 
+    so i'm leaving it */
+    --light-color: #FFE787;
+    --placeholder-image: url('../assets/branding/placeholder-image.jpg');
+}
+
+/*@import 'styles.css'; at the top of css files to use thse*/
+/* to use, ex. var(--secondary-color)*/
+
+/* please use these and not hardcoded colors for ease of changing!! */

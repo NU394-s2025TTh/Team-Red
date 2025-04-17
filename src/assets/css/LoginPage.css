@@ -1,11 +1,4 @@
-:root {
-    --primary-color: #6A8042;
-    --secondary-color: #1E3006;
-    --accent-color: #ED7A13;
-    --background-color: #FFFADD;
-    --text-color: #1E3006;
-    --placeholder-image: url('../assets/branding/placeholder-image.jpg');
-}
+@import 'styles.css';
 
 .login-page {
     display: flex;

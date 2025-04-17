@@ -1,10 +1,10 @@
 div.App {
   text-align: center;
-  background-color: rgb(199, 218, 207);
+  background-color: var(--background-color);
 }
 
 .app-logo {
-  width: 150px;
+  width: 100px;
   height: auto;
   object-fit: contain;
   display: block;
@@ -17,7 +17,7 @@ div.App {
 /* desktop styles — double size and more margin */
 @media (min-width: 900px) {
   .app-logo {
-    width: 300px;
+    width: 200px;
     margin-bottom: .5%;
   }
 }
@@ -40,7 +40,7 @@ div.App {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: rgb(86, 71, 71);
+  color: #1E3006;
   text-align: center;
 }
 

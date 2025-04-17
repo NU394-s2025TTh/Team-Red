@@ -1,6 +1,8 @@
+@import 'styles.css';
+
 div.main-app {
     text-align: center;
-    background-color: rgb(199, 218, 207);
+    background-color: var(--background-color);
   }
   
   .app-logo {

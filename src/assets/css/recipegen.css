@@ -1,3 +1,5 @@
+
+
 .recipe-generator-container {
   padding: 1.5rem;
   max-width: 700px;
@@ -10,12 +12,12 @@
   font-size: 1rem;
   padding: 0.6rem 1.2rem;
   margin-top: 1rem;
-  background-color: #007aff;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--background-color);
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: var(--background-color) 0.2s ease;
 }
 
 .generate-button:disabled {
@@ -25,15 +27,15 @@
 
 .save-button {
   margin-top: 1rem;
-  background-color: #28a745;
+  background-color: var(--primary-color);
 }
 
 .save-button:hover {
-  background-color: #218838;
+  background-color: var(--secondary-color);
 }
 
 .generate-button:hover {
-  background-color: #005ce6;
+  background-color: var(--secondary-color);
 }
 
 .error-message {
@@ -52,11 +54,11 @@
 }
 
 .recipe-card {
-  border: 1px solid #ccc;
+  border: 1px solid var(--background-color);
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1.5rem;
-  background-color: #f9f9f9;
+  background-color: var(--background-color);
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   text-align: left;
 
@@ -64,5 +66,5 @@
 
 .macros {
   margin-top: 1rem;
-  color: #333;
+  color: var(--secondary-color);
 }

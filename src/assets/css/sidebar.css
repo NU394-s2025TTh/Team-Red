@@ -1,9 +1,11 @@
+@import 'styles.css';
+
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100px;
-    background-color: #064420;
+    background-color: var(--secondary-color);
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -20,13 +22,13 @@
   }
   
   .icon {
-    color: white;
+    color: var(--background-color);
     font-size: 24px;
     cursor: pointer;
   }
   
   .label {
-    color: white;
+    color: var(--background-color);
     font-size: 20px;
     margin-top: 4px;
     text-align: center;

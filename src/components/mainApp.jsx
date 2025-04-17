@@ -38,7 +38,7 @@ export default function MainApp( { userId, onLogout } ) {
   }
 
   return (
-    <div className="App" style={{ backgroundColor: 'rgb(199, 218, 207)', minHeight: '100vh' }}>
+    <div className="App" style={{ backgroundColor: '#FFFADD', minHeight: '100vh' }}>
 
         < Sidebar />
       

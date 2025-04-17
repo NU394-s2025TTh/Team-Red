@@ -84,8 +84,10 @@
 
 // src/App.jsx
 import React, { useState } from 'react';
-import Login from "./pages/login";
-import MainApp from "./components/mainApp";
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './pages/login';
+import MainApp from './components/mainApp';
+import Profile from './pages/profile';
 import './App.css';
 
 function App() {
@@ -100,11 +102,29 @@ function App() {
     window.location.reload();
   };
 
-  if (!fakeUserId) {
-    return <Login onLogin={handleLogin} />;
-  }
-
-  return <MainApp userId={fakeUserId} onLogout={handleLogout} />;
+  return (
+    <Router> {/* This is the ONLY Router in your app */}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            fakeUserId
+              ? <MainApp userId={fakeUserId} onLogout={handleLogout} />
+              : <Login onLogin={handleLogin} />
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            fakeUserId
+              ? <Profile userId={fakeUserId} />
+              : <Navigate to="/" replace />
+          }
+        />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;

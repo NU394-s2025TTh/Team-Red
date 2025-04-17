@@ -1,5 +1,7 @@
+@import 'styles.css';
+
 .item-card {
-    border: 1px solid #006400;
+    border: 1px solid var(--secondary-color);
     border-radius: 8px;
     padding: 16px;
     /* max-width: 300px; */
@@ -27,7 +29,7 @@
 
     .item-card .quantity {
         font-size: 1rem;
-        color: #555;
+        color: var(--primary-color);
         padding: 6px;
         margin: 0;
         /* border: 1px solid #000; */
