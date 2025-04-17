@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import RecipeDetailsModal from './RecipeDetailsModal';
 import AddNewRecipe from './addnewrecipe';
-import useEditRecipt from '../hooks/useEditRecipe';
+import {editRecipe} from '../hooks/useEditRecipe.jsx';
 
 export function RecipeCard({ recipes, onAddRecipe }) {
     const [selectedRecipe, setSelectedRecipe] = useState(null);
@@ -59,7 +59,7 @@ export function RecipeCard({ recipes, onAddRecipe }) {
   
         {/* selected recipe modal */}
         {selectedRecipe && (
-          <RecipeDetailsModal recipe={selectedRecipe} onClose={handleCloseModal} />
+          <RecipeDetailsModal recipe={selectedRecipe} onClose={handleCloseModal} onSave={editRecipe} />
         )}
       </div>
     );
