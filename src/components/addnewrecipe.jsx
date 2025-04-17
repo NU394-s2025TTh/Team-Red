@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function AddNewRecipe({ onAddRecipe, onCloseForm }) {
+export default function AddNewRecipe({ onAddRecipe, onCloseForm }) {
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState('');
   const [instructions, setInstructions] = useState('');
@@ -51,5 +51,3 @@ function AddNewRecipe({ onAddRecipe, onCloseForm }) {
     </div>
   );
 }
-
-export default AddNewRecipe;

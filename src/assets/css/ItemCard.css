@@ -1,45 +1,52 @@
 @import 'styles.css';
 
 .item-card {
-    border: 1px solid var(--secondary-color);
-    border-radius: 8px;
-    padding: 16px;
-    /* max-width: 300px; */
-    width: 5rem;
-    height: 5rem;
-    margin: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
-    text-align: center;
-  }
-
-  .item-card h2 {
-    margin: 0;
-    padding: 2px;
-    font-size: 1.2rem;
-    /* border: 1px solid #000; */
-  }
-
-  .item-card .quantity-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 8px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  padding: 16px;
+  width: 5rem;
+  height: 5rem;
+  margin: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  text-align: center;
 }
 
-    .item-card .quantity {
-        font-size: 1rem;
-        color: var(--primary-color);
-        padding: 6px;
-        margin: 0;
-        /* border: 1px solid #000; */
-    }
+.item-card h2 {
+  margin: 0;
+  padding: 2px;
+  font-size: calc(100% - 1px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 2rem;
+  line-height: 1.1rem;
+}
 
-  .item-card .unit {
-    
-    font-size: 0.8rem;
-    padding: 8px;
-    padding-top: 0;
-    /* border: 1px solid #000; */
-    margin: 0;
-  }
+.item-card h2:after {
+  content: attr(data-text);
+  visibility: hidden;
+  white-space: nowrap;
+  font-size: inherit;
+  display: inline-block;
+}
+
+.item-card .quantity-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.item-card .quantity {
+  font-size: 1rem;
+  color: var(--primary-color);
+  padding: 6px;
+  margin: 0;
+}
+
+.item-card .unit {
+  font-size: 0.8rem;
+  padding: 8px;
+  padding-top: 0;
+  margin: 0;
+}

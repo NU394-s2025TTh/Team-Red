@@ -30,6 +30,11 @@ input {
     border-right: 1px solid var(--secondary-color); /* Light gray border on the right */
 }
 
+.add-qt-input {
+    width: 20%;
+    border-right: 1px solid var(--secondary-color);
+}
+
 .add-unit-input {
     width: 30%;
 }

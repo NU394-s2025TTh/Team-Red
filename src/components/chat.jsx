@@ -8,14 +8,14 @@ export default function Chat({ ingredients: allIngredients, userId }) {
   // selectedIngredients holds the user's chosen ingredients
   const [selectedIngredients, setSelectedIngredients] = useState(allIngredients);
   const { recipes, loading, error, generateRecipe } = useRecipeGenerator();
-  const [saved, setSaved] = useState(false);
+  const [saved, setSaved] = useState([]);
 
   // This function is triggered when the user clicks the generate button.
   // It uses the currently selected ingredients.
   const handleGenerateRecipe = async () => {
     if (!selectedIngredients.length) return;
     await generateRecipe(selectedIngredients);
-    setSaved(false);
+    // setSaved(false);
   };
 
   const handleAddToRecipes = (recipe) => {
@@ -30,8 +30,11 @@ export default function Chat({ ingredients: allIngredients, userId }) {
       recipe.macros.fat,
       recipe.macros.carbs
     );
-    setSaved(true);
+    // setSaved(true);
+    setSaved((prevSaved) => [...prevSaved, recipe.title]);
   };
+
+  const isSaved = (title) => saved.includes(title);
 
   return (
     <div className="chat">
@@ -82,7 +85,7 @@ export default function Chat({ ingredients: allIngredients, userId }) {
                   Carbs: {recipe.macros?.carbs ?? 0}g
                 </p>
 
-                {!saved && (
+                {!isSaved(recipe.title) && (
                   <button
                     className="button-add"
                     onClick={() => handleAddToRecipes(recipe)}

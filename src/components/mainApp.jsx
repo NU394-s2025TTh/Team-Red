@@ -53,7 +53,6 @@ export default function MainApp( { userId, onLogout } ) {
 
       <div>
             <h1>Home Page</h1>
-            <button onClick={logout}>Logout</button>
         </div>
 
 

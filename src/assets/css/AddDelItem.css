@@ -5,4 +5,20 @@
     text-align: center;
     border-radius: 100%;
     cursor: pointer;
+    width: 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .adddel-button {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .adddel-button {
+        width: 30px;
+        height: 30px;
+    }
 }

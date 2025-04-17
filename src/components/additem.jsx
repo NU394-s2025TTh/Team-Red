@@ -6,11 +6,16 @@ import "../assets/css/AddItemButton.css";
 
 export function AddItemButton( {userId}) {
   const [inputValue, setInputValue] = useState('');
+  const [quantityValue, setQuantityValue] = useState('');
   const [unitValue, setUnitValue] = useState('');
   const db = getFirestore(app);
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
+  };
+
+  const handleQuantityChange = (event) => {
+    setQuantityValue(event.target.value);
   };
 
   const handleUnitChange = (event) => {
@@ -19,7 +24,6 @@ export function AddItemButton( {userId}) {
 
   const handleButtonClick = async () => {
     if (!inputValue.trim()) return; // prevent empty submissions
-    if (!unitValue.trim()) return; // prevent empty submissions
 
     //const { userId } = useUser();
 
@@ -32,9 +36,10 @@ export function AddItemButton( {userId}) {
 
     try {
       await updateDoc(userRef, {
-        fridge: arrayUnion({ item: inputValue, quantity: 1, unit: unitValue }) // add item to fridge array
+        fridge: arrayUnion({ item: inputValue.toLowerCase(), quantity: quantityValue ? quantityValue: 1, unit: unitValue.toLowerCase() }) // add item to fridge array
       });
       setInputValue(''); // clear input field
+      setQuantityValue(''); // clear quantity field
         setUnitValue(''); // clear unit field
       
     } catch (error) {
@@ -51,6 +56,14 @@ export function AddItemButton( {userId}) {
         onChange={handleInputChange}
         placeholder="Add an ingredient"
         className="add-item-input"
+      />
+      <input
+        type="number"
+        value={quantityValue}
+        onChange={handleQuantityChange}
+        placeholder="Qty"
+        min="1"
+        className="add-qt-input"
       />
       <input
         type="text"

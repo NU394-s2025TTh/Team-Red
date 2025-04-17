@@ -1,0 +1,34 @@
+import { getFirestore, doc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import { app } from "../firebaseconfig";
+
+export async function addRecipe(userId, title, ingredients, instructions, cal, protein, fat, carbs) {
+  const db = getFirestore(app);
+  const userRef = doc(db, 'users', userId);
+
+  try {
+    const userSnapshot = await getDoc(userRef);
+    if (!userSnapshot.exists()) {
+      throw new Error("User does not exist");
+    }
+    const userData = userSnapshot.data();
+    const userRecipes = userData.recipes || [];
+    const updatedRecipes = userRecipes.map(recipe => {
+        recipe.title === userRecipes.title ? };
+    });
+    await updateDoc(userRef, {
+      recipes: arrayUnion({
+        title,
+        ingredients,
+        instructions,
+        cal,
+        protein,
+        fat,
+        carbs,
+      }),
+    });
+    return { success: true };
+  } catch (err) {
+    console.error("Error adding recipe:", err);
+    return { success: false, error: err.message };
+  }
+}

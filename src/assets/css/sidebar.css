@@ -4,34 +4,34 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100px;
+    width: clamp(60px, 10vw, 100px);
     background-color: var(--secondary-color);
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 20px;
+    padding-top: clamp(10px, 2vh, 20px);
     box-sizing: border-box;
-  }
+}
   
-  .sidebar-item {
+.sidebar-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 40px 0;
-  }
+    margin: clamp(20px, 6vh, 52px) 0; /* smooth vertical spacing */
+}
   
-  .icon {
+.icon {
     color: var(--background-color);
-    font-size: 24px;
+    font-size: clamp(16px, 2vw, px);
     cursor: pointer;
-  }
+}
   
-  .label {
+.label {
     color: var(--background-color);
-    font-size: 20px;
+    font-size: clamp(10px, 2vw, 20px);
     margin-top: 4px;
     text-align: center;
-  }
+}
   
   
