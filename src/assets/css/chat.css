@@ -4,8 +4,9 @@
   border: 1px solid var(--secondary-color);
   border-radius: 8px;
   padding: 16px;
-  width: 70%;
-  max-width: 500px; /* increased to match recipe card width */
+  width: 95%;
+  margin-right: 2rem;
+  /* max-width: 500px; increased to match recipe card width */
   text-align: center;
   font-family: Arial, sans-serif;
   /* margin: 0 auto; */
