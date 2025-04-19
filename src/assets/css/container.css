@@ -1,13 +1,18 @@
 @import 'styles.css';
 
 .data-card-wrapper {
-  border: 1px solid var(--secondary-color);
+
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+  /*border: 1px solid var(--secondary-color);
   border-radius: 12px;
   padding: 2rem;
   margin: 2rem auto;
   margin-left: 100px;
   max-width: 1200px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
 }
 
 @media (max-width: 900px) {
@@ -23,22 +28,34 @@
 }
 
 .data-card-content {
+
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 1000px;
   display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  /*display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 2rem;
+  gap: 2rem;*/
 }
 
 .left-column {
-  display: flex;
+  flex: 1 1 45%;
+  min-width: 300px;
+  /*display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  flex: 1;
+  flex: 1;*/
 }
 
 .right-column {
-  flex: 1;
-  max-width: 700px;
+  flex: 1 1 45%;
+  min-width: 300px;
 }
 
 @media (max-width: 900px) {

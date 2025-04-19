@@ -5,9 +5,18 @@ export default function IngredientSelector({ allIngredients, onSelectionChange }
   const [selected, setSelected] = useState(allIngredients);
 
   // When the selection changes, notify the parent.
-  useEffect(() => {
-    onSelectionChange(selected);
-  }, [selected, onSelectionChange]);
+  // select all ingredients by default
+
+  /*useEffect(() => {
+    if (allIngredients && allIngredients.length > 0) {
+      setSelected(allIngredients);
+    }
+  }, [allIngredients]);*/
+
+
+   useEffect(() => {
+     onSelectionChange(selected);
+   }, [selected, onSelectionChange]);
 
   // Toggle ingredient selection
   const handleToggle = (ingredient) => {

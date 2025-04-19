@@ -7,11 +7,11 @@
   max-width: 700px; /* increased to match recipe card width */
   text-align: center;
   font-family: Arial, sans-serif;
-  /* margin: 0 auto; */
+  margin: 0 auto; 
 }
 
 .chat-box {
-  margin: 12px 0;
+  margin: 0 auto; 
   min-height: 80px;
   padding: 8px;
   background-color: var(--background-color);
@@ -63,16 +63,27 @@
 }
 
 .recipes-container {
-  margin-top: 1rem;
+  display: flex;
+  overflow-x: auto; 
+  gap: 20px;
+  padding: 10px;
+  scroll-snap-type: x mandatory; 
+  scroll-behavior: smooth;
+  white-space: nowrap;
 }
 
 .recipe-card {
   border: 1px solid var(--secondary-color);
   border-radius: 8px;
-  padding: 1rem;
+  padding: 20 px;
   margin-bottom: 1.5rem;
   background-color: var(--background-color);
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  min-width: 300px; 
+  flex: 0 0 auto;   
+  scroll-snap-align: start;
+
+
 }
 
 .macros {

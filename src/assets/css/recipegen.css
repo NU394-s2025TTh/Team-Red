@@ -51,6 +51,8 @@
 
 .recipes-container {
   margin-top: 2rem;
+  overflow-x: scroll;
+  white-space: nowrap;
 }
 
 .recipe-card {

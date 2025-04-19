@@ -17,6 +17,7 @@
     padding: 10px;
     cursor: pointer;
     text-align: left;
+    display: inline-block
   }
   
   .recipe-card img {

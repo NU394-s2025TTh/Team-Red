@@ -3,6 +3,7 @@ import "../assets/css/chat.css";
 import { useRecipeGenerator } from "../hooks/useRecipeGenerator";
 import IngredientSelector from "./ingredientSelector"; // Make sure the filename matches exactly (e.g., IngredientSelector.jsx)
 import { addRecipe } from "./addRecipe";
+import Loading from "./loading";
 
 export default function Chat({ ingredients: allIngredients, userId }) {
   // selectedIngredients holds the user's chosen ingredients
@@ -13,6 +14,8 @@ export default function Chat({ ingredients: allIngredients, userId }) {
   // This function is triggered when the user clicks the generate button.
   // It uses the currently selected ingredients.
   const handleGenerateRecipe = async () => {
+    console.log("Selected Ingredients:", selectedIngredients);
+    
     if (!selectedIngredients.length) return;
     await generateRecipe(selectedIngredients);
     setSaved(false);
@@ -47,7 +50,7 @@ export default function Chat({ ingredients: allIngredients, userId }) {
 
       {/* Chat box area displays generated recipes */}
       <div className="chat-box">
-        {loading && <p>Generating recipe...</p>}
+        {loading && <Loading/>}
         {error && <p className="text-red-500">{error}</p>}
 
         {!loading && recipes.length === 0 && !error && (
