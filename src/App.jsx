@@ -82,12 +82,70 @@
 // export default App;
 
 
+// // src/App.jsx
+// import React, { useState } from 'react';
+// import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+// import Login from './pages/login';
+// import MainApp from './components/mainApp';
+// import Profile from './pages/profile';
+// import './App.css';
+// import Saved from './pages/saved';
+
+// function App() {
+//   const [fakeUserId, setFakeUserId] = useState(null);
+
+//   const handleLogin = (userId) => {
+//     setFakeUserId(userId);
+//   };
+
+//   const handleLogout = () => {
+//     setFakeUserId(null);
+//     window.location.reload();
+//   };
+
+//   return (
+//     <Router> {/* This is the ONLY Router in your app */}
+//       <Routes>
+//         <Route
+//           path="/"
+//           element={
+//             fakeUserId
+//               ? <MainApp userId={fakeUserId} onLogout={handleLogout} />
+//               : <Login onLogin={handleLogin} />
+//           }
+//         />
+//         <Route
+//           path="/profile"
+//           element={
+//             fakeUserId
+//               ? <Profile userId={fakeUserId} />
+//               : <Navigate to="/" replace />
+//           }
+//         />
+//         <Route
+//           path="/saved"
+//           element={
+//             fakeUserId
+//               ? <Saved userId={fakeUserId} />
+//               : <Navigate to="/" replace />
+//           }
+//         />
+//         <Route path="*" element={<Navigate to="/" replace />} />
+//       </Routes>
+//     </Router>
+//   );
+// }
+
+// export default App;
+
+
 // src/App.jsx
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/login';
-import MainApp from './components/mainApp';
+import MainApp from './components/MainApp';
 import Profile from './pages/profile';
+import Saved from './pages/saved';
 import './App.css';
 
 function App() {
@@ -103,7 +161,7 @@ function App() {
   };
 
   return (
-    <Router> {/* This is the ONLY Router in your app */}
+    <Router>
       <Routes>
         <Route
           path="/"
@@ -121,6 +179,15 @@ function App() {
               : <Navigate to="/" replace />
           }
         />
+        <Route
+          path="/saved"
+          element={
+            fakeUserId
+              ? <Saved userId={fakeUserId} />
+              : <Navigate to="/" replace />
+          }
+        />
+        {/* Optional catch-all to redirect unknown routes */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
