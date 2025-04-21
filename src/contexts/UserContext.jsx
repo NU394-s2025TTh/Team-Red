@@ -1,15 +1,19 @@
 import { createContext, useContext, useState } from 'react';
 
-const UserContext = createContext();
+export const UserContext = createContext(null);
 
-export function UserProvider({ children }) {
-  const [customUserId, setCustomUserId] = useState(null);
-
-  return (
-    <UserContext.Provider value={{ customUserId, setCustomUserId }}>
-      {children}
-    </UserContext.Provider>
-  );
+export function useUser() {
+  return useContext(UserContext);
 }
 
-export const useUserId = () => useContext(UserContext);
+// export function UserProvider({ children }) {
+//   const [customUserId, setCustomUserId] = useState(null);
+
+//   return (
+//     <UserContext.Provider value={{ customUserId, setCustomUserId }}>
+//       {children}
+//     </UserContext.Provider>
+//   );
+// }
+
+// export const useUserId = () => useContext(UserContext);

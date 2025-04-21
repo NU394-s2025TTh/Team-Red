@@ -82,8 +82,9 @@
 // export default App;
 
 
-// src/App.jsx
+// login
 import React, { useState } from 'react';
+import { UserContext } from './contexts/UserContext';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/login';
 import MainApp from './components/mainApp';
@@ -103,27 +104,29 @@ function App() {
   };
 
   return (
-    <Router> {/* This is the ONLY Router in your app */}
-      <Routes>
-        <Route
-          path="/"
-          element={
-            fakeUserId
-              ? <MainApp userId={fakeUserId} onLogout={handleLogout} />
-              : <Login onLogin={handleLogin} />
-          }
-        />
-        <Route
-          path="/profile"
-          element={
-            fakeUserId
-              ? <Profile userId={fakeUserId} />
-              : <Navigate to="/" replace />
-          }
-        />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </Router>
+    <UserContext.Provider value={ {userId: fakeUserId, handleLogout} }>
+      <Router> {/* This is the ONLY Router in your app */}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              fakeUserId
+                ? <MainApp userId={fakeUserId} onLogout={handleLogout} />
+                : <Login onLogin={handleLogin} />
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              fakeUserId
+                ? <Profile userId={fakeUserId} />
+                : <Navigate to="/" replace />
+            }
+          />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Router>
+    </UserContext.Provider>
   );
 }
 

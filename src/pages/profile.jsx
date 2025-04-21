@@ -5,6 +5,11 @@ import "../assets/css/profile.css"
 
 
 function Profile({ userId }) {
+
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
   return (
     <div className="profile-page">
       {/* sidebar */}
@@ -13,6 +18,8 @@ function Profile({ userId }) {
       <div className="profile-container">
         <CgProfile className="profile-icon" />
         <h2 className="username">User ID: {userId}</h2>
+
+        <button className="logout-button" onClick={handleLogout}>Logout</button>
       </div>
     </div>
   );

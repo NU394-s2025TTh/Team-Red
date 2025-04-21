@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import '../assets/css/recipe.css';
+import { useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
 
 function RecipeDetailsModal({ recipe, onClose, onSave }) {
+  const { userId, handleLogout } = useContext(UserContext);
+
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(recipe.title);
   const [ingredients, setIngredients] = useState(recipe.ingredients.join('\n'));
@@ -24,7 +28,7 @@ function RecipeDetailsModal({ recipe, onClose, onSave }) {
       protein,
       fat,
     };
-    onSave(updatedRecipe); 
+    onSave(userId, updatedRecipe); 
     setIsEditing(false); 
   };
 

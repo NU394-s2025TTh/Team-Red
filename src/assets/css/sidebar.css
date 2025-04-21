@@ -4,34 +4,51 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100px;
+    width: clamp(60px, 10vw, 100px);
     background-color: var(--secondary-color);
     height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
-    padding-top: 20px;
+    /* padding-top: clamp(10px, 2vh, 20px); */
     box-sizing: border-box;
-  }
+    overflow-y: scroll;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    }
+
+    .sidebar::-webkit-scrollbar {
+        display: none; /* For Chrome, Safari, and Opera */
+    z-index: 1000; /* Ensure sidebar is above other content */
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+}
   
-  .sidebar-item {
+.sidebar-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 40px 0;
-  }
+    /* margin: clamp(20px, 6vh, 52px) 0; */
+    /* border: 1px solid var(--background-color); */
+    margin: 1rem;
+}
   
-  .icon {
+.icon {
     color: var(--background-color);
-    font-size: 24px;
+    font-size: clamp(16px, 2vw, px);
     cursor: pointer;
-  }
+}
   
-  .label {
+.label {
     color: var(--background-color);
-    font-size: 20px;
+    font-size: 1rem;
     margin-top: 4px;
     text-align: center;
-  }
+}
   
   

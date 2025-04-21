@@ -1,10 +1,12 @@
 @import 'styles.css';
 
 .chat {
-  border: 1px solid var(--background-color);
+  border: 1px solid var(--secondary-color);
   border-radius: 8px;
   padding: 16px;
-  max-width: 700px; /* increased to match recipe card width */
+  width: 95%;
+  margin-right: 2rem;
+  /* max-width: 500px; increased to match recipe card width */
   text-align: center;
   font-family: Arial, sans-serif;
   /* margin: 0 auto; */
@@ -61,18 +63,26 @@
 .button-generate:hover {
   background-color: var(--secondary-color);
 }
-
 .recipes-container {
   margin-top: 1rem;
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  padding: 1rem; /* Add padding to prevent content from being cut off */
+  gap: 1rem;
+  padding-bottom: 1rem; /* Add padding to prevent content from being cut off */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .recipe-card {
+  flex: 0 0 auto; /* Prevent cards from shrinking and allow horizontal scrolling */
+  max-width: 100%;
   border: 1px solid var(--secondary-color);
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1.5rem;
   background-color: var(--background-color);
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .macros {
