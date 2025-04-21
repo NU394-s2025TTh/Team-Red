@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import "../assets/css/ingredientSelector.css"; // Import your CSS file for styling
+import "../assets/css/ingredientSelector.css";
 
 export default function IngredientSelector({ allIngredients, onSelectionChange }) {
   const [selected, setSelected] = useState(allIngredients);
 
-  // When the selection changes, notify the parent.
+  // notify parent when selection changes
   useEffect(() => {
     onSelectionChange(selected);
   }, [selected, onSelectionChange]);
 
-  // Toggle ingredient selection
+  // toggle ingredient selection
   const handleToggle = (ingredient) => {
     setSelected((prevSelected) => {
       if (prevSelected.includes(ingredient)) {

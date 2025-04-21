@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import "../assets/css/chat.css";
 import { useRecipeGenerator } from "../hooks/useRecipeGenerator";
-import IngredientSelector from "./ingredientSelector"; // Make sure the filename matches exactly (e.g., IngredientSelector.jsx)
+import IngredientSelector from "./ingredientSelector";
 import { addRecipe } from "./addRecipe";
 
 export default function Chat({ ingredients: allIngredients, userId }) {
-  // selectedIngredients holds the user's chosen ingredients
   const [selectedIngredients, setSelectedIngredients] = useState(allIngredients);
   const { recipes, loading, error, generateRecipe } = useRecipeGenerator();
   const [saved, setSaved] = useState([]);
 
-  // This function is triggered when the user clicks the generate button.
-  // It uses the currently selected ingredients.
+  // called when user clicks generate recipe button
   const handleGenerateRecipe = async () => {
     if (!selectedIngredients.length) return;
     await generateRecipe(selectedIngredients);
@@ -42,7 +40,6 @@ export default function Chat({ ingredients: allIngredients, userId }) {
         <h3>Fridge AI</h3>
       </div>
 
-      {/* Ingredient selector block: allows user to choose which ingredients to include */}
       <IngredientSelector 
         allIngredients={allIngredients} 
         onSelectionChange={(selected) => setSelectedIngredients(selected)} 

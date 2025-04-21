@@ -1,66 +1,94 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RecipeDetailsModal from './RecipeDetailsModal';
 import AddNewRecipe from './addnewrecipe';
-import {editRecipe} from '../hooks/useEditRecipe.jsx';
+import { editRecipe } from '../hooks/useEditRecipe.jsx';
 
-export function RecipeCard({ recipes, onAddRecipe }) {
-    const [selectedRecipe, setSelectedRecipe] = useState(null);
-    const [showAddRecipeForm, setShowAddRecipeForm] = useState(false);
+export function RecipeCard({ recipes: propRecipes, onAddRecipe }) {
   
-    const handleCardClick = (recipe) => {
-      setSelectedRecipe(recipe);
-    };
-  
-    const handleCloseModal = () => {
-      setSelectedRecipe(null);
-    };
-  
-    const handleAddRecipeClick = () => {
-      setShowAddRecipeForm(true);
-    };
-  
-    const handleCloseForm = () => {
-      setShowAddRecipeForm(false);
-    };
-  
-    return (
-      <div className="recipe-card-container" style={{ marginLeft: '150px' }}>
-        <h2>Your Recipes</h2>
-  
-        {/* recipe cards */}
-        <div className="recipe-card-list">
-          {recipes.map((recipe, index) => (
-            <div key={index} className="recipe-card" onClick={() => handleCardClick(recipe)}>
-              <img 
-                src={recipe.photo || "/default-photo.png"} 
-                alt={recipe.title} 
-                className="recipe-card-img"
-              />
-              <h3>{recipe.title}</h3>
-            </div>
-          ))}
-        </div>
-  
-        {/* button for new recipe*/}
-        <div className="add-recipe-button-container">
-          <button className="add-recipe-button" onClick={handleAddRecipeClick}>
-            Add New Recipe
-          </button>
-        </div>
-  
-        {/* add new recipe form -> modal */}
-        {showAddRecipeForm && (
-          <div className="modal-overlay">
-            <div className="modal-content">
-              <AddNewRecipe onAddRecipe={onAddRecipe} onCloseForm={handleCloseForm} />
-            </div>
-          </div>
-        )}
-  
-        {/* selected recipe modal */}
-        {selectedRecipe && (
-          <RecipeDetailsModal recipe={selectedRecipe} onClose={handleCloseModal} onSave={editRecipe} />
-        )}
-      </div>
+  const [recipes, setRecipes] = useState(propRecipes);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [showAddRecipeForm, setShowAddRecipeForm] = useState(false);
+
+  useEffect(() => {
+    setRecipes(propRecipes);
+  }, [propRecipes]);
+
+  const handleCardClick = (recipe) => {
+    setSelectedRecipe(recipe);
+  };
+  const handleCloseModal = () => {
+    setSelectedRecipe(null);
+  };
+  const handleAddRecipeClick = () => {
+    setShowAddRecipeForm(true);
+  };
+  const handleCloseForm = () => {
+    setShowAddRecipeForm(false);
+  };
+
+
+  const handleSave = async (userId, updatedRecipe) => { // saves to firestore
+    const result = await editRecipe(userId, updatedRecipe);
+    if (!result.success) {
+      console.error("Failed to save:", result.error);
+      alert("Could not save recipe: " + result.error);
+      return;
+    }
+    // replace edited recipe
+    setRecipes((prev) =>
+      prev.map((r) =>
+        r.title === updatedRecipe.title ? updatedRecipe : r
+      )
     );
-  }
+    // Optionally, re-open the modal with the up‑to‑date data:
+    setSelectedRecipe(updatedRecipe);
+  };
+
+  return (
+    <div className="recipe-card-container" style={{ marginLeft: '150px' }}>
+      <h2>Your Recipes</h2>
+
+      <div className="recipe-card-list">
+        {recipes.map((recipe, idx) => (
+          <div
+            key={idx}
+            className="recipe-card"
+            onClick={() => handleCardClick(recipe)}
+          >
+            <img
+              src={recipe.photo || "/default-photo.png"}
+              alt={recipe.title}
+              className="recipe-card-img"
+            />
+            <h3>{recipe.title}</h3>
+          </div>
+        ))}
+      </div>
+
+      <div className="add-recipe-button-container">
+        <button className="add-recipe-button" onClick={handleAddRecipeClick}>
+          Add New Recipe
+        </button>
+      </div>
+
+      {showAddRecipeForm && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <AddNewRecipe
+              onAddRecipe={onAddRecipe}
+              onCloseForm={handleCloseForm}
+            />
+          </div>
+        </div>
+      )}
+
+      {selectedRecipe && (
+        <RecipeDetailsModal
+          recipe={selectedRecipe}
+          onClose={handleCloseModal}
+          onSave={handleSave}       // use our wrapped save
+        />
+      )}
+    </div>
+  );
+}
