@@ -85,6 +85,16 @@
   box-sizing: border-box; /* Include padding in width calculation */
 }
 
+.recipe-image {
+  width: 50%;
+  max-width: 50%;
+  height: auto;
+  border-radius: 6px;
+  margin: 0 auto 0.5rem auto;
+  display: block;
+  object-fit: cover;
+}
+
 .macros {
   margin-top: 1rem;
   color: var(--secondary-color);
@@ -121,6 +131,7 @@
   padding: 10px;
 
 }
+
 
 
 

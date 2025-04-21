@@ -3,6 +3,8 @@ import "../assets/css/chat.css";
 import { useRecipeGenerator } from "../hooks/useRecipeGenerator";
 import IngredientSelector from "./ingredientSelector";
 import { addRecipe } from "./addRecipe";
+import placeholderImage from "../assets/branding/recipe-placeholder.png";
+
 
 export default function Chat({ ingredients: allIngredients, userId }) {
   const [selectedIngredients, setSelectedIngredients] = useState(allIngredients);
@@ -57,7 +59,10 @@ export default function Chat({ ingredients: allIngredients, userId }) {
         {recipes.length > 0 && (
           <div className="recipes-container">
             {recipes.map((recipe, index) => (
+              
               <div key={index} className="recipe-card">
+                <img src={placeholderImage} alt="Recipe Preview" className="recipe-image" />
+                
                 <h2>{recipe.title}</h2>
 
                 <h4>Ingredients:</h4>
