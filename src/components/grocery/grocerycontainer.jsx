@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getFirestore, doc, onSnapshot } from "firebase/firestore";
-import { app } from "../firebaseconfig";
-import { DataCard } from './datacard';
+import { app } from "../../firebaseconfig";
+import { DataCard } from '../datacard';
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 
 const db = getFirestore(app);

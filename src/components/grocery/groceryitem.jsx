@@ -1,7 +1,7 @@
 import '../assets/css/DataCard.css';
 import React, { useRef } from 'react';
-import { ItemCard } from './ItemCard';
-import { AddItemButton } from './additem';
+import { ItemCard } from '../ItemCard';
+import { AddItemButton } from '../additem';
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 
 export function DataCard({ userId, groceryList }) {
