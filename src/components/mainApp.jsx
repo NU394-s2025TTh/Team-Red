@@ -7,6 +7,8 @@ import '../assets/css/mainApp.css';
 import '../assets/css/container.css';
 import Sidebar from './sidebar';
 import { RecipeCard } from './recipecard';
+import Logo from "../assets/branding/logo-transparent.png";
+
 
 export default function MainApp( { userId, onLogout } ) {
   const { userData, loading, error } = useUserData(userId);
@@ -45,14 +47,13 @@ export default function MainApp( { userId, onLogout } ) {
         <header className="App-header">
          
         <img 
-          src="/spoonfull_logo.png" 
+          src={Logo}
           alt="Spoonfull Logo" 
           className="app-logo"
         />
       </header>
       <div>
         </div>
-
 
 
       {loading && <p>Loading...</p>}

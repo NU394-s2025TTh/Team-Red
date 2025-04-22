@@ -2,15 +2,23 @@
     --primary-color: #6A8042;
     --secondary-color: #1E3006;
     --accent-color: #ED7A13;
+    /* --background-color: #fff; */
     --background-color: #FFFADD;
     --text-color: #1E3006; /* same as secondary-color, not sure if intentional 
     so i'm leaving it */
     --light-color: #FFE787;
-    --placeholder-image: url('../assets/branding/placeholder-image.jpg');
+    --placeholder-image: url('src/assets/branding/placeholder-image.jpg');
+    --sidebar-width: 180px; /* width of the sidebar, used in under_construction.css */
 }
 
 body {
     overflow-x: hidden;
+}
+
+.page {
+    display: flex;
+    height: 100vh;
+    background-color: var(--background-color);
 }
 
 /*@import 'styles.css'; at the top of css files to use thse*/

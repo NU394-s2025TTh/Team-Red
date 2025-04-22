@@ -4,6 +4,8 @@ import { useUserData } from "../hooks/useUserData";
 import Chat from '../components/chat';
 import '../assets/css/container.css';
 import Sidebar from '../components/sidebar';
+import Logo from "../assets/branding/logo-transparent.png"
+import Header from '../components/Header';
 
 function InventoryPage() {
   const { userData, loading, error } = useUserData("1001");
@@ -14,26 +16,12 @@ function InventoryPage() {
   }
 
   return (
-    <div className="App" style={{ backgroundColor: 'rgb(199, 218, 207)', minHeight: '100vh' }}>
+    <div className="App" style={{ minHeight: '100vh' }}>
       
 
        <Sidebar />
+      {/* <Header /> */}
       
-       <header className="app-header">
-         
-          <img 
-            src="/spoonfull_logo.png" 
-            alt="Spoonfull Logo" 
-            style={{
-              height: '150px', 
-              width: 'auto', 
-              display: 'block',    
-              marginLeft: 'auto',  
-              marginRight: 'auto', 
-              marginBottom: '20px' 
-            }}
-          />
-      </header>
 
       <div>
             <button onClick={logout}>Logout</button>

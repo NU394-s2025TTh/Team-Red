@@ -1,4 +1,8 @@
+@import './styles.css';
+
 .under-construction-wrapper {
+    border: 1px solid #1E3006;
+    width: calc(100vw - var(--sidebar-width));
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -1,3 +1,5 @@
+@import './styles.css';
+
 .sidebar-container {
   position: fixed;
   top: 0;
@@ -7,7 +9,7 @@
 }
 
 .sidebar {
-  width: 180px;
+  width: var(--sidebar-width);
   height: 100vh;
   background-color: var(--secondary-color);
   display: flex;

@@ -10,6 +10,23 @@ export default function Sidebar() {
     setIsCollapsed(!isCollapsed);
   };
 
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setIsCollapsed(true);
+      } else {
+        setIsCollapsed(false);
+      }
+    };
+
+    handleResize(); // Set initial state based on current window size
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div className={`sidebar-container ${isCollapsed ? "collapsed" : ""}`}>
       <button className="hamburger-btn" onClick={toggleSidebar}>
