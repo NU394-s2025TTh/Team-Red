@@ -3,20 +3,21 @@
 .chat {
   border: 1px solid var(--secondary-color);
   border-radius: 8px;
-  padding: 16px;
+  padding: 1rem;
   width: 95%;
   margin-right: 2rem;
   /* max-width: 500px; increased to match recipe card width */
   text-align: center;
   font-family: Arial, sans-serif;
   /* margin: 0 auto; */
+  cursor: default;
 }
 
 .chat-box {
   margin: 12px 0;
   min-height: 80px;
-  padding: 8px;
-  background-color: var(--background-color);
+  padding: 0.5rem;
+  background-color: white;
   border-radius: 6px;
 }
 /* mobile styles: shrink margins, padding, and height */
@@ -38,7 +39,7 @@
 
 .button-add {
   background-color: var(--primary-color);
-  color: var(--background-color);
+  color: white;
   padding: 0.6rem 1.2rem;
   border-radius: 6px;
   font-weight: bold;
@@ -52,7 +53,7 @@
 
 .button-generate {
   background-color: var(--primary-color);
-  color: var(--background-color);
+  color: white;
   padding: 0.6rem 1.2rem;
   border-radius: 6px;
   font-weight: bold;
@@ -80,15 +81,16 @@
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1.5rem;
-  background-color: var(--background-color);
+  background-color: white;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .recipe-image {
-  width: 50%;
-  max-width: 50%;
+  width: 30%;
+  max-width: 30%;
   height: auto;
+  padding: 1.5rem;
   border-radius: 6px;
   margin: 0 auto 0.5rem auto;
   display: block;
