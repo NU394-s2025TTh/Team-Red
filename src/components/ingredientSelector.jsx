@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import "../assets/css/ingredientSelector.css";
 
 export default function IngredientSelector({ allIngredients, onSelectionChange }) {
-  const [selected, setSelected] = useState(allIngredients);
+  const [selected, setSelected] = useState([]);
+
+  // set initial selected ingredients to all available ingredients
+  useEffect(() => {
+    setSelected(allIngredients);
+  }, [allIngredients]);
 
   // notify parent when selection changes
   useEffect(() => {

@@ -50,9 +50,7 @@ export default function MainApp( { userId, onLogout } ) {
           className="app-logo"
         />
       </header>
-
       <div>
-            <h1>Home Page</h1>
         </div>
 
 
