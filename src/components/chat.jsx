@@ -65,7 +65,6 @@ export default function Chat({ ingredients: allIngredients, userId }) {
               <div key={index} className="recipe-card">
                 <img src={placeholderImage} alt="Recipe Preview" className="recipe-image" />
                 
-                <img src={placeholderImage} alt="Recipe Preview" className="recipe-image" />
                 
                 <h2>{recipe.title}</h2>
 
