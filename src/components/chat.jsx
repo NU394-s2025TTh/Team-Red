@@ -40,7 +40,7 @@ export default function Chat({ ingredients: allIngredients, userId }) {
   return (
     <div className="chat">
       <div>
-        <h3>Fridge AI</h3>
+        <h1>Fridge AI</h1>
       </div>
 
       <IngredientSelector 
@@ -54,7 +54,7 @@ export default function Chat({ ingredients: allIngredients, userId }) {
         {error && <p className="text-red-500">{error}</p>}
 
         {!loading && recipes.length === 0 && !error && (
-          <p className="text-gray-400">No recipe yet... push the button below to generate</p>
+          <p className="text-gray-400">No recipe yet... press the button to generate!</p>
         )}
 
         {recipes.length > 0 && (
@@ -95,7 +95,7 @@ export default function Chat({ ingredients: allIngredients, userId }) {
                     className="button-add"
                     onClick={() => handleAddToRecipes(recipe)}
                   >
-                    Add to my recipes
+                    Save Recipe
                   </button>
                 )}
               </div>

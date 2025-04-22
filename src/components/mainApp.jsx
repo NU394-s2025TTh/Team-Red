@@ -3,7 +3,7 @@ import { DataCardContainer } from './DataCardContainer';
 import { AddItemButton } from './additem';
 import { useUserData } from "../hooks/useUserData";
 import Chat from './chat';
-import '../assets/css/mainApp.css';
+// import '../assets/css/mainApp.css';
 import '../assets/css/container.css';
 import Sidebar from './sidebar';
 import { RecipeCard } from './recipecard';
@@ -40,7 +40,7 @@ export default function MainApp( { userId, onLogout } ) {
   }
 
   return (
-    <div className="App" style={{ backgroundColor: '#FFFADD', minHeight: '100vh' }}>
+    <div className="App" style={{ minHeight: '100vh' }}>
 
         < Sidebar />
       

@@ -1,12 +1,13 @@
 @import 'styles.css';
 
 .data-card {
-  border: 1px solid var(--secondary-color);
+  /* border: 1px solid var(--secondary-color); */
   border-radius: 0.8rem;
   padding: 16px;
   max-width: 700px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0);
   font-family: Arial, sans-serif;
+  /* background-color: white; */
   }
   
  

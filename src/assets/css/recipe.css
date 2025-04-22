@@ -2,36 +2,65 @@
 
 /* recipe card layout */
 .recipe-card-container {
-    padding: 20px;
+  /* border: 1px solid var(--secondary-color); */
+  /* border-radius: 12px; */
+  padding: 2rem;
+  padding-top: 0;
+  margin-left: var(--sidebar-width);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   }
+
+  .recipe-card-container .recipe-card {
+    /* border: 1px solid var(--secondary-color); */
+    margin: 0.5rem;
+    width: 20%;
+    overflow: wrap;
+  }
+
+  @media (max-width: 900px) {
+
+    .recipe-card-container {
+      margin: 0 auto;   /* reset the top and bottom margins */
+      /* margin-left: 100px; */
+      padding: 1rem;    /* optional: make padding smaller too */
+    }
+  }
+
   
   .recipe-card-list {
+    /* border: 1px solid var(--secondary-color); */
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    justify-content: center;
+    margin-top: 2rem;
   }
   
   .recipe-card {
+    min-width: 20%;
     width: auto;
-    border: 1px solid var(--secondary-color);
+    /* border: 1px solid var(--secondary-color); */
     padding: 10px;
     cursor: pointer;
-    text-align: left;
+    text-align: center;
   }
   
   .recipe-card img {
     width: 100%;
     height: auto;
+    max-width: 100px;
+    margin-top: 1rem;
   }
   
   /* recipe details modal */
 .recipe-details-modal {
+  border: 1px solid var(--secondary-color);
     position: fixed;
     top: 50%;
-    left: 50%;
+    left: calc(50% + 50px);
     transform: translate(-50%, -50%);
-    background-color: var(--background-color); 
-    padding: 20px;
+    background-color: white; 
+    padding: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     width: 90%; 
@@ -39,20 +68,27 @@
     border-radius: 10px;
     overflow-y: auto;
     max-height: 90vh;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  }
+  
+  .recipe-details-modal::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
   }
   
   .recipe-details-modal h2,
   .recipe-details-modal h3 {
-    font-size: 1.2em;
+    font-size: 1.2rem;
   }
   
   .recipe-details-modal input,
   .recipe-details-modal textarea {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid var(--background-color);
-    border-radius: 5px;
+    width: 90%;
+    padding: 1rem;
+    border: none;
+    background-color: whitesmoke;
+    border-radius: 0.5rem;
+    font-family: inherit;
   }
   
   .recipe-details-modal textarea {
@@ -62,15 +98,20 @@
   .recipe-details-modal button {
     padding: 10px 20px;
     background-color: var(--primary-color);
-    color: var(--background-color);
+    color: white;
     border: none;
     cursor: pointer;
-    margin-top: 10px;
-    border-radius: 5px;
+    margin-top: 0.5rem;
+    border-radius: 0.5rem;
+  }
+
+  .recipe-details-modal li {
+    text-align: left;
+    padding: 0.1rem 0.5rem;
   }
   
   .recipe-details-modal button:hover {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
   }
   
   .recipe-details-modal button:nth-of-type(2) {
@@ -81,12 +122,44 @@
     background-color: #e53935;
   }
   
+  @media (max-width: 600px) {
+
+    .recipe-card-container .recipe-card {
+      width: 45%;
+    }
+
+    .recipe-details-modal {
+      left: 50%;
+      width: 95%;
+      max-width: none;
+      padding: 1rem;
+      padding-bottom: 1.2rem;
+    }
+
+    .recipe-details-modal h2,
+    .recipe-details-modal h3 {
+      font-size: 1em;
+    }
+
+    .recipe-details-modal input,
+    .recipe-details-modal textarea {
+      font-size: 0.9em;
+      padding: 8px;
+    }
+
+    .recipe-details-modal button {
+      font-size: 0.9em;
+      padding: 8px 16px;
+    }
+  }
+
   /* modal for editable nutrition */
   .nutrition-container {
     display: flex;
+    padding: 0 1rem;
     gap: 20px;
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
   }
   
   .nutrition-container label {
@@ -97,7 +170,7 @@
     width: 100px;
     padding: 5px;
     margin-left: 10px;
-    border: 1px solid var(--background-color);
+    border: none;
     border-radius: 5px;
   }
   
@@ -112,13 +185,13 @@
     width: 100%;
     margin-bottom: 10px;
     padding: 10px;
-    border: 1px solid var(--background-color);
+    border: none;
   }
   
   .add-recipe-container button {
     padding: 10px 20px;
     background-color: var(--primary-color);
-    color: var(--background-color);
+    color: white;
     border: none;
     cursor: pointer;
   }
@@ -132,13 +205,16 @@
   .add-recipe-button {
     padding: 10px 20px;
     background-color: var(--primary-color);
-    color: var(--background-color);
+    color: white;
     border: none;
     cursor: pointer;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
   }
   
   .add-recipe-button:hover {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
   }
   
   /* modal recipe for add overlay */
@@ -156,7 +232,7 @@
   }
   
   .modal-content {
-    background-color: var(--background-color);
+    background-color: white;
     padding: 20px;
     border-radius: 10px;
     width: 80%;
@@ -175,6 +251,7 @@
   }
   
   /* save & cancel btns for modal */
+
   .recipe-modal-footer {
     display: flex;
     justify-content: flex-end;
@@ -217,3 +294,22 @@
     background-color: var(--accent-color);
   }
   
+  .recipe-details-modal .close-button {
+    background-color: whitesmoke;
+    width: 3rem;
+    height: 3rem;
+    color: #ccc;
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
+  .recipe-details-modal .close-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+  }

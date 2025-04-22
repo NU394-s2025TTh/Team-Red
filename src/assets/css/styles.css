@@ -16,9 +16,14 @@ body {
 }
 
 .page {
-    display: flex;
+    color: var(--accent-color);
     height: 100vh;
-    background-color: var(--background-color);
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
 /*@import 'styles.css'; at the top of css files to use thse*/

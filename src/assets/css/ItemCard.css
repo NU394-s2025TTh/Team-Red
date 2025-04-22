@@ -1,7 +1,8 @@
 @import 'styles.css';
 
 .item-card {
-  border: 1px solid var(--secondary-color);
+  border: none;
+  background-color: white;
   border-radius: 8px;
   padding: 16px;
   width: 5rem;

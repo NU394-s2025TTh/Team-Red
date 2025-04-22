@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import RecipeDetailsModal from './RecipeDetailsModal';
 import AddNewRecipe from './addnewrecipe';
 import { editRecipe } from '../hooks/useEditRecipe.jsx';
+import Placeholder from '../assets/branding/recipe-placeholder.png';
 
 export function RecipeCard({ recipes: propRecipes, onAddRecipe }) {
   
@@ -45,8 +46,8 @@ export function RecipeCard({ recipes: propRecipes, onAddRecipe }) {
   };
 
   return (
-    <div className="recipe-card-container" style={{ marginLeft: '150px' }}>
-      <h2>Your Recipes</h2>
+    <div className="recipe-card-container" >
+      <h1>Your Recipes</h1>
 
       <div className="recipe-card-list">
         {recipes.map((recipe, idx) => (
@@ -56,7 +57,7 @@ export function RecipeCard({ recipes: propRecipes, onAddRecipe }) {
             onClick={() => handleCardClick(recipe)}
           >
             <img
-              src={recipe.photo || "/default-photo.png"}
+              src={recipe.photo || Placeholder}
               alt={recipe.title}
               className="recipe-card-img"
             />

@@ -1,8 +1,10 @@
 @import 'styles.css';
 
+/* This file is not being used ?? */
+
 div.main-app {
     text-align: center;
-    background-color: var(--background-color);
+    background-color: white;
   }
   
   .app-logo {
