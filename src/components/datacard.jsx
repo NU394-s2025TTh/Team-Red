@@ -1,14 +1,27 @@
 import '../assets/css/DataCard.css';
-import React from 'react';
+import React, { useRef } from 'react';
 import { ItemCard } from './ItemCard';
 import { AddItemButton } from './additem';
+import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 
 export function DataCard({ userId, fridge }) {
+  const containerRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (containerRef.current) {
+      const scrollAmount = 150; 
+      containerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="data-card">
       <h1>Your Inventory:</h1>
 
-      <div className="items-container">
+      <div className="items-container" ref={containerRef}>
         {Array.isArray(fridge) && fridge.length > 0 ? (
           fridge.map((item, index) => (
             <ItemCard key={index} item={item} userId={userId} />
@@ -17,12 +30,19 @@ export function DataCard({ userId, fridge }) {
           <p>No items in fridge.</p>
         )}
       </div>
+
+      <div className="scroll-buttons">
+        <button onClick={() => scroll('left')}><FaCaretLeft /></button>
+        <button onClick={() => scroll('right')}><FaCaretRight /></button>
+      </div>
+
       <div className="add-item-button-container">
-        <AddItemButton userId={userId}/>
+        <AddItemButton userId={userId} />
       </div>
     </div>
   );
 }
+
 
 
   // return (

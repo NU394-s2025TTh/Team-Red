@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { getFirestore, doc, onSnapshot } from "firebase/firestore";
 import { app } from "../firebaseconfig";
 import { DataCard } from './datacard';
+import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 
 const db = getFirestore(app);
 
-export function DataCardContainer({userId}) {
+export function DataCardContainer({userId,}) {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
