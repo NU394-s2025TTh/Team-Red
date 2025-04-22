@@ -89,6 +89,10 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Login from './pages/login';
 import MainApp from './components/mainApp';
 import Profile from './pages/profile';
+import Fridge from './pages/fridge';
+import GroceryList from './pages/grocery_list.jsx';
+import Saved from './pages/saved';
+import Social from './pages/social';
 import './App.css';
 
 function App() {
@@ -105,7 +109,7 @@ function App() {
 
   return (
     <UserContext.Provider value={ {userId: fakeUserId, handleLogout} }>
-      <Router> {/* This is the ONLY Router in your app */}
+      <Router> 
         <Routes>
           <Route
             path="/"
@@ -120,6 +124,38 @@ function App() {
             element={
               fakeUserId
                 ? <Profile userId={fakeUserId} />
+                : <Navigate to="/" replace />
+            }
+          />
+          <Route
+            path="/fridge"
+            element={
+              fakeUserId
+                ? <Fridge userId={fakeUserId} />
+                : <Navigate to="/" replace />
+            }
+          />
+          <Route
+            path="/grocery_list"
+            element={
+              fakeUserId
+                ? <GroceryList userId={fakeUserId} />
+                : <Navigate to="/" replace />
+            }
+          />
+          <Route
+            path="/saved"
+            element={
+              fakeUserId
+                ? <Saved userId={fakeUserId} />
+                : <Navigate to="/" replace />
+            }
+          />
+          <Route
+            path="/social"
+            element={
+              fakeUserId
+                ? <Social userId={fakeUserId} />
                 : <Navigate to="/" replace />
             }
           />
