@@ -4,6 +4,7 @@ import { useRecipeGenerator } from "../hooks/useRecipeGenerator";
 import IngredientSelector from "./ingredientSelector";
 import { addRecipe } from "./addRecipe";
 import placeholderImage from "../assets/branding/recipe-placeholder.png";
+import Loading from "./loading";
 
 
 export default function Chat({ ingredients: allIngredients, userId }) {
@@ -49,7 +50,7 @@ export default function Chat({ ingredients: allIngredients, userId }) {
 
       {/* Chat box area displays generated recipes */}
       <div className="chat-box">
-        {loading && <p>Generating recipe...</p>}
+        {loading && <Loading/>}
         {error && <p className="text-red-500">{error}</p>}
 
         {!loading && recipes.length === 0 && !error && (
@@ -60,7 +61,10 @@ export default function Chat({ ingredients: allIngredients, userId }) {
           <div className="recipes-container">
             {recipes.map((recipe, index) => (
               
+              
               <div key={index} className="recipe-card">
+                <img src={placeholderImage} alt="Recipe Preview" className="recipe-image" />
+                
                 <img src={placeholderImage} alt="Recipe Preview" className="recipe-image" />
                 
                 <h2>{recipe.title}</h2>
