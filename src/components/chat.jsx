@@ -3,6 +3,7 @@ import "../assets/css/chat.css";
 import { useRecipeGenerator } from "../hooks/useRecipeGenerator";
 import IngredientSelector from "./ingredientSelector";
 import { addRecipe } from "./addRecipe";
+import Loading from "./loading";
 
 export default function Chat({ ingredients: allIngredients, userId }) {
   const [selectedIngredients, setSelectedIngredients] = useState(allIngredients);
@@ -47,7 +48,7 @@ export default function Chat({ ingredients: allIngredients, userId }) {
 
       {/* Chat box area displays generated recipes */}
       <div className="chat-box">
-        {loading && <p>Generating recipe...</p>}
+        {loading && <Loading/>}
         {error && <p className="text-red-500">{error}</p>}
 
         {!loading && recipes.length === 0 && !error && (
