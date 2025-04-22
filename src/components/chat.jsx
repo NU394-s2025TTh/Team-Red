@@ -61,7 +61,10 @@ export default function Chat({ ingredients: allIngredients, userId }) {
           <div className="recipes-container">
             {recipes.map((recipe, index) => (
               
+              
               <div key={index} className="recipe-card">
+                <img src={placeholderImage} alt="Recipe Preview" className="recipe-image" />
+                
                 <img src={placeholderImage} alt="Recipe Preview" className="recipe-image" />
                 
                 <h2>{recipe.title}</h2>
