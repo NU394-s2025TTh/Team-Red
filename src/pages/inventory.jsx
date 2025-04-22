@@ -19,7 +19,7 @@ function InventoryPage() {
 
        <Sidebar />
       
-       //<header className="app-header">
+       <header className="app-header">
          
           <img 
             src="/spoonfull_logo.png" 
