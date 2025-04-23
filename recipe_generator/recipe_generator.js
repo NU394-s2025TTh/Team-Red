@@ -1,25 +1,26 @@
-/* eslint-disable max-len */
-const {onRequest} = require("firebase-functions/v2/https");
-const {defineSecret} = require("firebase-functions/params");
+/* eslint-disable */
+const { onRequest } = require("firebase-functions/v2/https");
+const { defineSecret } = require("firebase-functions/params");
 const fetch = require("node-fetch");
-const cors = require("cors")({origin: true});
+const cors = require("cors")({ origin: true });
 
 const DEEPSEEK_API_KEY = defineSecret("DEEPSEEK_API_KEY");
 
-exports.generateDeepseekRecipe = onRequest({secrets: [DEEPSEEK_API_KEY]}, (req, res) => {
-  cors(req, res, async () => {
-    try {
+exports.generateDeepseekRecipe = onRequest(
+  { secrets: [DEEPSEEK_API_KEY] },
+  (req, res) => {
+    cors(req, res, async () => {
       if (req.method !== "POST") {
         return res.status(405).send("Only POST requests allowed.");
       }
 
-      const {fridgecontents} = req.body;
+      const { fridgecontents, userPrompt } = req.body;
       if (!fridgecontents) {
-        return res.status(400).json({error: "Missing fridge contents"});
+        return res.status(400).json({ error: "Missing fridge contents" });
       }
       const apiKey = DEEPSEEK_API_KEY.value();
       if (!apiKey) {
-        return res.status(500).json({error: "Missing DeepSeek API key"});
+        return res.status(500).json({ error: "Missing DeepSeek API key" });
       }
 
       const prompt = `You are a practical AI nutritionist and recipe assistant.
@@ -52,51 +53,62 @@ exports.generateDeepseekRecipe = onRequest({secrets: [DEEPSEEK_API_KEY]}, (req, 
             }
           ]
         }
-        `;
+        `.trim();
 
-      const response = await fetch("https://api.deepseek.com/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const fullPrompt = userPrompt
+        ? `User: ${userPrompt}\n\n` + prompt
+        : basePrompt;
 
-          "Authorization": `Bearer ${apiKey}`,
-        },
-        body: JSON.stringify({
-          model: "deepseek-chat",
-          messages: [{role: "user", content: prompt}],
-          temperature: 0.7,
-        }),
-      });
+      console.log("Full prompt sent to DeepSeek:", fullPrompt);
 
-      const data = await response.json();
-
-      let content = null;
-      if (
-        data &&
-        Array.isArray(data.choices) &&
-        data.choices[0] &&
-        data.choices[0].message &&
-        data.choices[0].message.content
-      ) {
-        content = data.choices[0].message.content;
-      }
-
-      if (!content) {
-        console.error("No content from DeepSeek:", data);
-        return res.status(500).json({error: "No content from DeepSeek"});
-      }
       try {
-        console.log("Raw content from DeepSeek:", content);
-        const recipes = JSON.parse(content);
-        return res.status(200).json({recipes});
+        const response = await fetch(
+          "https://api.deepseek.com/chat/completions",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${apiKey}`,
+            },
+            body: JSON.stringify({
+              model: "deepseek-chat",
+              messages: [{ role: "user", content: fullPrompt }],
+              temperature: 0.7,
+            }),
+          }
+        );
+
+        const data = await response.json();
+        let content = null;
+        if (
+          data &&
+          Array.isArray(data.choices) &&
+          data.choices[0] &&
+          data.choices[0].message &&
+          data.choices[0].message.content
+        ) {
+          content = data.choices[0].message.content;
+        }
+
+        if (!content) {
+          console.error("No content from DeepSeek:", data);
+          return res.status(500).json({ error: "No content from DeepSeek" });
+        }
+        try {
+          console.log("Raw content from DeepSeek:", content);
+          const recipes = JSON.parse(content);
+          return res.status(200).json({ recipes });
+        } catch (err) {
+          console.error("Error parsing JSON:", err);
+          console.error("DeepSeek returned:", content);
+          return res
+            .status(500)
+            .json({ error: "Invalid JSON response from DeepSeek" });
+        }
       } catch (err) {
-        console.error("Error parsing JSON:", err);
-        console.error("DeepSeek returned:", content);
-        return res.status(500).json({error: "Invalid JSON response from DeepSeek"});
+        console.error("Function error:", err);
+        return res.status(500).json({ error: "Internal server error" });
       }
-    } catch (err) {
-      console.error("Function error:", err);
-      return res.status(500).json({error: "Internal server error"});
-    }
-  });
-});
+    });
+  }
+);
