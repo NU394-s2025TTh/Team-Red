@@ -5,8 +5,7 @@
   /* border-radius: 12px; */
   padding: 2rem;
   margin: 2rem auto;
-  margin-left: 100px;
-  /* max-width: 1200px; */
+  margin-left: var(--sidebar-width);
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
@@ -17,7 +16,7 @@
 
   .data-card-wrapper {
     margin: 0 auto;   /* reset the top and bottom margins */
-    margin-left: 100px;
+    /* margin-left: 100px; */
     padding: 1rem;    /* optional: make padding smaller too */
   }
 }

@@ -51,7 +51,7 @@
 import React, { useState } from "react";
 import { addNewUserIfNotExists } from "../components/adduser";
 import "../assets/css/LoginPage.css"
-import { FaSpoon } from "react-icons/fa6";
+import Logo from "../assets/branding/logo.png";
 
 export default function Login({ onLogin }) {
   const [userIdInput, setUserIdInput] = useState("");
@@ -74,7 +74,7 @@ export default function Login({ onLogin }) {
   return (
     <div className="login-page">
       <h1>Welcome to Spoonfull!</h1>
-      < FaSpoon className="spoon-icon" />
+      <img src={Logo} alt="Spoonfull Logo" className="app-logo"/>
       <h3>Please log in to enjoy our service.</h3>
         <form onSubmit={handleSubmit}>
         <div className="login-form-container">

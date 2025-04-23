@@ -4,7 +4,7 @@ import React from 'react';
  
  export default function GroceryList({ userId }) {
    return (
-     <div>
+     <div className="page">
          <Sidebar />
        <UnderConstruction />
      </div>

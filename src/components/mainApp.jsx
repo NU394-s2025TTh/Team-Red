@@ -7,6 +7,8 @@ import '../assets/css/mainApp.css';
 import '../assets/css/container.css';
 import Sidebar from './sidebar';
 import { RecipeCard } from './recipecard';
+import Logo from "../assets/branding/logo-transparent.png";
+
 
 export default function MainApp( { userId, onLogout } ) {
   const { userData, loading, error } = useUserData(userId);
@@ -38,23 +40,10 @@ export default function MainApp( { userId, onLogout } ) {
   }
 
   return (
-    <div className="App" style={{ backgroundColor: '#FFFADD', minHeight: '100vh' }}>
+    <div className="App" style={{ minHeight: '100vh' }}>
 
         < Sidebar />
-      
-        <header className="App-header">
-         
-        <img 
-          src="/spoonfull_logo.png" 
-          alt="Spoonfull Logo" 
-          className="app-logo"
-        />
-      </header>
-      <div>
-        </div>
-
-
-
+        <div className="mobile-header"></div>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
 

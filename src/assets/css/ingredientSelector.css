@@ -4,31 +4,48 @@
 
 /* ========== Ingredient Selector ========== */
 .ingredient-selector {
+    /* border: 1px solid var(--secondary-color); */
     margin-bottom: 1rem;
     text-align: left;
+    padding: 0.5rem;
+    
   }
   .ingredient-selector h4 {
-    margin-bottom: 8px;
+    /* border: 1px solid var(--secondary-color); */
     font-weight: bold;
     font-size: 1.1rem;
   }
   .ingredient-selector ul {
+    /* border: 1px solid var(--secondary-color); */
     list-style: none;
-    padding: 0;
+    padding: 0.5rem;
+    padding-left: 0;
     margin: 0;
   }
   .ingredient-selector li {
-    margin-bottom: 0.5rem;
+    /* border: 2px solid var(--primary-color); */
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+    max-width: 40%;
     display: flex;
     align-items: center;
   }
+
+  .ingredient-selector li:hover {
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+  }
   .ingredient-selector input[type="checkbox"] {
+    width: 1.5rem;
     margin-right: 0.5rem;
-    transform: scale(1.1);
+    transform: scale(1.3);
+    pointer-events: none;
+    cursor: pointer;
   }
   
-  /* Multi-column optional */
-  @media (min-width: 700px) {
     .ingredient-selector ul {
       display: flex;
       flex-wrap: wrap;
@@ -37,5 +54,3 @@
     .ingredient-selector li {
       width: calc(50% - 1rem); /* 2 columns */
     }
-  }
-  
