@@ -3,7 +3,7 @@ import { DataCardContainer } from './DataCardContainer';
 import { AddItemButton } from './additem';
 import { useUserData } from "../hooks/useUserData";
 import Chat from './chat';
-// import '../assets/css/mainApp.css';
+import '../assets/css/mainApp.css';
 import '../assets/css/container.css';
 import Sidebar from './sidebar';
 import { RecipeCard } from './recipecard';
@@ -43,19 +43,7 @@ export default function MainApp( { userId, onLogout } ) {
     <div className="App" style={{ minHeight: '100vh' }}>
 
         < Sidebar />
-      
-        <header className="App-header">
-         
-        <img 
-          src={Logo}
-          alt="Spoonfull Logo" 
-          className="app-logo"
-        />
-      </header>
-      <div>
-        </div>
-
-
+        <div className="mobile-header"></div>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
 

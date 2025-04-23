@@ -2,6 +2,25 @@
 
 /* This file is not being used ?? */
 
+.App {
+  padding: 4rem 0;
+}
+
+@media (max-width: 768px) {
+  .App {
+    padding: 6rem 0;
+  }
+
+  .mobile-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 5rem;
+    z-index: 100;
+    background-color: whitesmoke;
+  }
+}
+
 div.main-app {
     text-align: center;
     background-color: white;

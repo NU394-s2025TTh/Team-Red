@@ -12,12 +12,9 @@
 }
 
 body {
-    overflow-x: hidden;
-}
-
-.page {
-    color: var(--accent-color);
+    margin-top: -2rem;
     height: 100vh;
+    overflow-x: hidden;
 }
 
 h1 {

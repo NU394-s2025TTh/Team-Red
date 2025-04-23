@@ -1,14 +1,14 @@
 @import './styles.css';
 
 .under-construction-wrapper {
-    border: 1px solid #1E3006;
+    /* border: 1px solid #1E3006; */
+    margin-left: var(--sidebar-width);
     width: calc(100vw - var(--sidebar-width));
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #FFFADD;
     color: #1E3006;
     font-family: 'Arial', sans-serif;
     text-align: center;
