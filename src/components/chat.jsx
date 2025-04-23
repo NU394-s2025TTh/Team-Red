@@ -6,21 +6,24 @@ import { addRecipe } from "./addRecipe";
 import placeholderImage from "../assets/branding/recipe-placeholder.png";
 import Loading from "./loading";
 
-
 export default function Chat({ ingredients: allIngredients, userId }) {
-  const [selectedIngredients, setSelectedIngredients] = useState(allIngredients);
+  /**
+   * @returns div that contains chat box and recipe generation button
+   */
+
+  const [selectedIngredients, setSelectedIngredients] =
+    useState(allIngredients);
+  const [userPrompt, setUserPrompt] = useState([]);
   const { recipes, loading, error, generateRecipe } = useRecipeGenerator();
   const [saved, setSaved] = useState([]);
 
   // called when user clicks generate recipe button
   const handleGenerateRecipe = async () => {
     if (!selectedIngredients.length) return;
-    await generateRecipe(selectedIngredients);
-    // setSaved(false);
+    await generateRecipe(selectedIngredients, userPrompt.trim());
   };
 
   const handleAddToRecipes = (recipe) => {
-    console.log("Saved to DB:", recipe.title);
     addRecipe(
       userId,
       recipe.title,
@@ -31,7 +34,6 @@ export default function Chat({ ingredients: allIngredients, userId }) {
       recipe.macros.fat,
       recipe.macros.carbs
     );
-    // setSaved(true);
     setSaved((prevSaved) => [...prevSaved, recipe.title]);
   };
 
@@ -40,32 +42,44 @@ export default function Chat({ ingredients: allIngredients, userId }) {
   return (
     <div className="chat">
       <div>
-        <h3>Fridge AI</h3>
+        <h1>Fridge AI</h1>
       </div>
 
-      <IngredientSelector 
-        allIngredients={allIngredients} 
-        onSelectionChange={(selected) => setSelectedIngredients(selected)} 
+      <IngredientSelector
+        allIngredients={allIngredients}
+        onSelectionChange={(selected) => setSelectedIngredients(selected)}
       />
+
+      {/* Custom prompt input */}
+      <div style={{ margin: "1rem 0" }}>
+        <textarea
+          rows={2}
+          placeholder="e.g. 'Craving Italian, and my milk expires tomorrow'"
+          value={userPrompt}
+          onChange={(e) => setUserPrompt(e.target.value)}
+          style={{ width: "100%", padding: "0.5rem" }}
+        />
+      </div>
 
       {/* Chat box area displays generated recipes */}
       <div className="chat-box">
-        {loading && <Loading/>}
+        {loading && <Loading />}
         {error && <p className="text-red-500">{error}</p>}
-
         {!loading && recipes.length === 0 && !error && (
-          <p className="text-gray-400">No recipe yet... push the button below to generate</p>
+          <p className="text-gray-400">
+            No recipe yet... press the button to generate!
+          </p>
         )}
-
         {recipes.length > 0 && (
           <div className="recipes-container">
             {recipes.map((recipe, index) => (
-              
-              
               <div key={index} className="recipe-card">
-                <img src={placeholderImage} alt="Recipe Preview" className="recipe-image" />
-                
-                
+                <img
+                  src={placeholderImage}
+                  alt="Recipe Preview"
+                  className="recipe-image"
+                />
+
                 <h2>{recipe.title}</h2>
 
                 <h4>Ingredients:</h4>
@@ -83,11 +97,12 @@ export default function Chat({ ingredients: allIngredients, userId }) {
                 </ol>
 
                 <p className="macros">
-                  <strong>Macros:</strong><br />
-                  Calories: {recipe.macros?.calories ?? 0},&nbsp;
-                  Protein: {recipe.macros?.protein ?? 0}g,&nbsp;
-                  Fat: {recipe.macros?.fat ?? 0}g,&nbsp;
-                  Carbs: {recipe.macros?.carbs ?? 0}g
+                  <strong>Macros:</strong>
+                  <br />
+                  Calories: {recipe.macros?.calories ?? 0},&nbsp; Protein:{" "}
+                  {recipe.macros?.protein ?? 0}g,&nbsp; Fat:{" "}
+                  {recipe.macros?.fat ?? 0}g,&nbsp; Carbs:{" "}
+                  {recipe.macros?.carbs ?? 0}g
                 </p>
 
                 {!isSaved(recipe.title) && (
@@ -95,7 +110,7 @@ export default function Chat({ ingredients: allIngredients, userId }) {
                     className="button-add"
                     onClick={() => handleAddToRecipes(recipe)}
                   >
-                    Add to my recipes
+                    Save Recipe
                   </button>
                 )}
               </div>
@@ -105,7 +120,11 @@ export default function Chat({ ingredients: allIngredients, userId }) {
       </div>
 
       <div className="chat-buttons">
-        <button onClick={handleGenerateRecipe} className="button-generate">
+        <button
+          onClick={handleGenerateRecipe}
+          className="button-generate"
+          disabled={loading}
+        >
           Recipe Me!
         </button>
       </div>

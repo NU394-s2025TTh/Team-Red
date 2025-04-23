@@ -1,5 +1,6 @@
 import {React, useState, useEffect} from 'react';
-import { DataCardContainer } from '../components/DataCardContainer';
+import { DataCardContainer } from '../components/datacardcontainer';
+import  GroceryContainer  from '../components/grocery/grocerycontainer';
  import Sidebar from "../components/sidebar";
  import { AddItemButton } from '../components/additem';
  import { useUserData } from "../hooks/useUserData";
@@ -67,17 +68,13 @@ import { DataCardContainer } from '../components/DataCardContainer';
             </div>
             
             <div className="right-column">
-              <DataCardContainer userId={userId} />
+              < GroceryContainer userId={userId} />
             </div>
           </div>
         </div>
       )}
 
-      {userData && (
-        <div>
-        <RecipeCard recipes={recipes} onAddRecipe={handleAddRecipe} />
-      </div>
-    )}
+      
 
       
     </div>

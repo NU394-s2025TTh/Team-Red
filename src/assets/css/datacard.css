@@ -1,7 +1,7 @@
 @import 'styles.css';
 
 .data-card {
-  border: 1px solid var(--secondary-color);
+  /* border: 1px solid var(--secondary-color); */
   border-radius: 0.8rem;
   padding: 16px;
   max-width: 75vw;  /* mobile */
@@ -48,17 +48,24 @@
 
 .data-card .scroll-buttons {
   display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 1rem 0;
   padding: 0 10px;
+  /* border: 1px solid var(--secondary-color); */
 }
 
 .data-card .scroll-buttons button {
   background-color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
   border: none;
   color: white;
   padding: 8px;
-  border-radius: 50%;
+  border-radius: 100%;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }

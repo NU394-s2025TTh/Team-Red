@@ -1,12 +1,24 @@
-import React from 'react';
+import {React, useState, useEffect} from 'react';
 import { DataCardContainer } from '../components/DataCardContainer';
 import { useUserData } from "../hooks/useUserData";
 import Chat from '../components/chat';
+// import '../assets/css/mainApp.css';
 import '../assets/css/container.css';
 import Sidebar from '../components/sidebar';
 
-function InventoryPage() {
-  const { userData, loading, error } = useUserData("1001");
+
+export default function Inventory( { userId, onLogout } ) {
+  const { userData, loading, error } = useUserData(userId);
+  console.log("User Data:", userData); // Log the user data to the console
+
+  const [fridge, setFridge] = useState(userData ? userData.fridge : []);
+
+  useEffect(() => {
+    if (userData) {
+      setFridge(userData.fridge);
+    }
+  }
+  , [userData]);
 
   const logout =()=>{
     localStorage.clear()
@@ -14,33 +26,10 @@ function InventoryPage() {
   }
 
   return (
-    <div className="App" style={{ backgroundColor: 'rgb(199, 218, 207)', minHeight: '100vh' }}>
-      
+    <div className="App" style={{ minHeight: '100vh' }}>
 
-       <Sidebar />
-      
-       <header className="app-header">
-         
-          <img 
-            src="/spoonfull_logo.png" 
-            alt="Spoonfull Logo" 
-            style={{
-              height: '150px', 
-              width: 'auto', 
-              display: 'block',    
-              marginLeft: 'auto',  
-              marginRight: 'auto', 
-              marginBottom: '20px' 
-            }}
-          />
-      </header>
-
-      <div>
-            <button onClick={logout}>Logout</button>
-        </div>
-
-
-
+        < Sidebar />
+        <div className="mobile-header"></div>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
 
@@ -48,17 +37,18 @@ function InventoryPage() {
         <div className="data-card-wrapper">
           <div className="data-card-content">
             <div className="left-column">
-              <DataCardContainer userData={userData} />
+              <DataCardContainer userId={userId} />
             </div>
             
             <div className="right-column">
-              <Chat ingredients={userData.fridgecontents.map(item => item.item)} />
+            <Chat ingredients={fridge?.map(item => item.item) || []}
+            userId={userId}
+             />
             </div>
           </div>
         </div>
-      )}  
+      )}
+
     </div>
   );
 }
-
-export default InventoryPage;

@@ -1,10 +1,10 @@
 import '../assets/css/DataCard.css';
 import React, { useRef } from 'react';
 import { ItemCard } from '../ItemCard';
-import { AddItemButton } from '../additem';
+import { AddGroceryButton } from './addgrocery';
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 
-export function DataCard({ userId, groceryList }) {
+export default function GroceryCard({ userId, groceryList }) {
   const containerRef = useRef(null);
 
   const scroll = (direction) => {
@@ -37,7 +37,7 @@ export function DataCard({ userId, groceryList }) {
       </div>
 
       <div className="add-item-button-container">
-        <AddItemButton userId={userId} />
+        <AddGroceryButton userId={userId} />
       </div>
     </div>
   );

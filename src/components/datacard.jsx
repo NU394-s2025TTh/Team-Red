@@ -1,18 +1,20 @@
-import '../assets/css/DataCard.css';
-import React, { useRef } from 'react';
-import { ItemCard } from './ItemCard';
-import { AddItemButton } from './additem';
+import "../assets/css/DataCard.css";
+import React, { useRef } from "react";
+import { ItemCard } from "./ItemCard";
+import { AddItemButton } from "./additem";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 
 export function DataCard({ userId, fridge }) {
+  /* Returns div that contains fridge items */
+
   const containerRef = useRef(null);
 
   const scroll = (direction) => {
     if (containerRef.current) {
-      const scrollAmount = 150; 
+      const scrollAmount = 150;
       containerRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
       });
     }
   };
@@ -32,8 +34,12 @@ export function DataCard({ userId, fridge }) {
       </div>
 
       <div className="scroll-buttons">
-        <button onClick={() => scroll('left')}><FaCaretLeft /></button>
-        <button onClick={() => scroll('right')}><FaCaretRight /></button>
+        <button onClick={() => scroll("left")}>
+          <FaCaretLeft />
+        </button>
+        <button onClick={() => scroll("right")}>
+          <FaCaretRight />
+        </button>
       </div>
 
       <div className="add-item-button-container">
@@ -43,20 +49,16 @@ export function DataCard({ userId, fridge }) {
   );
 }
 
-
-
-  // return (
-  //       <div className="data-card">
-  //         <p>Hi {name}! Your fridge has the following items:</p>
-  //         <ul>
-  //           {fridgecontents.map((item, index) => (
-  //             <li key={index}>
-  //               {item.quantity} {item.unit} of {item.item}
-  //             </li>
-  //           ))}
-  //         </ul>
-  //       </div>
-  //     );
+// return (
+//       <div className="data-card">
+//         <p>Hi {name}! Your fridge has the following items:</p>
+//         <ul>
+//           {fridgecontents.map((item, index) => (
+//             <li key={index}>
+//               {item.quantity} {item.unit} of {item.item}
+//             </li>
+//           ))}
+//         </ul>
+//       </div>
+//     );
 // }
-
-

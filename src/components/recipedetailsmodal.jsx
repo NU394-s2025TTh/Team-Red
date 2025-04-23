@@ -34,7 +34,7 @@ function RecipeDetailsModal({ recipe, onClose, onSave }) {
 
   return (
     <div className="recipe-details-modal">
-      <button onClick={onClose}>Close</button>
+      <button className="close-button" onClick={onClose}>x</button>
       {isEditing ? (
         <div>
           <h2>
@@ -121,7 +121,7 @@ function RecipeDetailsModal({ recipe, onClose, onSave }) {
         </div>
       ) : (
         <div>
-          <h2>{title}</h2>
+          <h1>{title}</h1>
           <img src={photo || "/none.png"} alt={title} className="recipe-image" />
           <h3>Ingredients:</h3>
           <ul>

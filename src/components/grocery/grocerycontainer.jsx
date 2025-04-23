@@ -6,7 +6,7 @@ import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 
 const db = getFirestore(app);
 
-export function DataCardContainer({userId,}) {
+export default function GroceryContainer({userId,}) {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
