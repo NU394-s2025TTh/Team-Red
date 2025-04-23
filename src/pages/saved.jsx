@@ -1,6 +1,6 @@
 import {React, useState, useEffect} from 'react';
 import { useUserData } from "../hooks/useUserData";
-import '../assets/css/mainApp.css';
+// import '../assets/css/mainApp.css';
 import '../assets/css/container.css';
 import Sidebar from '../components/sidebar';
 import { RecipeCard } from '../components/recipecard';

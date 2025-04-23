@@ -19,7 +19,7 @@ h1 {
 
 .app-logo {
     width: 250px;
-    height: 250px;
+    height: auto;
 }
 
 h2 {

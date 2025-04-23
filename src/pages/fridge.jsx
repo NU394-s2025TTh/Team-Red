@@ -2,7 +2,7 @@ import {React, useState, useEffect} from 'react';
 import { DataCardContainer } from '../components/DataCardContainer';
 import { useUserData } from "../hooks/useUserData";
 import Chat from '../components/chat';
-import '../assets/css/mainApp.css';
+// import '../assets/css/mainApp.css';
 import '../assets/css/container.css';
 import Sidebar from '../components/sidebar';
 
