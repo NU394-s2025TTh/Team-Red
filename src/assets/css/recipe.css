@@ -10,13 +10,6 @@
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   }
 
-  .recipe-card-container .recipe-card {
-    /* border: 1px solid var(--secondary-color); */
-    margin: 0.5rem;
-    width: 20%;
-    overflow: wrap;
-  }
-
   @media (max-width: 900px) {
 
     .recipe-card-container {
@@ -40,8 +33,15 @@
     min-width: 20%;
     width: auto;
     /* border: 1px solid var(--secondary-color); */
-    padding: 10px;
+    padding: 1rem;
     cursor: pointer;
+    text-align: left;
+  }
+
+  .recipe-card-container .recipe-card {
+    /* border: 1px solid var(--secondary-color); */
+    width: 20%;
+    overflow: wrap;
     text-align: center;
   }
   

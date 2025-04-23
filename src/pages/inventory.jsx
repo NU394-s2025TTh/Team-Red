@@ -1,14 +1,24 @@
-import React from 'react';
+import {React, useState, useEffect} from 'react';
 import { DataCardContainer } from '../components/DataCardContainer';
 import { useUserData } from "../hooks/useUserData";
 import Chat from '../components/chat';
+import '../assets/css/mainApp.css';
 import '../assets/css/container.css';
 import Sidebar from '../components/sidebar';
-import Logo from "../assets/branding/logo-transparent.png"
-import Header from '../components/Header';
 
-function InventoryPage() {
-  const { userData, loading, error } = useUserData("1001");
+
+export default function Inventory( { userId, onLogout } ) {
+  const { userData, loading, error } = useUserData(userId);
+  console.log("User Data:", userData); // Log the user data to the console
+
+  const [fridge, setFridge] = useState(userData ? userData.fridge : []);
+
+  useEffect(() => {
+    if (userData) {
+      setFridge(userData.fridge);
+    }
+  }
+  , [userData]);
 
   const logout =()=>{
     localStorage.clear()
@@ -17,18 +27,9 @@ function InventoryPage() {
 
   return (
     <div className="App" style={{ minHeight: '100vh' }}>
-      
 
-       <Sidebar />
-      {/* <Header /> */}
-      
-
-      <div>
-            <button onClick={logout}>Logout</button>
-        </div>
-
-
-
+        < Sidebar />
+        <div className="mobile-header"></div>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
 
@@ -36,17 +37,18 @@ function InventoryPage() {
         <div className="data-card-wrapper">
           <div className="data-card-content">
             <div className="left-column">
-              <DataCardContainer userData={userData} />
+              <DataCardContainer userId={userId} />
             </div>
             
             <div className="right-column">
-              <Chat ingredients={userData.fridgecontents.map(item => item.item)} />
+            <Chat ingredients={fridge?.map(item => item.item) || []}
+            userId={userId}
+             />
             </div>
           </div>
         </div>
-      )}  
+      )}
+
     </div>
   );
 }
-
-export default InventoryPage;
