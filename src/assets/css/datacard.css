@@ -4,36 +4,65 @@
   /* border: 1px solid var(--secondary-color); */
   border-radius: 0.8rem;
   padding: 16px;
-  max-width: 700px;
+  max-width: 75vw;  /* mobile */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0);
   font-family: Arial, sans-serif;
-  /* background-color: white; */
-  }
-  
- 
-  .data-card .fridgecontents {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 12px;
-  }
-  
+  margin: 0 auto;
+}
 
-  .data-card .name {
-    font-size: 1rem;
-    color: var(--secondary-color);
-    margin-bottom: 12px;
+/* Desktop styles */
+@media (min-width: 900px) {
+  .data-card {
+    max-width: 45vw; 
   }
+}
 
-  .data-card .items-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
 
-  .data-card .add-item-button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 8px;
-  }
-  
+.data-card .fridgecontents {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.data-card .name {
+  font-size: 1rem;
+  color: var(--secondary-color);
+  margin-bottom: 12px;
+}
+
+.data-card .items-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;  /* hide the scrollbar, controlled by buttons !! */
+  scroll-behavior: smooth;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.data-card .add-item-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.data-card .scroll-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 0 10px;
+}
+
+.data-card .scroll-buttons button {
+  background-color: var(--secondary-color);
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.data-card .scroll-buttons button:hover {
+  background-color: var(--accent-color);
+}
