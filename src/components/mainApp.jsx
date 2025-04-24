@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import { DataCardContainer } from "./DataCardContainer";
 import { AddItemButton } from "./additem";
 import { useUserData } from "../hooks/useUserData";
+import SpiceSelector from "./spiceSelector";
 import Chat from "./chat";
 import "../assets/css/mainApp.css";
 import "../assets/css/container.css";
@@ -15,16 +16,13 @@ export default function MainApp({ userId, onLogout }) {
 
   const [recipes, setRecipes] = useState(userData ? userData.recipes : []);
   const [fridge, setFridge] = useState(userData ? userData.fridge : []);
+  const [spices, setSpices] = useState(userData ? userData.spices : []);
 
   useEffect(() => {
     if (userData) {
-      setRecipes(userData.recipes);
-    }
-  }, [userData]);
-
-  useEffect(() => {
-    if (userData) {
-      setFridge(userData.fridge);
+      setRecipes(userData.recipes || []);
+      setFridge(userData.fridge || []);
+      setSpices(userData.spices || []);
     }
   }, [userData]);
 
@@ -52,8 +50,11 @@ export default function MainApp({ userId, onLogout }) {
             </div>
 
             <div className="right-column">
+              <SpiceSelector spices={spices} onChange={setSpices} />
+
               <Chat
                 ingredients={fridge?.map((item) => item.item) || []}
+                spices={selectedSpices}
                 userId={userId}
               />
             </div>

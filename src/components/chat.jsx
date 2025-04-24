@@ -6,21 +6,25 @@ import { addRecipe } from "./addRecipe";
 import placeholderImage from "../assets/branding/recipe-placeholder.png";
 import Loading from "./loading";
 
-export default function Chat({ ingredients: allIngredients, userId }) {
-  /**
-   * @returns div that contains chat box and recipe generation button
-   */
-
+export default function Chat({
+  ingredients: allIngredients,
+  spices: allSpices,
+  userId,
+}) {
   const [selectedIngredients, setSelectedIngredients] =
     useState(allIngredients);
+  const [selectedSpices, setSelectedSpices] = useState(allSpices);
   const [userPrompt, setUserPrompt] = useState([]);
   const { recipes, loading, error, generateRecipe } = useRecipeGenerator();
   const [saved, setSaved] = useState([]);
 
-  // called when user clicks generate recipe button
   const handleGenerateRecipe = async () => {
-    if (!selectedIngredients.length) return;
-    await generateRecipe(selectedIngredients, userPrompt.trim());
+    if (!selectedIngredients.length || !selectedSpices.length) return;
+    await generateRecipe(
+      selectedIngredients,
+      selectedSpices,
+      userPrompt.trim()
+    );
   };
 
   const handleAddToRecipes = (recipe) => {
@@ -44,11 +48,17 @@ export default function Chat({ ingredients: allIngredients, userId }) {
       <div>
         <h1>Fridge AI</h1>
       </div>
-
       <IngredientSelector
         allIngredients={allIngredients}
         onSelectionChange={(selected) => setSelectedIngredients(selected)}
       />
+
+      {/* NEED TO IMPLEMENT: 1. A SPICE SELECTOR COMPONENT OF WHAT SPICES TO FEED CHAT. 2. Leverage ingredientSelector for spices as well.
+      <SpiceSelector
+        allSpices={allSpices}
+        onSelectionChange={(selected) => setSelectedSpices(selected)}
+      />
+      */}
 
       {/* Custom prompt input */}
       <div style={{ margin: "1rem 0" }}>
@@ -60,7 +70,6 @@ export default function Chat({ ingredients: allIngredients, userId }) {
           style={{ width: "100%", padding: "0.5rem" }}
         />
       </div>
-
       {/* Chat box area displays generated recipes */}
       <div className="chat-box">
         {loading && <Loading />}
@@ -118,7 +127,6 @@ export default function Chat({ ingredients: allIngredients, userId }) {
           </div>
         )}
       </div>
-
       <div className="chat-buttons">
         <button
           onClick={handleGenerateRecipe}

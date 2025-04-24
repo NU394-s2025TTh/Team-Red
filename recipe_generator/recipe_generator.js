@@ -14,7 +14,7 @@ exports.generateDeepseekRecipe = onRequest(
         return res.status(405).send("Only POST requests allowed.");
       }
 
-      const { fridgecontents, userPrompt } = req.body;
+      const { fridgecontents, spices, userPrompt } = req.body;
       if (!fridgecontents) {
         return res.status(400).json({ error: "Missing fridge contents" });
       }
@@ -31,6 +31,8 @@ exports.generateDeepseekRecipe = onRequest(
        If a recipe cannot be fully made, suggest minimal, widely usable substitutions.
 
        Here is the user's fridge list: ${fridgecontents}
+
+       Here is the user's spice list: ${spices}
       
        Please suggest 1–3 meal ideas. For each:
        - Include a title
