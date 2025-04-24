@@ -30,6 +30,12 @@ export function useUserData(userId) {
             instructions: recipe.instructions,
             protein: recipe.protein,
           })),
+          groceryList: data.groceryList.map((item) => ({
+            item: item.item,
+            quantity: item.quantity,
+            unit: item.unit,
+          }))
+
         });
         setLoading(false);
       } else {
