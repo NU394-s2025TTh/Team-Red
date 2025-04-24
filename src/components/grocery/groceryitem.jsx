@@ -103,7 +103,7 @@ export default function GroceryCard({ userId, groceryList }) {
             <div key={index} className="grocery-item">
               <input
                 type="checkbox"
-                className="circle-checkbox"
+                className="standard-checkbox"
                 checked={selectedItems[item.item]}
                 onChange={() => handleToggle(item)}
               />

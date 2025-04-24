@@ -75,21 +75,14 @@
 }
 
 
-.circle-checkbox {
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 2px solid #555;
-  margin-right: 10px;
+.standard-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent-color);
   cursor: pointer;
-  position: relative;
-  top: 5px;
 }
 
-.circle-checkbox:checked {
-  background-color: var(--accent-color);
-}
+
 
 .grocery-item {
   display: flex;
