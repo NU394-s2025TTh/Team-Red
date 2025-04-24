@@ -1,0 +1,129 @@
+:root {
+    --primary-color: #6A8042;
+    --secondary-color: #1E3006;
+    --accent-color: #ED7A13;
+    --background-color: #FFFADD;
+    --text-color: #1E3006;
+    --light-color: #FFE787;
+    --placeholder-image: url('src/assets/branding/placeholder-image.jpg');
+    --sidebar-width: 180px;
+  }
+  
+  .social-container {
+    display: flex;
+    background-color: white;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    padding: 2rem;
+    margin-left: var(--sidebar-width);
+  }
+  
+  .page-header {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 2rem;
+  }
+  
+  .recipe-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .recipe-image {
+    width: 100%;
+    height: 1px;
+    object-fit: cover;
+    object-position: center;
+    border-bottom: 0px solid #eee;
+  }
+  
+  .recipe-details {
+    padding: 1rem;
+  }
+  
+  .recipe-details h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .rating {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .view-recipe-button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+  }
+  
+  .view-recipe-button:hover {
+    background: var(--primary-color);
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(30, 48, 6, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+  }
+  
+  .modal-image {
+    width: 50%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 1rem;
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--secondary-color);
+  }
+  

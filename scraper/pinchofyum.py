@@ -8,12 +8,12 @@ HEADERS = {
 }
 
 def scrape_pinchofyum():
-    url = "https://pinchofyum.com/recipes"
+    url = "https://pinchofyum.com/recipes/popular"
     response = requests.get(url, headers=HEADERS)
     print(f"Status code: {response.status_code}")
 
     soup = BeautifulSoup(response.content, "html.parser")
-    recipe_links = soup.select('ul.md\\:grid a')
+    recipe_links = soup.select("article.carousel-cell a")
     print(f"Found {len(recipe_links)} recipes")
 
     recipes = []
@@ -31,33 +31,48 @@ def scrape_pinchofyum():
     return recipes
 
 
+import requests
+from bs4 import BeautifulSoup
+
+HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
 
 def scrape_recipe_detail(url):
     response = requests.get(url, headers=HEADERS)
     soup = BeautifulSoup(response.content, 'html.parser')
 
-    #title
+    # title
     title_tag = soup.find('h1', class_='entry-title mb-2')
     title = title_tag.text.strip() if title_tag else "No title"
 
-    #rating
+    # rating
     rating_tag = soup.find('span', class_='tasty-recipes-ratings-buttons')
     rating = rating_tag.get('data-tr-default-rating', "No rating") if rating_tag else "No rating"
 
+    # photo url
+    photo_tag = soup.find('a', class_='tasty-pins-banner-image-link')
+    if not photo_tag:
+        return None
 
-    #photo url
-    photo_tag = soup.find('figure', class_='wp-block-image')
-    img_tag = photo_tag.find('img') if photo_tag else None
-    photo_url = img_tag['src'] if img_tag else "No photo"
+    
+    img_tag = photo_tag.find('img')
+    if img_tag:
+        srcset = img_tag.get('srcset', '')
+        image_url = next((url.split(' ')[0] for url in srcset.split(',') if '768w' in url), None)
 
-    #ingredients
+        if not image_url:
+            image_url = img_tag.get('src', None)
+
+    else:
+        image_url = None
+
+    # ingredients
     ingredients = []
     ingredient_items = soup.find_all('li', {'data-tr-ingredient-checkbox': True})
     for item in ingredient_items:
         full_text = item.get_text(separator=" ", strip=True)
         ingredients.append(full_text)
 
-    #instructions
+    # instructions
     instructions = []
     instructions_wrapper = soup.find("div", class_="tasty-recipes-instructions")
     if instructions_wrapper:
@@ -70,15 +85,21 @@ def scrape_recipe_detail(url):
     return {
         "title": title,
         "rating": rating,
-        "photoUrl": photo_url,
+        "photoUrl": image_url,
         "ingredients": ingredients,
         "instructions": instructions
     }
 
+
+print("Script is running...") 
+
 if __name__ == "__main__":
+    print("here")
     recipes = scrape_pinchofyum()
 
-    """
+    print(f"Number of recipes scraped: {len(recipes)}")
+
+
     for r in recipes:
         print(r["title"])
         print(r["link"])
@@ -86,4 +107,3 @@ if __name__ == "__main__":
         print(f"Ingredients: {len(r['ingredients'])}")
         print(f"Instructions: {len(r['instructions'])}")
         print("---")
-    """
