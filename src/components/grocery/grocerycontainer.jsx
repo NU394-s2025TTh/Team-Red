@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getFirestore, doc, onSnapshot } from "firebase/firestore";
 import { app } from "../../firebaseconfig";
-import { DataCard } from '../datacard';
+import GroceryCard from './groceryitem';
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 
 const db = getFirestore(app);
@@ -36,7 +36,7 @@ export default function GroceryContainer({userId,}) {
   return (
     <>
       {userData ? (
-        <DataCard userId={userId} groceryList={userData.groceryList} />
+        <GroceryCard userId={userId} groceryList={userData.groceryList} />
       ) : (
         <div>Loading...</div>
       )}

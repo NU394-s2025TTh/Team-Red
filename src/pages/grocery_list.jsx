@@ -2,61 +2,40 @@ import {React, useState, useEffect} from 'react';
 import { DataCardContainer } from '../components/datacardcontainer';
 import  GroceryContainer  from '../components/grocery/grocerycontainer';
  import Sidebar from "../components/sidebar";
- import { AddItemButton } from '../components/additem';
  import { useUserData } from "../hooks/useUserData";
- import Chat from '../components/chat';
  import '../assets/css/mainApp.css';
  import '../assets/css/container.css';
 
- import { RecipeCard } from '../components/recipecard';
+
  
- export default function GroceryList({ userId }) {
+ export default function GroceryList({ userId, onLogout }) {
   const { userData, loading, error } = useUserData(userId);
   console.log("User Data:", userData); // Log the user data to the console
 
-  const [recipes, setRecipes] = useState(userData ? userData.recipes : []);
-  const [fridge, setFridge] = useState(userData ? userData.fridge : []);
+  
+  const [groceryList, setGroceryList] = useState(userData ? userData.groceryList : []);
+
+  
 
   useEffect(() => {
     if (userData) {
-      setRecipes(userData.recipes);
+      setGroceryList(userData.groceryList);
     }
   }, [userData]);
-
-  useEffect(() => {
-    if (userData) {
-      setFridge(userData.fridge);
-    }
-  }
-  , [userData]);
 
   const handleAddRecipe = (newRecipe) => {
     setRecipes((prevRecipes) => [...prevRecipes, newRecipe]);
   };
 
-  const logout =()=>{
-    localStorage.clear()
-    window.location.reload()
-  }
+  const logout = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
 
   return (
-    <div className="App" style={{ backgroundColor: '#FFFADD', minHeight: '100vh' }}>
-
-        < Sidebar />
-      
-        <header className="App-header">
-         
-        <img 
-          src="/spoonfull_logo.png" 
-          alt="Spoonfull Logo" 
-          className="app-logo"
-        />
-      </header>
-      <div>
-        </div>
-
-
-
+    <div className="App" style={{ minHeight: "100vh" }}>
+      <Sidebar />
+      <div className="mobile-header"></div>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
 
@@ -66,20 +45,21 @@ import  GroceryContainer  from '../components/grocery/grocerycontainer';
             <div className="left-column">
               <DataCardContainer userId={userId} />
             </div>
-            
+
             <div className="right-column">
-              < GroceryContainer userId={userId} />
+              <div className="image-container-grocery"> 
+                <GroceryContainer userId={userId} />
+              </div>
             </div>
           </div>
         </div>
       )}
 
       
-
-      
     </div>
   );
 }
+
 
 
  

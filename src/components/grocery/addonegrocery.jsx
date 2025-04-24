@@ -5,7 +5,7 @@ import '../assets/css/AddDelItem.css';
 
 const db = getFirestore(app);
 
-export function AddOneItem({ item, quantity, setQuantity, userId }) {
+export function AddOneGrocery({ item, quantity, setQuantity, userId }) {
     const decrementItem = async () => {
         const userRef = doc(db, "users", userId);
 

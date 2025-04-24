@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { app } from "../firebaseconfig";
+import { app } from "../../firebaseconfig";
 import { getFirestore, doc, updateDoc, arrayUnion } from "firebase/firestore";
-import "../assets/css/AddItemButton.css";
+import "../../assets/css/AddItemButton.css";
 //import { useUser } from '../contexts/UserContext';
 
 export function AddGroceryButton( {userId}) {

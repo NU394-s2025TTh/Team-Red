@@ -73,3 +73,27 @@
 .data-card .scroll-buttons button:hover {
   background-color: var(--accent-color);
 }
+
+
+.circle-checkbox {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #555;
+  margin-right: 10px;
+  cursor: pointer;
+  position: relative;
+  top: 5px;
+}
+
+.circle-checkbox:checked {
+  background-color: var(--accent-color);
+}
+
+.grocery-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
