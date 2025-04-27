@@ -17,40 +17,38 @@ export function useUserData(userId) {
 
     const userRef = doc(db, "users", userId);
 
-    const unsubscribe = onSnapshot(
-      userRef,
-      (docSnap) => {
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setUserData({
-            name: data.name,
-            fridge: data.fridge.map((item) => ({
-              item: item.item,
-              quantity: item.quantity,
-              unit: item.unit,
-            })),
-            groceryList: data.groceryList.map((item) => ({
-              item: item.item,
-              quantity: item.quantity,
-              unit: item.unit,
-            })),
-            recipes: data.recipes.map((recipe) => ({
-              title: recipe.title,
-              calories: recipe.cal,
-              carbs: recipe.carbs,
-              fat: recipe.fat,
-              ingredients: recipe.ingredients,
-              instructions: recipe.instructions,
-              protein: recipe.protein,
-            })),
-            spices: Array.isArray(data.spices) ? data.spices : [],
-          });
+    const unsubscribe = onSnapshot(userRef, (docSnap) => {
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        setUserData({
+          name: data.name,
+          fridge: data.fridge.map((item) => ({
+            item: item.item,
+            quantity: item.quantity,
+            unit: item.unit,
+          })),
+          groceryList: data.groceryList.map((item) => ({
+            item: item.item,
+            quantity: item.quantity,
+            unit: item.unit,
+          })),
+          recipes: data.recipes.map((recipe) => ({
+            title: recipe.title,
+            calories: recipe.cal,
+            carbs: recipe.carbs,
+            fat: recipe.fat,
+            ingredients: recipe.ingredients,
+            instructions: recipe.instructions,
+            protein: recipe.protein,
+          })),
+          spices: Array.isArray(data.spices) ? data.spices : [],
+        });
         setLoading(false);
       } else {
         setError("User not found");
         setLoading(false);
       }
-    );
+    });
 
     return () => unsubscribe();
   }, [userId, db]);
