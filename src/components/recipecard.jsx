@@ -47,7 +47,7 @@ export function RecipeCard({ recipes: propRecipes, onAddRecipe }) {
 
   return (
     <div className="recipe-card-container" >
-      <h1>Your Recipes</h1>
+      <h1>Your Saved Recipes</h1>
 
       <div className="recipe-card-list">
         {recipes.map((recipe, idx) => (
