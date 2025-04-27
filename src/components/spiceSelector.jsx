@@ -23,7 +23,7 @@ export default function SpiceSelector({ spices, onChange }) {
   const [search, setSearch] = useState("");
   const [customSpice, setCustomSpice] = useState("");
 
-  const filtered = DEFAULT_SPICES.filter((s) =>
+  const filteredDefaultSpices = DEFAULT_SPICES.filter((s) =>
     s.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -37,7 +37,7 @@ export default function SpiceSelector({ spices, onChange }) {
 
   const handleAddCustomSpice = () => {
     const trimmed = customSpice.trim();
-    if (trimmed && !selectedSpices.includes(trimmed)) {
+    if (trimmed && !spices.includes(trimmed)) {
       onChange([...spices, trimmed]);
       setCustomSpice("");
     }
@@ -46,6 +46,7 @@ export default function SpiceSelector({ spices, onChange }) {
   return (
     <div className="spice-selector">
       <h4>Spice Cabinet</h4>
+
       <input
         type="text"
         placeholder="Search spices..."
@@ -55,16 +56,31 @@ export default function SpiceSelector({ spices, onChange }) {
       />
 
       <div className="spice-list">
-        {filtered.map((spice, idx) => (
-          <label key={idx} className="spice-option">
-            <input
-              type="checkbox"
-              checked={selectedSpices.includes(spice)}
-              onChange={() => handleToggle(spice)}
-            />
+        {/* First show default spices */}
+        {filteredDefaultSpices.map((spice, idx) => (
+          <div
+            key={spice}
+            className={`spice-option ${
+              spices.includes(spice) ? "selected" : ""
+            }`}
+            onClick={() => handleToggle(spice)}
+          >
             {spice}
-          </label>
+          </div>
         ))}
+
+        {/* Then show custom spices (those NOT in default spices) */}
+        {spices
+          .filter((spice) => !DEFAULT_SPICES.includes(spice))
+          .map((spice, idx) => (
+            <div
+              key={spice}
+              className="spice-option selected"
+              onClick={() => handleToggle(spice)}
+            >
+              {spice}
+            </div>
+          ))}
       </div>
 
       <div className="custom-spice">

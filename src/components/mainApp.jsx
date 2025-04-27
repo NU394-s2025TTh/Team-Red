@@ -9,6 +9,7 @@ import "../assets/css/container.css";
 import Sidebar from "./sidebar";
 import { RecipeCard } from "./recipecard";
 import Logo from "../assets/branding/logo-transparent.png";
+import updateUserSpices from "../hooks/updateUserSpices";
 
 export default function MainApp({ userId, onLogout }) {
   const { userData, loading, error } = useUserData(userId);
@@ -25,6 +26,12 @@ export default function MainApp({ userId, onLogout }) {
       setSpices(userData.spices || []);
     }
   }, [userData]);
+
+  useEffect(() => {
+    if (userId) {
+      updateUserSpices(userId, spices);
+    }
+  }, [spices, userId]);
 
   const handleAddRecipe = (newRecipe) => {
     setRecipes((prevRecipes) => [...prevRecipes, newRecipe]);
@@ -47,14 +54,13 @@ export default function MainApp({ userId, onLogout }) {
           <div className="data-card-content">
             <div className="left-column">
               <DataCardContainer userId={userId} />
+              <SpiceSelector spices={spices} onChange={setSpices} />
             </div>
 
             <div className="right-column">
-              <SpiceSelector spices={spices} onChange={setSpices} />
-
               <Chat
                 ingredients={fridge?.map((item) => item.item) || []}
-                spices={selectedSpices}
+                spices={spices}
                 userId={userId}
               />
             </div>

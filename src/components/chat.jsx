@@ -6,25 +6,16 @@ import { addRecipe } from "./addRecipe";
 import placeholderImage from "../assets/branding/recipe-placeholder.png";
 import Loading from "./loading";
 
-export default function Chat({
-  ingredients: allIngredients,
-  spices: allSpices,
-  userId,
-}) {
+export default function Chat({ ingredients: allIngredients, spices, userId }) {
   const [selectedIngredients, setSelectedIngredients] =
     useState(allIngredients);
-  const [selectedSpices, setSelectedSpices] = useState(allSpices);
-  const [userPrompt, setUserPrompt] = useState([]);
+  const [userPrompt, setUserPrompt] = useState("");
   const { recipes, loading, error, generateRecipe } = useRecipeGenerator();
   const [saved, setSaved] = useState([]);
 
   const handleGenerateRecipe = async () => {
-    if (!selectedIngredients.length || !selectedSpices.length) return;
-    await generateRecipe(
-      selectedIngredients,
-      selectedSpices,
-      userPrompt.trim()
-    );
+    if (!selectedIngredients.length) return;
+    await generateRecipe(selectedIngredients, spices, userPrompt.trim());
   };
 
   const handleAddToRecipes = (recipe) => {
@@ -52,14 +43,6 @@ export default function Chat({
         allIngredients={allIngredients}
         onSelectionChange={(selected) => setSelectedIngredients(selected)}
       />
-
-      {/* NEED TO IMPLEMENT: 1. A SPICE SELECTOR COMPONENT OF WHAT SPICES TO FEED CHAT. 2. Leverage ingredientSelector for spices as well.
-      <SpiceSelector
-        allSpices={allSpices}
-        onSelectionChange={(selected) => setSelectedSpices(selected)}
-      />
-      */}
-
       {/* Custom prompt input */}
       <div style={{ margin: "1rem 0" }}>
         <textarea

@@ -9,38 +9,49 @@ export function useUserData(userId) {
   const db = getFirestore(app);
 
   useEffect(() => {
+    if (!userId) {
+      setError("User ID is required");
+      setLoading(false);
+      return;
+    }
+
     const userRef = doc(db, "users", userId);
 
-    const unsubscribe = onSnapshot(userRef, (docSnap) => {
-      if (docSnap.exists()) {
-        const data = docSnap.data();
-        setUserData({
-          name: data.name,
-          fridge: data.fridge.map((item) => ({
-            item: item.item,
-            quantity: item.quantity,
-            unit: item.unit,
-          })),
-          recipes: data.recipes.map((recipe) => ({
-            title: recipe.title,
-            calories: recipe.cal,
-            carbs: recipe.carbs,
-            fat: recipe.fat,
-            ingredients: recipe.ingredients,
-            instructions: recipe.instructions,
-            protein: recipe.protein,
-          })),
-        });
-        setLoading(false);
-      } else {
-        setError("User not found");
+    const unsubscribe = onSnapshot(
+      userRef,
+      (docSnap) => {
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setUserData({
+            name: data.name,
+            fridge: data.fridge.map((item) => ({
+              item: item.item,
+              quantity: item.quantity,
+              unit: item.unit,
+            })),
+            recipes: data.recipes.map((recipe) => ({
+              title: recipe.title,
+              calories: recipe.cal,
+              carbs: recipe.carbs,
+              fat: recipe.fat,
+              ingredients: recipe.ingredients,
+              instructions: recipe.instructions,
+              protein: recipe.protein,
+            })),
+            spices: Array.isArray(data.spices) ? data.spices : [],
+          });
+          setLoading(false);
+        } else {
+          setError("User not found");
+          setLoading(false);
+        }
+      },
+      (err) => {
+        console.error("Firestore error:", err);
+        setError(err.message);
         setLoading(false);
       }
-    }, (err) => {
-      console.error("Firestore error:", err);
-      setError(err.message);
-      setLoading(false);
-    });
+    );
 
     return () => unsubscribe();
   }, [userId, db]);
