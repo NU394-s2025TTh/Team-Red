@@ -10,14 +10,22 @@ exports.generateDeepseekRecipe = onRequest(
   { secrets: [DEEPSEEK_API_KEY] },
   (req, res) => {
     cors(req, res, async () => {
+      if (req.method === "OPTIONS") {
+        return res.status(204).send("");
+      }
+
       if (req.method !== "POST") {
         return res.status(405).send("Only POST requests allowed.");
       }
 
-      const { fridgecontents, userPrompt } = req.body;
+      const { fridgecontents, spices, userPrompt } = req.body;
       if (!fridgecontents) {
         return res.status(400).json({ error: "Missing fridge contents" });
       }
+      if (!spices) {
+        spices = "undefined";
+      }
+
       const apiKey = DEEPSEEK_API_KEY.value();
       if (!apiKey) {
         return res.status(500).json({ error: "Missing DeepSeek API key" });
@@ -31,6 +39,8 @@ exports.generateDeepseekRecipe = onRequest(
        If a recipe cannot be fully made, suggest minimal, widely usable substitutions.
 
        Here is the user's fridge list: ${fridgecontents}
+
+       Here is the user's spice list: ${spices}
       
        Please suggest 1–3 meal ideas. For each:
        - Include a title
@@ -57,7 +67,7 @@ exports.generateDeepseekRecipe = onRequest(
 
       const fullPrompt = userPrompt
         ? `User: ${userPrompt}\n\n` + prompt
-        : basePrompt;
+        : prompt;
 
       console.log("Full prompt sent to DeepSeek:", fullPrompt);
 
@@ -107,7 +117,7 @@ exports.generateDeepseekRecipe = onRequest(
         }
       } catch (err) {
         console.error("Function error:", err);
-        return res.status(500).json({ error: "Internal server error" });
+        return res.status(500).json({ error: "Internal server error.", err });
       }
     });
   }

@@ -2,12 +2,14 @@ import { React, useState, useEffect } from "react";
 import { DataCardContainer } from "./DataCardContainer";
 import { AddItemButton } from "./additem";
 import { useUserData } from "../hooks/useUserData";
+import SpiceSelector from "./spiceSelector";
 import Chat from "./chat";
 import "../assets/css/mainApp.css";
 import "../assets/css/container.css";
 import Sidebar from "./sidebar";
 import { RecipeCard } from "./recipecard";
 import Logo from "../assets/branding/logo-transparent.png";
+import updateUserSpices from "../hooks/updateUserSpices";
 
 export default function MainApp({ userId, onLogout }) {
   const { userData, loading, error } = useUserData(userId);
@@ -15,18 +17,21 @@ export default function MainApp({ userId, onLogout }) {
 
   const [recipes, setRecipes] = useState(userData ? userData.recipes : []);
   const [fridge, setFridge] = useState(userData ? userData.fridge : []);
+  const [spices, setSpices] = useState(userData ? userData.spices : []);
 
   useEffect(() => {
     if (userData) {
-      setRecipes(userData.recipes);
+      setRecipes(userData.recipes || []);
+      setFridge(userData.fridge || []);
+      setSpices(userData.spices || []);
     }
   }, [userData]);
 
   useEffect(() => {
-    if (userData) {
-      setFridge(userData.fridge);
+    if (userId) {
+      updateUserSpices(userId, spices);
     }
-  }, [userData]);
+  }, [spices, userId]);
 
   const handleAddRecipe = (newRecipe) => {
     setRecipes((prevRecipes) => [...prevRecipes, newRecipe]);
@@ -49,11 +54,13 @@ export default function MainApp({ userId, onLogout }) {
           <div className="data-card-content">
             <div className="left-column">
               <DataCardContainer userId={userId} />
+              <SpiceSelector spices={spices} onChange={setSpices} />
             </div>
 
             <div className="right-column">
               <Chat
                 ingredients={fridge?.map((item) => item.item) || []}
+                spices={spices}
                 userId={userId}
               />
             </div>
