@@ -1,4 +1,4 @@
-@import 'styles.css';
+/* @import 'styles.css';
   
 .profile-page {
     display: flex;
@@ -31,4 +31,139 @@
     color: #333;
     text-align: center;
 }
-  
+   */
+
+.profile-page {
+  background-color: #f9f9f9;
+  max-height: 100vh;
+  padding-left: 250px;
+  padding-top: 40px;
+}
+
+.profile-container {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 30px 20px;
+  border-radius: 15px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Profile Picture */
+.profile-picture-wrapper {
+  margin-bottom: 10px;
+}
+
+.profile-picture {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+.profile-icon {
+  font-size: 120px;
+  color: #ccc;
+}
+
+.profile-upload {
+  margin-top: 5px;
+}
+
+.upload-label {
+  background-color: #4CAF50;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/* Username */
+.profile-username h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Followers / Following */
+.profile-social {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 15px 0;
+}
+
+.profile-stat {
+  text-align: center;
+}
+
+.stat-number {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Bio */
+.profile-bio p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+/* Contact */
+.profile-contact p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #777;
+}
+
+/* Inputs */
+.profile-input {
+  width: 80%;
+  margin: 8px auto;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.bio-input {
+  height: 80px;
+  resize: none;
+}
+
+/* Buttons */
+.profile-buttons {
+  margin: 15px 0;
+}
+
+.edit-button, .save-button, .cancel-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.cancel-button {
+  background-color: #e53935;
+}
+
+.logout-button {
+  margin-top: 10px;
+  padding: 8px 20px;
+  background-color: #e53935;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
