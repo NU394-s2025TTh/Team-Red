@@ -29,6 +29,11 @@ export function useUserData(userId) {
               quantity: item.quantity,
               unit: item.unit,
             })),
+            groceryList: data.groceryList.map((item) => ({
+              item: item.item,
+              quantity: item.quantity,
+              unit: item.unit,
+            })),
             recipes: data.recipes.map((recipe) => ({
               title: recipe.title,
               calories: recipe.cal,
@@ -40,15 +45,9 @@ export function useUserData(userId) {
             })),
             spices: Array.isArray(data.spices) ? data.spices : [],
           });
-          setLoading(false);
-        } else {
-          setError("User not found");
-          setLoading(false);
-        }
-      },
-      (err) => {
-        console.error("Firestore error:", err);
-        setError(err.message);
+        setLoading(false);
+      } else {
+        setError("User not found");
         setLoading(false);
       }
     );

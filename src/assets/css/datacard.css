@@ -73,3 +73,20 @@
 .data-card .scroll-buttons button:hover {
   background-color: var(--accent-color);
 }
+
+
+.standard-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent-color);
+  cursor: pointer;
+}
+
+
+
+.grocery-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
