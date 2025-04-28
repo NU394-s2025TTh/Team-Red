@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "../assets/css/social.css";
 import Sidebar from "../components/sidebar";
 import { useGetRecipes } from "../hooks/useGetRecipes";
+import Search from "../components/socials/search";
 
 export default function Social({ userId }) {
   const { recipes, loading, error } = useGetRecipes();
@@ -12,6 +13,7 @@ export default function Social({ userId }) {
   return (
     <div className="social-container">
       <Sidebar />
+      <Search />
       <div className="main-content">
         <h1 className="page-header">🔥 Popular & Trending Recipes</h1>
 
