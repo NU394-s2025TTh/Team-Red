@@ -10,21 +10,26 @@ const useSearchUser = () => {
   const getUserProfile = async (username) => {
     setIsLoading(true);
     setUser(null);
-
+  
     try {
       const usersRef = collection(db, "users");
-      const q = query(usersRef, where("username", "==", username));
-      const querySnapshot = await getDocs(q);
-
-      if (querySnapshot.empty) {
-        console.error("User not found");
+      const querySnapshot = await getDocs(usersRef);
+  
+      const matchedUsers = [];
+      querySnapshot.forEach((docSnap) => {
+        const data = docSnap.data();
+        if (data.username && data.username.includes(username)) { 
+          matchedUsers.push(data);
+        }
+      });
+  
+      if (matchedUsers.length === 0) {
+        console.error("No matching users found");
         return;
       }
-
-      querySnapshot.forEach((docSnap) => {
-        setUser(docSnap.data());
-      });
-
+  
+      setUser(matchedUsers); 
+  
     } catch (error) {
       console.error("Error searching for user:", error);
       setUser(null);

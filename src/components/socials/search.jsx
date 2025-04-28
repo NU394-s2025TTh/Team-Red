@@ -1,81 +1,71 @@
-import {
-	Box,
-	Button,
-	Flex,
-	FormControl,
-	FormLabel,
-	Input,
-	Modal,
-	ModalBody,
-	ModalCloseButton,
-	ModalContent,
-	ModalHeader,
-	ModalOverlay,
-	Tooltip,
-	useDisclosure,
-} from "@chakra-ui/react";
+import { useState, useRef } from "react";
 import useSearchUser from "../../hooks/useSearchUser";
-import { useRef } from "react";
+import { FiSearch } from "react-icons/fi";
+import SuggestedUser from "./SuggestedUser";
+import "../../assets/css/Search.css"; 
 
 const Search = () => {
-	const { isOpen, onOpen, onClose } = useDisclosure();
-	const searchRef = useRef(null);
-	const { user, isLoading, getUserProfile, setUser } = useSearchUser();
+  const [isOpen, setIsOpen] = useState(false);
+  const searchRef = useRef(null);
+  const { user, isLoading, getUserProfile, setUser } = useSearchUser();
 
-	const handleSearchUser = (e) => {
-		e.preventDefault();
-		getUserProfile(searchRef.current.value);
-	};
+  const handleSearchUser = (e) => {
+    e.preventDefault();
+    getUserProfile(searchRef.current.value);
+  };
 
-	return (
-		<>
-			<Tooltip
-				hasArrow
-				label={"Search"}
-				placement='right'
-				ml={1}
-				openDelay={500}
-				display={{ base: "block", md: "none" }}
-			>
-				<Flex
-					alignItems={"center"}
-					gap={4}
-					_hover={{ bg: "whiteAlpha.400" }}
-					borderRadius={6}
-					p={2}
-					w={{ base: 10, md: "full" }}
-					justifyContent={{ base: "center", md: "flex-start" }}
-					onClick={onOpen}
-				>
-					<SearchLogo />
-					<Box display={{ base: "none", md: "block" }}>Search</Box>
-				</Flex>
-			</Tooltip>
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
 
-			<Modal isOpen={isOpen} onClose={onClose} motionPreset='slideInLeft'>
-				<ModalOverlay />
-				<ModalContent bg={"black"} border={"1px solid gray"} maxW={"400px"}>
-					<ModalHeader>Search user</ModalHeader>
-					<ModalCloseButton />
-					<ModalBody pb={6}>
-						<form onSubmit={handleSearchUser}>
-							<FormControl>
-								<FormLabel>Username</FormLabel>
-								<Input placeholder='asaprogrammer' ref={searchRef} />
-							</FormControl>
+  return (
+    <>
+     
+      <div className="tooltip-container">
+        <div className="search-button" onClick={openModal}>
+			<FiSearch size={20} color="white" />
+          <span className="search-text">Search</span>
+        </div>
+        <div className="tooltip-text">Search</div>
+      </div>
 
-							<Flex w={"full"} justifyContent={"flex-end"}>
-								<Button type='submit' ml={"auto"} size={"sm"} my={4} isLoading={isLoading}>
-									Search
-								</Button>
-							</Flex>
-						</form>
-						{user && <SuggestedUser user={user} setUser={setUser} />}
-					</ModalBody>
-				</ModalContent>
-			</Modal>
-		</>
-	);
+      
+      {isOpen && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <button className="close-button" onClick={closeModal}>
+              ×
+            </button>
+            <h2>Search User</h2>
+            <form onSubmit={handleSearchUser}>
+              <div className="form-control">
+                <label>Username</label>
+                <input
+                  type="text"
+                  placeholder="asaprogrammer"
+                  ref={searchRef}
+                  className="input"
+                />
+              </div>
+              <div className="form-footer">
+                <button
+                  type="submit"
+                  className="submit-button"
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Loading..." : "Search"}
+                </button>
+              </div>
+            </form>
+            {user && (
+              <div className="suggested-user">
+                <SuggestedUser user={user} setUser={setUser} />
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default Search;
