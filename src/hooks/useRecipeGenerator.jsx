@@ -5,7 +5,11 @@ export function useRecipeGenerator() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const generateRecipe = async (selectedIngredients, userPrompt = "") => {
+  const generateRecipe = async (
+    selectedIngredients,
+    selectedSpices,
+    userPrompt = ""
+  ) => {
     setLoading(true);
     setError("");
     setRecipes([]);
@@ -18,6 +22,9 @@ export function useRecipeGenerator() {
         fridgecontents: Array.isArray(selectedIngredients)
           ? selectedIngredients.join(", ")
           : selectedIngredients,
+        spices: Array.isArray(selectedSpices)
+          ? selectedSpices.join(", ")
+          : selectedSpices,
         userPrompt: userPrompt,
       };
 

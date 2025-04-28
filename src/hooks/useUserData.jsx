@@ -9,6 +9,12 @@ export function useUserData(userId) {
   const db = getFirestore(app);
 
   useEffect(() => {
+    if (!userId) {
+      setError("User ID is required");
+      setLoading(false);
+      return;
+    }
+
     const userRef = doc(db, "users", userId);
 
     const unsubscribe = onSnapshot(userRef, (docSnap) => {
@@ -17,6 +23,11 @@ export function useUserData(userId) {
         setUserData({
           name: data.name,
           fridge: data.fridge.map((item) => ({
+            item: item.item,
+            quantity: item.quantity,
+            unit: item.unit,
+          })),
+          groceryList: data.groceryList.map((item) => ({
             item: item.item,
             quantity: item.quantity,
             unit: item.unit,
@@ -30,22 +41,13 @@ export function useUserData(userId) {
             instructions: recipe.instructions,
             protein: recipe.protein,
           })),
-          groceryList: data.groceryList.map((item) => ({
-            item: item.item,
-            quantity: item.quantity,
-            unit: item.unit,
-          }))
-
+          spices: Array.isArray(data.spices) ? data.spices : [],
         });
         setLoading(false);
       } else {
         setError("User not found");
         setLoading(false);
       }
-    }, (err) => {
-      console.error("Firestore error:", err);
-      setError(err.message);
-      setLoading(false);
     });
 
     return () => unsubscribe();

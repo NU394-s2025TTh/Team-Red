@@ -1,0 +1,78 @@
+.spice-selector {
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px; /* wider */
+  margin: 0 auto; /* center horizontally */
+}
+
+.spice-search {
+  width: 90%; /* not 100% anymore */
+  margin: 0 auto 1rem auto; /* centered + bottom margin */
+  display: block;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.spice-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* center-align pills */
+  gap: 8px;
+}
+
+.spice-option {
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.spice-option:hover {
+  background-color: #d8f3dc;
+}
+
+.spice-option input[type="checkbox"] {
+  display: none; /* Hide checkbox */
+}
+
+.spice-option.selected {
+  background-color: #a8dadc;
+  color: #1d3557;
+}
+
+/* now the custom spice input and add button are on different lines */
+.custom-spice {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.custom-spice input {
+  width: 90%;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 0.5rem;
+}
+
+.custom-spice button {
+  width: 50%;
+  background-color: #677e3b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.custom-spice button:hover {
+  background-color: #36421f;
+}

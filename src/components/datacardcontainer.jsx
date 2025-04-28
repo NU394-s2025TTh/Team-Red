@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { getFirestore, doc, onSnapshot } from "firebase/firestore";
 import { app } from "../firebaseconfig";
-import { DataCard } from './datacard';
+import { DataCard } from "./datacard";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 
 const db = getFirestore(app);
 
-export function DataCardContainer({userId,}) {
+export function DataCardContainer({ userId }) {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -19,12 +19,12 @@ export function DataCardContainer({userId,}) {
         setUserData({
           name: data.name,
           fridge: Array.isArray(data.fridge)
-          ? data.fridge.map(item => ({
-              item: item.item,
-              quantity: item.quantity,
-              unit: item.unit,
-            }))
-          : []
+            ? data.fridge.map((item) => ({
+                item: item.item,
+                quantity: item.quantity,
+                unit: item.unit,
+              }))
+            : [],
         });
       }
     });
@@ -42,4 +42,4 @@ export function DataCardContainer({userId,}) {
       )}
     </>
   );
-  }
+}

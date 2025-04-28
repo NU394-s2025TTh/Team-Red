@@ -1,0 +1,1108 @@
+commit e94b8947443f13e62ec72ec151f45905a2e81706
+Author: escally615 <emmascally2026@u.northwestern.edu>
+Date:   Wed Apr 23 22:33:54 2025 -0500
+
+    checkmark
+
+M	src/assets/css/datacard.css
+M	src/components/grocery/groceryitem.jsx
+
+commit 3dc0d46528ab2ded8b608b3d9f422390a996a2e8
+Author: escally615 <emmascally2026@u.northwestern.edu>
+Date:   Wed Apr 23 22:21:44 2025 -0500
+
+    grocery list added
+
+A	src/assets/branding/linedpaper.png
+M	src/assets/css/ItemCard.css
+M	src/assets/css/container.css
+M	src/assets/css/datacard.css
+M	src/components/grocery/addgrocery.jsx
+M	src/components/grocery/addonegrocery.jsx
+A	src/components/grocery/delonegrocery.jsx
+M	src/components/grocery/grocerycontainer.jsx
+M	src/components/grocery/groceryitem.jsx
+M	src/hooks/useUserData.jsx
+M	src/pages/grocery_list.jsx
+
+commit 18ccec770709f7dcbe25c295ef7b1889f9047215
+Author: Richard Bann <richard@bann.com>
+Date:   Wed Apr 23 17:29:55 2025 -0500
+
+    Implement optional custom user prompts when generating recipes.
+
+M	recipe_generator/recipe_generator.js
+M	src/components/chat.jsx
+M	src/components/datacard.jsx
+M	src/components/mainApp.jsx
+M	src/hooks/useRecipeGenerator.jsx
+
+commit ae8f80937210c9ef5c0583c94d43b2b7f83f4143
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Wed Apr 23 00:31:16 2025 -0500
+
+    Styling fixes
+
+M	src/assets/css/LoginPage.css
+M	src/assets/css/datacard.css
+M	src/assets/css/mainApp.css
+M	src/assets/css/styles.css
+M	src/pages/fridge.jsx
+M	src/pages/inventory.jsx
+M	src/pages/saved.jsx
+
+commit b51971b8c99ce49a9469696ee202dcf151a081e2
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Tue Apr 22 21:51:27 2025 -0500
+
+    Page routing
+
+M	src/assets/css/recipe.css
+M	src/assets/css/under_construction.css
+M	src/pages/fridge.jsx
+M	src/pages/inventory.jsx
+M	src/pages/saved.jsx
+
+commit 6eb23711d1cfcf00a248674a9eeacee6b6ff6f30
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Tue Apr 22 21:28:10 2025 -0500
+
+    fixed styling (for sure this time)
+
+D	src/assets/css/Header.css
+M	src/assets/css/LoginPage.css
+M	src/assets/css/mainApp.css
+M	src/assets/css/profile.css
+M	src/assets/css/sidebar.css
+M	src/assets/css/styles.css
+M	src/assets/css/under_construction.css
+D	src/components/Header.jsx
+M	src/components/mainApp.jsx
+M	src/components/sidebar.jsx
+M	src/pages/login.jsx
+
+commit a01b7079a442b386210315da9b97a0384238e910
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Tue Apr 22 16:56:50 2025 -0500
+
+    fixed styling (hopefully)
+
+M	src/App.css
+A	src/assets/css/Header.css
+M	src/assets/css/ItemCard.css
+M	src/assets/css/LoginPage.css
+M	src/assets/css/chat.css
+M	src/assets/css/container.css
+M	src/assets/css/datacard.css
+M	src/assets/css/ingredientSelector.css
+M	src/assets/css/mainApp.css
+M	src/assets/css/recipe.css
+M	src/assets/css/styles.css
+M	src/components/chat.jsx
+M	src/components/mainApp.jsx
+M	src/components/recipecard.jsx
+M	src/components/recipedetailsmodal.jsx
+
+commit 33d2d5622549309183979911f00798e9aba4b509
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Tue Apr 22 13:48:47 2025 -0500
+
+    More styling (again again)
+
+M	src/assets/css/AddDelItem.css
+M	src/assets/css/AddItemButton.css
+M	src/assets/css/chat.css
+M	src/assets/css/container.css
+
+commit 83401e37ed3655bc8cf812373cc4b10008af6d82
+Author: emmaj6001 <emmajohnston600@gmail.com>
+Date:   Tue Apr 22 13:02:22 2025 -0500
+
+    other Emma's grocery list update
+
+M	src/components/grocery/grocerycontainer.jsx
+M	src/components/grocery/groceryitem.jsx
+
+commit 0f8ab87def9684a57fc5af136fff1e54a6129030
+Author: emmaj6001 <emmajohnston600@gmail.com>
+Date:   Tue Apr 22 12:55:39 2025 -0500
+
+    removing watermark
+
+M	src/assets/branding/construction.png
+A	src/components/grocery/grocerycontainer.jsx
+A	src/components/grocery/groceryitem.jsx
+
+commit 2a354aa549575a24e9b07c7ee240b09b5663681a
+Author: escally615 <emmascally2026@u.northwestern.edu>
+Date:   Tue Apr 22 12:46:52 2025 -0500
+
+    starting to add routing for grocery list
+
+M	src/pages/grocery_list.jsx
+
+commit d1a2b51b420ec11d088fa7a5329dd034eba576eb
+Author: emmaj6001 <emmajohnston600@gmail.com>
+Date:   Tue Apr 22 12:43:10 2025 -0500
+
+    sidescrolling ingredients
+
+M	src/assets/css/datacard.css
+M	src/components/datacard.jsx
+M	src/components/datacardcontainer.jsx
+
+commit 5aff1c2fff7e2b7e6cb7ae7c2b66deb343a3d582
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Tue Apr 22 10:51:31 2025 -0500
+
+    styling (again)
+
+A	src/assets/branding/logo-transparent.png
+A	src/assets/branding/logo.png
+M	src/assets/css/LoginPage.css
+M	src/assets/css/mainApp.css
+M	src/assets/css/sidebar.css
+M	src/assets/css/styles.css
+M	src/assets/css/under_construction.css
+A	src/components/Header.jsx
+M	src/components/mainApp.jsx
+M	src/components/sidebar.jsx
+M	src/components/under_construction.jsx
+M	src/pages/fridge.jsx
+M	src/pages/grocery_list.jsx
+M	src/pages/inventory.jsx
+M	src/pages/login.jsx
+
+commit e3e91cc8865f181fa87417f26e5f7ee285a7b8df
+Author: emmaj6001 <emmajohnston600@gmail.com>
+Date:   Tue Apr 22 00:23:36 2025 -0500
+
+    page rerouting, construction, remove duplicate image
+
+M	src/App.jsx
+A	src/assets/css/under_construction.css
+M	src/components/chat.jsx
+M	src/components/sidebar.jsx
+A	src/components/under_construction.jsx
+A	src/pages/fridge.jsx
+A	src/pages/grocery_list.jsx
+A	src/pages/saved.jsx
+A	src/pages/social.jsx
+
+commit 35433c6de6692fb594ab98a1cd4104d41a9438db
+Author: emmaj6001 <emmajohnston600@gmail.com>
+Date:   Tue Apr 22 00:12:03 2025 -0500
+
+    construction logo
+
+A	src/assets/branding/construction.png
+
+commit 4ef943f6f2730aeb0c104f715e703172f8daf54e
+Author: emmaj6001 <emmajohnston600@gmail.com>
+Date:   Mon Apr 21 19:46:07 2025 -0500
+
+    mistype fix
+
+M	src/pages/inventory.jsx
+
+commit 1b410d556c75f5747423246b388ad0a44085f25b
+Author: emmaj6001 <emmajohnston600@gmail.com>
+Date:   Mon Apr 21 19:44:56 2025 -0500
+
+    no more home page header! and ingredients auto checked
+
+M	src/components/ingredientSelector.jsx
+M	src/components/mainApp.jsx
+M	src/pages/inventory.jsx
+
+commit af4959595efaeee619d6d2b4181ec1d9c5b18c39
+Author: escally615 <emmascally2026@u.northwestern.edu>
+Date:   Mon Apr 21 19:32:58 2025 -0500
+
+    loading screen and collapsible navbar
+
+A	src/assets/branding/recipe-placeholder.png
+M	src/assets/css/chat.css
+M	src/components/chat.jsx
+
+commit 3040cd9f806c86cebc7d37dbcc33c9d069a55eb8
+Author: escally615 <emmascally2026@u.northwestern.edu>
+Date:   Mon Apr 21 19:24:27 2025 -0500
+
+    collapsible navbar and loading animation
+
+M	src/assets/css/sidebar.css
+A	src/components/SpiceRackDropdown.jsx
+M	src/components/chat.jsx
+M	src/components/sidebar.jsx
+
+commit fafbe21673a10055679ed4e1238ead54bba665f0
+Author: emmaj6001 <emmajohnston600@gmail.com>
+Date:   Mon Apr 21 18:55:32 2025 -0500
+
+    placeholder recipe pictures
+
+A	src/assets/branding/recipe-placeholder.png
+M	src/assets/css/chat.css
+M	src/components/chat.jsx
+
+commit 82cc874c7d5c8ffad749362bda54b226a2a3c7fc
+Author: Richard Bann <richard@bann.com>
+Date:   Mon Apr 21 12:19:15 2025 -0500
+
+    Render recipe edit changes to recipe card after saving
+
+M	src/components/chat.jsx
+M	src/components/ingredientSelector.jsx
+M	src/components/recipecard.jsx
+
+commit c76e68e48000145bc53c2e2da65a8533e7c0f97a
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Fri Apr 18 13:21:13 2025 -0500
+
+    Styling
+
+M	src/assets/css/chat.css
+M	src/assets/css/container.css
+M	src/assets/css/sidebar.css
+
+commit 970d2046419155edd77999d1d79732b6dcf5be9d
+Author: Richard Bann <richard@bann.com>
+Date:   Wed Apr 16 23:53:17 2025 -0500
+
+    Add userId string and logoutHandler to global context. Enable edit functionality to existing recipes via new editRecipe hook
+
+M	src/App.jsx
+M	src/components/addRecipe.jsx
+M	src/components/recipecard.jsx
+M	src/components/recipedetailsmodal.jsx
+M	src/contexts/UserContext.jsx
+D	src/hooks/useEditRecipe
+A	src/hooks/useEditRecipe.jsx
+M	src/index.jsx
+
+commit 91d07bfafe3e30163b898ac5af184d21a256d946
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Wed Apr 16 21:56:21 2025 -0500
+
+    Swarm programming from april 16
+
+M	src/assets/css/AddDelItem.css
+M	src/assets/css/AddItemButton.css
+M	src/assets/css/ItemCard.css
+M	src/assets/css/chat.css
+M	src/assets/css/container.css
+M	src/assets/css/datacard.css
+D	src/assets/css/recipegen.css
+M	src/assets/css/sidebar.css
+M	src/assets/css/styles.css
+M	src/components/addRecipe.jsx
+M	src/components/additem.jsx
+M	src/components/addnewrecipe.jsx
+M	src/components/chat.jsx
+M	src/components/mainApp.jsx
+M	src/components/recipecard.jsx
+D	src/components/recipegen.jsx
+A	src/hooks/useEditRecipe
+M	src/pages/profile.jsx
+
+commit 308f19c58906705184fe4436d753b1b6d0a0a6f4
+Author: emmaj6001 <emmajohnston600@gmail.com>
+Date:   Wed Apr 16 20:17:44 2025 -0500
+
+    added login page and standardized colors
+
+M	package-lock.json
+M	package.json
+M	public/spoonfull_logo.png
+M	src/App.css
+M	src/App.jsx
+M	src/assets/css/AddDelItem.css
+M	src/assets/css/AddItemButton.css
+M	src/assets/css/ItemCard.css
+M	src/assets/css/LoginPage.css
+M	src/assets/css/chat.css
+M	src/assets/css/container.css
+M	src/assets/css/datacard.css
+M	src/assets/css/ingredientSelector.css
+M	src/assets/css/mainApp.css
+A	src/assets/css/profile.css
+M	src/assets/css/recipe.css
+R067	src/components/recipegen.css	src/assets/css/recipegen.css
+M	src/assets/css/sidebar.css
+A	src/assets/css/styles.css
+M	src/components/mainApp.jsx
+M	src/components/sidebar.jsx
+A	src/pages/profile.jsx
+
+commit 8a17ed1590dc0d0e36a4bbedc6baa3a40005ef24
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Wed Apr 16 00:01:16 2025 -0500
+
+    Styling
+
+M	src/assets/css/LoginPage.css
+M	src/pages/login.jsx
+
+commit 7973904ebb55770103e1aa8dd157fdf20c0744ae
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Tue Apr 15 23:37:18 2025 -0500
+
+    Styling login page
+
+M	src/assets/css/LoginPage.css
+M	src/pages/login.jsx
+
+commit 60483cb8daad66bbce18f4a7402d09b180826cc9
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Tue Apr 15 21:23:13 2025 -0500
+
+    Styled login screen
+
+M	package-lock.json
+A	src/assets/branding/placeholder-image.jpg
+A	src/assets/branding/styling.txt
+A	src/assets/css/LoginPage.css
+M	src/assets/css/recipe.css
+M	src/components/recipegen.css
+M	src/pages/login.jsx
+
+commit 38afd17e87250f3635368d8e623d26c7dbab4c25
+Author: escally615 <emmascally2026@u.northwestern.edu>
+Date:   Tue Apr 15 08:51:30 2025 -0500
+
+    fixed app recipe to work for diff users
+
+M	src/components/chat.jsx
+M	src/components/mainApp.jsx
+
+commit 6ccd9a77e8a23a533f0c88aa2be1c4b452c7f242
+Author: escally615 <emmascally2026@u.northwestern.edu>
+Date:   Tue Apr 15 02:53:30 2025 -0500
+
+    all the extra stuff
+
+M	src/App.jsx
+A	src/assets/css/mainApp.css
+M	src/components/AddOneItem.jsx
+M	src/components/DelOneItem.jsx
+M	src/components/ItemCard.jsx
+M	src/components/additem.jsx
+A	src/components/adduser.jsx
+M	src/components/datacard.jsx
+M	src/components/datacardcontainer.jsx
+A	src/components/mainApp.jsx
+A	src/contexts/UserContext.jsx
+M	src/hooks/useUserData.jsx
+M	src/index.jsx
+M	src/pages/inventory.jsx
+A	src/pages/login.jsx
+
+commit 09ca2f8ab62d6d6f201b1fbb7a41d015ec7d3faa
+Author: emmaj6001 <emmajohnston600@gmail.com>
+Date:   Tue Apr 15 02:08:11 2025 -0500
+
+    margin changes for sidebar and also the recipes are full size again
+
+M	src/assets/css/container.css
+M	src/assets/css/recipe.css
+M	src/components/recipecard.jsx
+
+commit a297b1ad0c6798167f3e436cd9714ad1eda21524
+Author: Richard Bann <richard@bann.com>
+Date:   Mon Apr 14 23:47:55 2025 -0500
+
+    Revert back to original recipe.css
+
+M	src/assets/css/recipe.css
+
+commit 2900df8c448351857c3bbe1af9e82004e5f9457d
+Author: Richard Bann <richard@bann.com>
+Date:   Mon Apr 14 23:39:36 2025 -0500
+
+    Add ingredient selector and styling block for it
+
+M	package-lock.json
+M	src/assets/css/chat.css
+A	src/assets/css/ingredientSelector.css
+A	src/assets/css/recipe.css
+D	src/assets/css/recipegen.css
+M	src/components/chat.jsx
+A	src/components/ingredientSelector.jsx
+D	src/components/recipe.css
+M	src/components/recipedetailsmodal.jsx
+M	src/hooks/useRecipeGenerator.jsx
+
+commit dc544a9f0aa81990d9913eed3e663efbc7123ddd
+Author: escally615 <emmascally2026@u.northwestern.edu>
+Date:   Mon Apr 14 22:55:12 2025 -0500
+
+    fixed sidebar issue
+
+M	src/assets/css/sidebar.css
+
+commit 757f12e3b56d16323410369deba633eefd208537
+Author: Jay254 <jyegon504@gmail.com>
+Date:   Tue Apr 15 14:15:07 2025 -0500
+
+    updated saved recipes css layout
+
+M	src/components/recipe.css
+M	src/components/recipecard.jsx
+M	src/components/recipedetailsmodal.jsx
+
+commit ad28e4cd404510c8bf05e2d11e97d4167db45834
+Author: Jay254 <jyegon504@gmail.com>
+Date:   Tue Apr 15 13:15:10 2025 -0500
+
+    raw saved recipe cards layout
+
+M	src/App.jsx
+A	src/components/addnewrecipe.jsx
+A	src/components/recipe.css
+A	src/components/recipecard.jsx
+A	src/components/recipedetailsmodal.jsx
+M	src/hooks/useUserData.jsx
+
+commit 984be035fd1d534a302d93c306fbb7e62a3719e2
+Author: Emma Scally <emmascally2026@u.northwestern.edu>
+Date:   Mon Apr 14 22:17:10 2025 -0500
+
+    added sidebar and animation
+
+M	package-lock.json
+M	package.json
+M	src/App.jsx
+M	src/assets/css/chat.css
+A	src/assets/css/sidebar.css
+M	src/components/chat.jsx
+A	src/components/loading.jsx
+M	src/components/recipegen.jsx
+A	src/components/sidebar.jsx
+M	src/components/signin.jsx
+A	src/pages/inventory.jsx
+
+commit eb71d78de7455636c074ac36ac0e7e3357bbcc1d
+Author: emmaj6001 <emmajohnston600@gmail.com>
+Date:   Mon Apr 14 13:57:47 2025 -0500
+
+    Adjusted logo size/margins/layout for mobile view
+
+M	src/App.css
+M	src/App.jsx
+M	src/assets/css/chat.css
+M	src/assets/css/container.css
+A	src/components/recipegen.css
+
+commit cc2d218de48005af0a8ec0e655e72f8728ff9a45
+Author: Emma Scally <emmascally2026@u.northwestern.edu>
+Date:   Sun Apr 13 17:38:23 2025 -0500
+
+    added authentication with google and temporary homepage
+
+M	src/App.jsx
+A	src/components/home.jsx
+A	src/components/signin.jsx
+M	src/firebaseconfig.js
+
+commit d1306870b077dec6a5ae80233c503213c8fe389d
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Thu Apr 10 10:07:25 2025 -0500
+
+    Organized CSS files
+
+M	src/App.jsx
+R100	src/components/AddDelItem.css	src/assets/css/AddDelItem.css
+R100	src/components/AddItemButton.css	src/assets/css/AddItemButton.css
+R100	src/components/ItemCard.css	src/assets/css/ItemCard.css
+R100	src/components/chat.css	src/assets/css/chat.css
+R100	src/components/container.css	src/assets/css/container.css
+R100	src/components/datacard.css	src/assets/css/datacard.css
+R100	src/components/recipegen.css	src/assets/css/recipegen.css
+M	src/components/AddOneItem.jsx
+M	src/components/DelOneItem.jsx
+M	src/components/ItemCard.jsx
+M	src/components/additem.jsx
+M	src/components/chat.jsx
+M	src/components/datacard.jsx
+M	src/components/recipegen.jsx
+
+commit b93659df387024fd3148afe2c997a1c4404d8d41
+Author: Emma Johnston <emmajohnston@Emmas-MacBook-Pro-83.local>
+Date:   Wed Apr 9 23:54:10 2025 -0500
+
+    formatting and new logo
+
+M	package-lock.json
+A	public/spoonfull_logo.png
+M	src/App.css
+M	src/App.jsx
+M	src/components/AddItemButton.css
+M	src/components/ItemCard.css
+M	src/components/chat.css
+M	src/components/chat.jsx
+M	src/components/container.css
+M	src/components/datacard.css
+M	src/components/datacard.jsx
+M	src/components/recipegen.css
+M	src/index.css
+
+commit e0d225f873cffaa13af46e341c9e92d3ab58ec6b
+Author: Richard Bann <richard@bann.com>
+Date:   Wed Apr 9 21:07:17 2025 -0500
+
+    useEffect applied to getting user data from db to modify recipe query. Fix negative unit values for inventory items.
+
+M	src/components/DelOneItem.jsx
+M	src/components/recipegen.jsx
+M	src/hooks/useUserData.jsx
+
+commit f80c01b2f2994e27bfde1cd246740492225d3e6a
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Wed Apr 9 20:37:53 2025 -0500
+
+    Firebase config
+
+M	firebase.json
+
+commit ff6127be4d00e38fdbb5db46965c5e216e635e7c
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Wed Apr 9 20:31:53 2025 -0500
+
+    Update ItemCard.jsx
+
+M	src/components/ItemCard.jsx
+
+commit 7bb12ef9eacae1baf434911d93e546375b942495
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Wed Apr 9 20:11:12 2025 -0500
+
+    Updated datacardcontainer and App.jsx
+
+M	src/App.jsx
+M	src/components/datacardcontainer.jsx
+
+commit 943d11da20e5b7f595838b7d86c5930523c39184
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Wed Apr 9 20:01:14 2025 -0500
+
+    Resolved merge conflicts
+
+A	.firebaserc
+A	firebase.json
+M	package-lock.json
+M	package.json
+A	recipe_generator/.eslintrc.js
+A	recipe_generator/.gitignore
+A	recipe_generator/package-lock.json
+A	recipe_generator/package.json
+A	recipe_generator/recipe_generator.js
+M	src/App.jsx
+A	src/components/addRecipe.jsx
+A	src/components/chat.css
+A	src/components/chat.jsx
+A	src/components/container.css
+M	src/components/datacard.jsx
+M	src/components/datacardcontainer.jsx
+A	src/components/recipegen.css
+A	src/components/recipegen.jsx
+A	src/hooks/useRecipeGenerator.jsx
+A	src/hooks/useUserData.jsx
+
+commit 3388e18aab9c7f77d0c14123f55a933b8d03a14a
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Wed Apr 9 18:48:55 2025 -0500
+
+    Update AddItemButton.css
+
+M	src/components/AddItemButton.css
+
+commit 9c4134c561070731e7edda65d9d6698c08bf0586
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Wed Apr 9 18:46:26 2025 -0500
+
+    Delete itemfields.jsx
+
+D	src/components/itemfields.jsx
+
+commit 21adeaddcc7c2944ffd6bb800d96b587154f3aeb
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Wed Apr 9 18:45:26 2025 -0500
+
+    Functioning inventory component
+
+M	src/components/AddItemButton.css
+M	src/components/DelOneItem.jsx
+M	src/components/additem.jsx
+M	src/components/datacardcontainer.jsx
+M	src/components/itemfields.jsx
+
+commit c7a44016437633b390e7eab992355c92deb2ba0f
+Author: Jay Yegon <jyegon504@gmail.com>
+Date:   Wed Apr 9 18:36:55 2025 -0500
+
+    restructured chat layout
+
+M	src/App.jsx
+M	src/components/chat.css
+A	src/components/container.css
+M	src/components/datacard.css
+M	src/components/datacard.jsx
+M	src/components/datacardcontainer.jsx
+
+commit 6916634aadea87e7eed878784585e537e5ca7067
+Author: Jay Yegon <jyegon504@gmail.com>
+Date:   Wed Apr 9 17:35:56 2025 -0500
+
+    merged wrapper with chatpage
+
+M	src/App.jsx
+M	src/components/chat.css
+M	src/components/chat.jsx
+A	src/hooks/useRecipeGenerator.jsx
+
+commit eb647309ccac70eb4de9aa7c6af832904ea551cb
+Author: Jay Yegon <jyegon504@gmail.com>
+Date:   Wed Apr 9 14:59:34 2025 -0500
+
+    raw recipe-me chatpage
+
+M	src/App.jsx
+A	src/components/chat.css
+A	src/components/chat.jsx
+
+commit 70e13cf864228ec4fc787f3cf51ab77e9cf9f4c6
+Author: Emma Scally <emmascally2026@u.northwestern.edu>
+Date:   Wed Apr 9 15:57:12 2025 -0500
+
+    save recipe to database feature added
+
+A	src/components/addRecipe.jsx
+M	src/components/itemfields.jsx
+M	src/components/recipegen.jsx
+
+commit 259e2a4cc61a1c97e43d76edabdd7ef6c61338d0
+Author: Richard Bann <richard@bann.com>
+Date:   Wed Apr 9 13:23:54 2025 -0500
+
+    Implement recipe generator. Refactor data getter.
+
+A	.firebaserc
+A	firebase.json
+M	package-lock.json
+M	package.json
+A	recipe_generator/.eslintrc.js
+A	recipe_generator/.gitignore
+A	recipe_generator/package-lock.json
+A	recipe_generator/package.json
+A	recipe_generator/recipe_generator.js
+M	src/App.jsx
+M	src/components/datacard.jsx
+M	src/components/datacardcontainer.jsx
+A	src/components/recipegen.css
+A	src/components/recipegen.jsx
+A	src/hooks/useUserData.jsx
+
+commit 97c381e00c01e81a0e47e0bdb1980dd3dcd3be63
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Wed Apr 9 13:15:18 2025 -0500
+
+    UI update
+
+A	src/components/AddDelItem.css
+A	src/components/AddItemButton.css
+M	src/components/AddOneItem.jsx
+M	src/components/DelOneItem.jsx
+M	src/components/ItemCard.css
+M	src/components/additem.jsx
+M	src/components/datacard.css
+M	src/components/datacard.jsx
+
+commit cc911e7922faad28be72d2be46469a38c9624973
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Wed Apr 9 10:54:26 2025 -0500
+
+    Update ItemCard.css
+
+M	src/components/ItemCard.css
+
+commit 930ab6f3916871f3521154c1c7d761d5ab3b351d
+Author: laurnen <68237271+laurnen@users.noreply.github.com>
+Date:   Wed Apr 9 00:29:41 2025 -0500
+
+    inventory increment and decrement function working
+
+A	src/components/AddOneItem.jsx
+A	src/components/DelOneItem.jsx
+A	src/components/ItemCard.css
+A	src/components/ItemCard.jsx
+M	src/components/datacard.jsx
+
+commit a470fc4c52756383d879fad21d4693bb0b383396
+Author: Emma Scally <emmascally2026@u.northwestern.edu>
+Date:   Tue Apr 8 17:20:12 2025 -0500
+
+    database reference stuff: getting all items and pushing to database
+
+M	package-lock.json
+M	package.json
+M	src/App.jsx
+A	src/components/additem.jsx
+A	src/components/datacard.css
+A	src/components/datacard.jsx
+A	src/components/datacardcontainer.jsx
+A	src/components/itemfields.jsx
+M	src/firebaseconfig.js
+
+commit 8a2210e3a4c547ae34100f07164106a2a3e6c6f5
+Author: Emma Scally <emmascally2026@u.northwestern.edu>
+Date:   Mon Apr 7 21:24:31 2025 -0500
+
+    added firebase config file
+
+A	src/firebaseconfig.js
+
+commit b57309c4e15c286cdf9b05af6a309594e9e3f757
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Wed Mar 26 16:58:30 2025 -0500
+
+    update libraries and react
+
+M	package-lock.json
+M	package.json
+
+commit 0bbbb36d77682ec6617c042905636f092b855a26
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Fri Jan 10 08:38:34 2025 -0600
+
+    update packages
+
+M	package-lock.json
+M	package.json
+
+commit 415fa9b42461a6e97b49d54aa201e6420822c5e2
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Thu Sep 26 10:43:01 2024 -0500
+
+    updated libraries
+
+M	package-lock.json
+M	package.json
+
+commit e6e0ca60cecb3f3b5fd804ee9cc661fce273dc92
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Fri Jul 26 15:45:22 2024 -0500
+
+    add testing-library/dom as peer dep
+
+M	package-lock.json
+M	package.json
+
+commit 63a9de3bb67d3f06e3f01b8c43317d8f9b44ebc4
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Fri Jul 26 15:38:55 2024 -0500
+
+    library updates
+
+M	package-lock.json
+M	package.json
+
+commit 563dba4ca3d1f4754043f778056b043516de1237
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Fri May 31 09:49:05 2024 -0500
+
+    update libraries
+
+M	package-lock.json
+M	package.json
+
+commit ce23eebd0f19aba0a5620c5b7b294049cc3e4155
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Wed May 1 15:17:29 2024 -0500
+
+    upgrade to react 18.3
+
+M	package-lock.json
+M	package.json
+
+commit 09c5d90565d37a09177547325a604d2f6437992d
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Wed Apr 24 11:32:53 2024 -0500
+
+    add node requirement
+
+M	README.md
+
+commit 45d1ea924c0e92d6e5390f3ce1ae29cb6784b038
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Tue Apr 23 16:34:38 2024 -0500
+
+    move to ESM as per https://vitejs.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated
+
+M	package.json
+
+commit 3a33eaad8d29509b4fbc4ad32dfbc2eb91e7a509
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Tue Apr 23 16:00:13 2024 -0500
+
+    updated libraries
+
+M	package-lock.json
+M	package.json
+
+commit 6d4563ff9a318a15af285c6c81a8b010b09264ff
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Fri Mar 22 09:19:18 2024 -0500
+
+    add note about degit hangind
+
+M	README.md
+
+commit 91c984592a255df2896391ff911b02ed60d12b9e
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Fri Mar 22 09:13:05 2024 -0500
+
+    update libraries
+
+M	package-lock.json
+M	package.json
+
+commit a287478720c51153b58dde0c8c35948ac048b460
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Tue Feb 27 14:09:46 2024 -0600
+
+    document coverage script
+
+M	README.md
+
+commit 7563ec7e625fc9b01cf07d746db8411459048b82
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Tue Feb 27 09:29:34 2024 -0600
+
+    update libraries, clear audit issue
+    remove c8
+
+M	package-lock.json
+M	package.json
+
+commit 3c273c7a50d49fb1076d72c02c4dd67f1c64b4fd
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Tue Dec 12 16:23:40 2023 -0600
+
+    update to vite 5
+
+M	package-lock.json
+M	package.json
+
+commit 0570a8dce51b08cdeb0cb972873e642250ae6f34
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Sat Dec 9 14:28:40 2023 -0600
+
+    library updates
+
+M	package-lock.json
+M	package.json
+
+commit 16e13702c50fd3c583dcd24ad6c58be61f38a529
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Thu Sep 28 08:14:37 2023 -0500
+
+    update libraries
+
+M	package-lock.json
+M	package.json
+
+commit 3320dd5807049cf6938dc5d0297c11fd6a548d89
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Thu Sep 28 08:13:02 2023 -0500
+
+    add dist to gitignore
+
+M	.gitignore
+
+commit 35088c0376b97fdba538531185f6f042e52db857
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Thu Sep 7 15:56:55 2023 -0500
+
+    update packages
+
+M	package-lock.json
+M	package.json
+
+commit 531717abbb23b4c1489b060748acafa2a899e17f
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Sat Jul 29 10:15:23 2023 -0500
+
+    update packages
+
+M	package-lock.json
+M	package.json
+
+commit a177e85170304154a84e0ebbabec3cf2c71b6814
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Tue Jun 6 16:23:24 2023 -0500
+
+    library updates
+
+M	package-lock.json
+M	package.json
+
+commit e2768e90ebce9232da46e1a6934521b95dfe1751
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Tue Apr 11 14:16:57 2023 -0500
+
+    update vitest libraries
+
+M	package-lock.json
+M	package.json
+
+commit 05915f6fb8e91aa9a75163a8d9ee002f8417af39
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Fri Mar 24 14:50:50 2023 -0500
+
+    library updates
+
+M	package-lock.json
+M	package.json
+
+commit 857709a5af3c595dbd01379d00196f7f1d190404
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Mon Feb 27 16:58:37 2023 -0600
+
+    add vite to devdependencies
+    update libraries
+
+A	package-lock.json
+M	package.json
+
+commit 48fc9949ec7ad4c3831a69e490238901200702b2
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Wed Dec 14 17:12:56 2022 -0600
+
+    try no package-lock to  gets current libraries
+
+D	package-lock.json
+M	package.json
+
+commit 7a9624f46bf90f1c194ea4f014eb0a547bc36359
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Wed Dec 14 17:07:32 2022 -0600
+
+    update vite and vitest
+    add scripts for coverage
+    add ui switch to vitest
+
+M	package.json
+
+commit 3332a73859371246e5ec0db1ae39360fcac3170f
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Sun Nov 13 15:52:09 2022 -0600
+
+    update packages
+
+M	package-lock.json
+M	package.json
+
+commit 57da743e2afe40d1b78690e06dc48cbb80cc04f8
+Author: criesbeck <chris.riesbeck@gmail.com>
+Date:   Sun Nov 13 15:42:18 2022 -0600
+
+    unignored .firebaserc since CI needs it
+
+M	.gitignore
+
+commit cba38e557b200b7aadb0af6f17f7b103759ef194
+Author: Chris Riesbeck <chris.riesbeck@gmail.com>
+Date:   Fri Aug 5 12:58:23 2022 -0500
+
+    fix favicon link
+
+M	index.html
+
+commit d597e6be10e6b11295e9d82d86cf4f08bc913b89
+Author: Chris Riesbeck <chris.riesbeck@gmail.com>
+Date:   Wed Jul 27 16:09:55 2022 -0500
+
+    tweak readme and test descriptions
+    update libraries
+
+M	README.md
+M	package-lock.json
+M	package.json
+M	src/App.jsx
+M	src/App.test.jsx
+
+commit a5d058f977a33d936db9c1c4893212ebfd8f2747
+Author: Chris Riesbeck <chris.riesbeck@gmail.com>
+Date:   Mon Jul 18 16:42:20 2022 -0500
+
+    make favicon a cyclone emoji
+
+M	index.html
+M	public/favicon.svg
+
+commit 32b17320fdd96225968f324ecdcea57c256ca35a
+Author: Chris Riesbeck <chris.riesbeck@gmail.com>
+Date:   Mon Jul 18 14:56:12 2022 -0500
+
+    updated libraries
+    tweaked readme
+
+M	README.md
+M	package-lock.json
+M	package.json
+
+commit 79f7a5165cece6cc781af3db6e8685e007735d1d
+Author: Chris Riesbeck <chris.riesbeck@gmail.com>
+Date:   Sun Jul 10 11:00:21 2022 -0500
+
+    update React and Vitest
+
+M	package.json
+
+commit ad42637b6a12578e656f7755cf096670e7f32f4a
+Author: Chris Riesbeck <chris.riesbeck@gmail.com>
+Date:   Wed Jul 6 10:54:35 2022 -0500
+
+    fix the default page title
+
+M	index.html
+
+commit 7cf63ca71a027c8c89e0c79feabe6e1354f990ed
+Author: Chris Riesbeck <chris.riesbeck@gmail.com>
+Date:   Tue Jul 5 15:39:58 2022 -0500
+
+    update README
+
+M	README.md
+
+commit 510e67909c6f62fd85e16e4febc027d156ffb6ba
+Author: Chris Riesbeck <chris.riesbeck@gmail.com>
+Date:   Tue Jul 5 15:09:18 2022 -0500
+
+    add sample tests
+
+M	README.md
+M	package.json
+A	src/App.test.jsx
+
+commit 9324f0ee48714de71f547e0f3afb311a05de1c03
+Author: Chris Riesbeck <chris.riesbeck@gmail.com>
+Date:   Tue Jul 5 14:46:25 2022 -0500
+
+    initial commit
+
+A	.gitignore
+A	LICENSE
+A	README.md
+A	index.html
+A	package-lock.json
+A	package.json
+A	public/favicon.svg
+A	public/robots.txt
+A	src/App.css
+A	src/App.jsx
+A	src/index.css
+A	src/index.jsx
+A	src/logo.svg
+A	vite.config.js
