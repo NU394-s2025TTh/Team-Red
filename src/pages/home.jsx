@@ -1,6 +1,7 @@
 import React from "react";
 import { useUserData } from "../hooks/useUserData";
 import Sidebar from "../components/sidebar";
+import Search from "../components/socials/search"; 
 
 export default function Home({ userId }) {
   const { userData, loading, error } = useUserData(userId);
@@ -18,6 +19,8 @@ export default function Home({ userId }) {
             <p>This is your new home page.</p>
           </div>
         )}
+
+        <Search />
       </div>
     </div>
   );

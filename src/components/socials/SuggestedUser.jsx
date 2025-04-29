@@ -1,6 +1,7 @@
 
 import React from "react";
 import "../../assets/css/Search.css"; 
+import { FaTimes } from "react-icons/fa";
 
 const SuggestedUser = ({ user, setUser }) => {
   if (!user) return null;
@@ -17,7 +18,7 @@ const SuggestedUser = ({ user, setUser }) => {
             {u.name && <span> — {u.name}</span>}
           </div>
           <button onClick={() => setUser(null)} className="clear-button">
-            Clear
+            < FaTimes />
           </button>
         </div>
       ))}

@@ -1,7 +1,7 @@
 import '../../assets/css/DataCard.css';
 import '../../assets/css/ItemCard.css';
 import React, { useRef, useState, useEffect } from 'react';
-import { ItemCard } from '../ItemCard';
+import { GroceryItemCard } from './GroceryItemCard';
 import { AddGroceryButton } from './addgrocery';
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 import { getFirestore, doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
@@ -107,7 +107,7 @@ export default function GroceryCard({ userId, groceryList }) {
                 checked={selectedItems[item.item]}
                 onChange={() => handleToggle(item)}
               />
-              <ItemCard item={item} userId={userId} />
+              <GroceryItemCard item={item} userId={userId} />
 
               <button
                   className="delete-button"
