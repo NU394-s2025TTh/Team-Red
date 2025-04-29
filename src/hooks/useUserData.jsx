@@ -21,7 +21,7 @@ export function useUserData(userId) {
       if (docSnap.exists()) {
         const data = docSnap.data();
         setUserData({
-          name: data.name,
+          name: data.username,
           fridge: data.fridge.map((item) => ({
             item: item.item,
             quantity: item.quantity,

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc, updateDoc, arrayRemove, arrayUnion } from "firebase/firestore";
 import { app } from "../firebaseconfig";
+
 
 const useFollowUser = (currentUserId, userId) => {
   const [isUpdating, setIsUpdating] = useState(false);
@@ -36,6 +37,7 @@ const useFollowUser = (currentUserId, userId) => {
   useEffect(() => {
     const checkFollowing = async () => {
       try {
+        const currentUserRef = doc(db, "users", currentUserId);
         const currentUserDoc = await getDoc(currentUserRef);
         if (currentUserDoc.exists) {
           const followingList = currentUserDoc.data().following || [];
