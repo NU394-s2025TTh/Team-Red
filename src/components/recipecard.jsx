@@ -60,6 +60,14 @@ export function RecipeCard({ recipes: propRecipes, onAddRecipe }) {
               src={recipe.photo || Placeholder}
               alt={recipe.title}
               className="recipe-card-img"
+              style={{
+                display: 'block',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                maxWidth: '180px',
+                height: 'auto',
+                objectFit: 'contain'
+              }}
             />
             <h3>{recipe.title}</h3>
           </div>

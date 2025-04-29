@@ -8,7 +8,9 @@ import Fridge from './pages/fridge';
 import GroceryList from './pages/grocery_list.jsx';
 import Saved from './pages/saved';
 import Social from './pages/social';
+import Home from './pages/home';
 import './App.css';
+
 
 function App() {
   const [userId, setUserId] = useState(null);
