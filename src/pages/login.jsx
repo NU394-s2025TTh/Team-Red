@@ -49,6 +49,7 @@
 
 // Updated Login.jsx
 import React, { useState } from "react";
+import {auth} from "../firebaseconfig";
 import { addNewUserIfNotExists } from "../components/adduser";
 import "../assets/css/LoginPage.css"
 import Logo from "../assets/branding/logo.png";
@@ -57,15 +58,16 @@ export default function Login({ onLogin }) {
   const [userIdInput, setUserIdInput] = useState("");
   const [password, setPassword] = useState(""); // password ignored for now
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const trimmedId = userIdInput.trim();
     if (!trimmedId) return;
     
     // Create a fake user object with a simple id
-    const fakeUser = { id: trimmedId };
+    const userId = { id: trimmedId };
     
-    const resolvedUserId = await addNewUserIfNotExists(fakeUser);
+    const resolvedUserId = await addNewUserIfNotExists(userId);
     localStorage.setItem("userId", resolvedUserId); 
     console.log("Resolved user ID:", resolvedUserId);
     onLogin(resolvedUserId);
