@@ -93,7 +93,9 @@ import Fridge from './pages/fridge';
 import GroceryList from './pages/grocery_list.jsx';
 import Saved from './pages/saved';
 import Social from './pages/social';
+import Home from './pages/home';
 import './App.css';
+
 
 function App() {
   const [fakeUserId, setFakeUserId] = useState(null);
@@ -111,14 +113,14 @@ function App() {
     <UserContext.Provider value={ {userId: fakeUserId, handleLogout} }>
       <Router> 
         <Routes>
-          <Route
-            path="/"
-            element={
-              fakeUserId
-                ? <MainApp userId={fakeUserId} onLogout={handleLogout} />
-                : <Login onLogin={handleLogin} />
-            }
-          />
+        <Route
+          path="/"
+          element={
+            fakeUserId
+              ? <Home userId={fakeUserId} />
+              : <Login onLogin={handleLogin} />
+          }
+        />
           <Route
             path="/profile"
             element={
@@ -131,7 +133,7 @@ function App() {
             path="/fridge"
             element={
               fakeUserId
-                ? <Fridge userId={fakeUserId} />
+                ? <MainApp userId={fakeUserId} onLogout={handleLogout} />
                 : <Navigate to="/" replace />
             }
           />
