@@ -4,7 +4,7 @@ import AddNewRecipe from './addnewrecipe';
 import { editRecipe } from '../hooks/useEditRecipe.jsx';
 import Placeholder from '../assets/branding/recipe-placeholder.png';
 
-export function RecipeCard({ recipes: propRecipes, onAddRecipe }) {
+export function RecipeCard({ recipes: propRecipes, onAddRecipe, showHeader = true }) {
   
   const [recipes, setRecipes] = useState(propRecipes);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
@@ -47,7 +47,7 @@ export function RecipeCard({ recipes: propRecipes, onAddRecipe }) {
 
   return (
     <div className="recipe-card-container" >
-      <h1>Your Saved Recipes</h1>
+      {showHeader && <h1>Your Saved Recipes</h1>}
 
       <div className="recipe-card-list">
         {recipes.map((recipe, idx) => (
