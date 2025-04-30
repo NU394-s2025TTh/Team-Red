@@ -1,19 +1,8 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from "react";
+import { useUserData } from "../hooks/useUserData";
 
-export const UserContext = createContext(null);
+export const UserContext = createContext();
 
 export function useUser() {
   return useContext(UserContext);
 }
-
-// export function UserProvider({ children }) {
-//   const [customUserId, setCustomUserId] = useState(null);
-
-//   return (
-//     <UserContext.Provider value={{ customUserId, setCustomUserId }}>
-//       {children}
-//     </UserContext.Provider>
-//   );
-// }
-
-// export const useUserId = () => useContext(UserContext);

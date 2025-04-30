@@ -1,162 +1,127 @@
+.search-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-.tooltip-container {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .search-button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px;
-    border-radius: 6px;
-    cursor: pointer;
-    background-color: transparent;
-    transition: background-color 0.2s ease;
-  }
-  
-  .search-button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  
-  .search-text {
-    display: none;
-  }
-  
-  @media (min-width: 768px) {
-    .search-text {
-      display: inline;
-    }
-  }
-  
-  .tooltip-text {
-    visibility: hidden;
-    width: 80px;
-    background-color: gray;
-    color: #fff;
-    text-align: center;
-    border-radius: 4px;
-    padding: 5px;
-    position: absolute;
-    left: 110%;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  
-  .tooltip-container:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
-  }
-  
-  /* Modal */
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .modal {
-    background-color: black;
-    color: white;
-    padding: 20px;
-    border: 1px solid gray;
-    border-radius: 8px;
-    width: 400px;
-    position: relative;
-  }
-  
-  .close-button {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    background: none;
-    border: none;
-    color: gray;
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  .close-button:hover {
-    color: white;
-  }
-  
-  /* Form */
-  .form-control {
-    margin-bottom: 16px;
-  }
-  
-  .form-control .input {
-    width: 100%;
-    padding: 8px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    margin-top: 4px;
-    background-color: #222;
-    color: white;
-  }
-  
-  .form-control .input:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
-  .form-footer {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .submit-button {
-    padding: 8px 16px;
-    border-radius: 6px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .submit-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .submit-button:disabled {
-    background-color: #555;
-    cursor: not-allowed;
-  }
+.search-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+  color: #2f4f2f;
+}
 
-  .suggested-user-list {
-    margin-top: 20px;
+.search-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.search-button {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 0 1rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.search-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.search-button:hover:not(:disabled) {
+  background: #45a049;
+}
+
+.suggested-user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.suggested-user-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: #f9f9f9;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.suggested-user-item strong {
+  color: #264d26;
+}
+
+.clear-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.clear-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.clear-button:hover:not(:disabled) {
+  background: #45a049;
+}
+
+/* When already following, turn button red */
+.clear-button.following {
+  background: #f44336;
+}
+
+.clear-button.following:hover:not(:disabled) {
+  background: #e53935;
+}
+
+/* Tiny spinner for “isUpdating” state */
+.spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
   }
-  
-  .suggested-user-item {
-    background-color: #1a1a1a;
-    padding: 10px;
-    border-radius: 6px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  to {
+    transform: rotate(360deg);
   }
-  
-  .clear-button {
-    background: none;
-    border: 1px solid gray;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .clear-button:hover {
-    background-color: gray;
-  }
-  
-  
+}

@@ -1,28 +1,14 @@
-
 import React from "react";
-import "../../assets/css/Search.css"; 
+import SuggestedUserItem from "./suggestedUserItem";
 
-const SuggestedUser = ({ user, setUser }) => {
-  if (!user) return null;
-
-
-  const users = Array.isArray(user) ? user : [user];
+export default function SuggestedUser({ users, currentUser }) {
+  if (!Array.isArray(users) || users.length === 0) return null;
 
   return (
     <div className="suggested-user-list">
-      {users.map((u, index) => (
-        <div key={index} className="suggested-user-item">
-          <div>
-            <strong>{u.username}</strong>
-            {u.name && <span> — {u.name}</span>}
-          </div>
-          <button onClick={() => setUser(null)} className="clear-button">
-            Clear
-          </button>
-        </div>
+      {users.map((u) => (
+        <SuggestedUserItem key={u.id} user={u} currentUserId={currentUser} />
       ))}
     </div>
   );
-};
-
-export default SuggestedUser;
+}

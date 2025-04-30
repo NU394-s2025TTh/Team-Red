@@ -1,57 +1,70 @@
-import { useEffect, useState } from "react";
-import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
+import { useState, useEffect } from "react";
+import {
+  getFirestore,
+  doc,
+  onSnapshot,
+  getDoc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+} from "firebase/firestore";
 import { app } from "../firebaseconfig";
 
-const useFollowUser = (currentUserId, userId) => {
-  const [isUpdating, setIsUpdating] = useState(false);
+export default function useFollowUser(currentUserId, targetUserId) {
   const [isFollowing, setIsFollowing] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
   const db = getFirestore(app);
 
+  // 1) Subscribe to currentUser's `following` field
+  useEffect(() => {
+    if (!currentUserId || !targetUserId) return;
+    const uid = String(currentUserId);
+    const ref = doc(db, "users", uid);
+
+    const unsubscribe = onSnapshot(
+      ref,
+      (snap) => {
+        if (snap.exists()) {
+          const followingList = snap.data().following || [];
+          setIsFollowing(followingList.includes(String(targetUserId)));
+        }
+      },
+      (err) => console.error("Error listening to follow list:", err)
+    );
+
+    return unsubscribe;
+  }, [db, currentUserId, targetUserId]);
+
+  // 2) Toggle follow/unfollow by always reading the up-to-date array first
   const handleFollowUser = async () => {
+    if (!currentUserId || !targetUserId) return;
     setIsUpdating(true);
+
     try {
-      
-      const currentUserRef = doc(db, "users", currentUserId);
-      const userToFollowOrUnfollowRef = doc(db, "users", userId);
+      const uid = String(currentUserId);
+      const tid = String(targetUserId);
+      const meRef = doc(db, "users", uid);
+      const youRef = doc(db, "users", tid);
 
-      await updateDoc(currentUserRef, {
-        following: isFollowing ? arrayRemove(userId) : arrayUnion(userId),
+      // fetch the _live_ list so we never go out of sync
+      const meSnap = await getDoc(meRef);
+      const liveFollowing = meSnap.data()?.following || [];
+      const shouldUnfollow = liveFollowing.includes(tid);
+
+      await updateDoc(meRef, {
+        following: shouldUnfollow ? arrayRemove(tid) : arrayUnion(tid),
+      });
+      await updateDoc(youRef, {
+        followers: shouldUnfollow ? arrayRemove(uid) : arrayUnion(uid),
       });
 
-      await updateDoc(userToFollowOrUnfollowRef, {
-        followers: isFollowing ? arrayRemove(currentUserId) : arrayUnion(currentUserId),
-      });
-
-      setIsFollowing((prev) => !prev);
-      
-      
-    } catch (error) {
-      console.error("Error following/unfollowing user:", error);
-      
+      // no need to flip isFollowing here — onSnapshot will fire shortly
+    } catch (err) {
+      console.error("Error follow/unfollow:", err);
     } finally {
       setIsUpdating(false);
     }
   };
 
-  useEffect(() => {
-    const checkFollowing = async () => {
-      try {
-        const currentUserDoc = await getDoc(currentUserRef);
-        if (currentUserDoc.exists) {
-          const followingList = currentUserDoc.data().following || [];
-          setIsFollowing(followingList.includes(userId));
-        }
-      } catch (error) {
-        console.error("Error checking follow status:", error);
-      }
-    };
-
-    if (currentUserId && userId) {
-      checkFollowing();
-    }
-  }, [currentUserId, userId]);
-
-  return { isUpdating, isFollowing, handleFollowUser };
-};
-
-export default useFollowUser;
+  return { isFollowing, isUpdating, handleFollowUser };
+}

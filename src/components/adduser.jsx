@@ -55,7 +55,9 @@ export async function addNewUserIfNotExists(authUser) {
     username: authUser.id,
     groceryList: [],
     recipes: [],
-    fridge: []
+    fridge: [],
+    followers: [],
+    following: []
   });
   
   console.log(`User added with ID ${authUser.id}`);
