@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
+import { app } from "../firebaseconfig";
 import { CgProfile } from "react-icons/cg";
 import Sidebar from "../components/sidebar";
 import "../assets/css/profile.css";
 
 function Profile({ userId }) {
+  const db = getFirestore(app);
   const [profileImage, setProfileImage] = useState(null);
-  const [username, setUsername] = useState("Mad_Dawg");
-  const [email, setEmail] = useState("user@gmail.com");
-  const [phone, setPhone] = useState("123-456-7890");
-  const [bio, setBio] = useState("Looove to cook and eat!");
-  const [followers, setFollowers] = useState(0);
-  const [following, setFollowing] = useState(0);
+  const [profileData, setProfileData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-
   const [tempProfile, setTempProfile] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const handleLogout = () => {
     localStorage.clear();
@@ -27,26 +25,60 @@ function Profile({ userId }) {
     }
   };
 
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const ref = doc(db, "users", userId);
+        const snap = await getDoc(ref);
+        if (snap.exists()) {
+          setProfileData(snap.data());
+          setLoading(false);
+        } else {
+          console.error("User not found.");
+        }
+      } catch (err) {
+        console.error("Error fetching profile:", err);
+      }
+    };
+
+    if (userId) fetchProfile();
+  }, [userId]);
+
   const startEditing = () => {
     setIsEditing(true);
-    setTempProfile({ username, email, phone, bio });
+    setTempProfile({
+      username: profileData.username || "",
+      email: profileData.email || "",
+      phone: profileData.phone || "",
+      bio: profileData.bio || "",
+    });
   };
 
-  const cancelEditing = () => {
-    setIsEditing(false);
-  };
-
-  const saveEditing = () => {
-    setUsername(tempProfile.username);
-    setEmail(tempProfile.email);
-    setPhone(tempProfile.phone);
-    setBio(tempProfile.bio);
-    setIsEditing(false);
-  };
+  const cancelEditing = () => setIsEditing(false);
 
   const handleChange = (e) => {
     setTempProfile({ ...tempProfile, [e.target.name]: e.target.value });
   };
+
+  const saveEditing = async () => {
+    try {
+      const ref = doc(db, "users", userId);
+      await updateDoc(ref, {
+        username: tempProfile.username,
+        email: tempProfile.email,
+        phone: tempProfile.phone,
+        bio: tempProfile.bio,
+      });
+      setProfileData((prev) => ({ ...prev, ...tempProfile }));
+      setIsEditing(false);
+    } catch (err) {
+      console.error("Error updating profile:", err);
+    }
+  };
+
+  if (loading) return <div className="profile-page"><Sidebar /><p>Loading...</p></div>;
+
+  const { username, email, phone, bio, followers = [], following = [] } = profileData || {};
 
   return (
     <div className="profile-page">
@@ -90,11 +122,11 @@ function Profile({ userId }) {
         {/* Followers and Following */}
         <div className="profile-social">
           <div className="profile-stat">
-            <span className="stat-number">{followers}</span>
+            <span className="stat-number">{followers.length}</span>
             <span className="stat-label">Followers</span>
           </div>
           <div className="profile-stat">
-            <span className="stat-number">{following}</span>
+            <span className="stat-number">{following.length}</span>
             <span className="stat-label">Following</span>
           </div>
         </div>
@@ -113,7 +145,7 @@ function Profile({ userId }) {
           )}
         </div>
 
-        {/* Contact */}
+        {/* Contact Info */}
         <div className="profile-contact">
           {isEditing ? (
             <>
@@ -134,13 +166,15 @@ function Profile({ userId }) {
             </>
           ) : (
             <>
-              <p>{email}</p>
-              <p>{phone}</p>
+              <p>{bio || "No bio provided yet"}</p>
+              <p>{email || "No email on file"}</p>
+              <p>{phone || "No phone number"}</p>
             </>
           )}
         </div>
 
-        {/* Edit/Save/Cancel Buttons */}
+
+        {/* Buttons */}
         <div className="profile-buttons">
           {isEditing ? (
             <>
