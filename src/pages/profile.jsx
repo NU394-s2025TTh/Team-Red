@@ -27,7 +27,6 @@ function Profile({ userId }) {
     try {
       await uploadBytes(imageRef, file);
       const imageUrl = await getDownloadURL(imageRef);
-
       setProfileImage(imageUrl);
       const refDoc = doc(db, "users", userId);
       await updateDoc(refDoc, { profileImage: imageUrl });
@@ -61,10 +60,10 @@ function Profile({ userId }) {
   const startEditing = () => {
     setIsEditing(true);
     setTempProfile({
-      username: profileData.username || "",
-      email: profileData.email || "",
-      phone: profileData.phone || "",
-      bio: profileData.bio || "",
+      username: profileData?.username || "",
+      email: profileData?.email || "",
+      phone: profileData?.phone || "",
+      bio: profileData?.bio || "",
     });
   };
 
@@ -97,9 +96,7 @@ function Profile({ userId }) {
   return (
     <div className="profile-page">
       <Sidebar />
-
       <div className="profile-container">
-        {/* Profile Picture */}
         <div className="profile-picture-wrapper">
           {profileImage ? (
             <img src={profileImage} alt="Profile" className="profile-picture" />
@@ -124,16 +121,17 @@ function Profile({ userId }) {
             <input
               type="text"
               name="username"
+              placeholder="Username"
               value={tempProfile.username}
               onChange={handleChange}
               className="profile-input"
             />
           ) : (
-            <h2>{username}</h2>
+            <h2>{username || "Unnamed User"}</h2>
           )}
         </div>
 
-        {/* Followers and Following */}
+        {/* Followers/Following */}
         <div className="profile-social">
           <div className="profile-stat">
             <span className="stat-number">{followers.length}</span>
@@ -150,29 +148,32 @@ function Profile({ userId }) {
           {isEditing ? (
             <textarea
               name="bio"
+              placeholder="Write a short bio"
               value={tempProfile.bio}
               onChange={handleChange}
               className="profile-input bio-input"
             />
           ) : (
-            <p>{bio}</p>
+            <p>{bio || "Write short bio"}</p>
           )}
         </div>
 
-        {/* Contact Info */}
+        {/* Contact */}
         <div className="profile-contact">
           {isEditing ? (
             <>
               <input
                 type="email"
                 name="email"
+                placeholder="Email address"
                 value={tempProfile.email}
                 onChange={handleChange}
                 className="profile-input"
               />
               <input
-                type="text"
+                type="tel"
                 name="phone"
+                placeholder="Phone number"
                 value={tempProfile.phone}
                 onChange={handleChange}
                 className="profile-input"
@@ -180,9 +181,8 @@ function Profile({ userId }) {
             </>
           ) : (
             <>
-              <p>{bio || "No bio provided yet"}</p>
-              <p>{email || "No email on file"}</p>
-              <p>{phone || "No phone number"}</p>
+              <p>{email || "Add Email"}</p>
+              <p>{phone || "Add Phone Number"}</p>
             </>
           )}
         </div>
@@ -199,7 +199,6 @@ function Profile({ userId }) {
           )}
         </div>
 
-        {/* Logout */}
         <button className="logout-button" onClick={handleLogout}>Logout</button>
       </div>
     </div>
