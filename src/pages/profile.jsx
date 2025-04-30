@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
-import { app } from "../firebaseconfig";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { app, storage } from "../firebaseconfig";
 import { CgProfile } from "react-icons/cg";
 import Sidebar from "../components/sidebar";
 import "../assets/css/profile.css";
@@ -18,10 +19,20 @@ function Profile({ userId }) {
     window.location.reload();
   };
 
-  const handleImageChange = (e) => {
+  const handleImageChange = async (e) => {
     const file = e.target.files[0];
-    if (file) {
-      setProfileImage(URL.createObjectURL(file));
+    if (!file) return;
+
+    const imageRef = ref(storage, `profilePictures/${userId}`);
+    try {
+      await uploadBytes(imageRef, file);
+      const imageUrl = await getDownloadURL(imageRef);
+
+      setProfileImage(imageUrl);
+      const refDoc = doc(db, "users", userId);
+      await updateDoc(refDoc, { profileImage: imageUrl });
+    } catch (err) {
+      console.error("Failed to upload image:", err);
     }
   };
 
@@ -31,13 +42,16 @@ function Profile({ userId }) {
         const ref = doc(db, "users", userId);
         const snap = await getDoc(ref);
         if (snap.exists()) {
-          setProfileData(snap.data());
-          setLoading(false);
+          const data = snap.data();
+          setProfileData(data);
+          if (data.profileImage) setProfileImage(data.profileImage);
         } else {
           console.error("User not found.");
         }
       } catch (err) {
         console.error("Error fetching profile:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -172,7 +186,6 @@ function Profile({ userId }) {
             </>
           )}
         </div>
-
 
         {/* Buttons */}
         <div className="profile-buttons">
