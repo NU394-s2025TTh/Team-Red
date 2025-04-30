@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { getDocs, collection, getFirestore } from "firebase/firestore";
 import { app } from "../firebaseconfig";
+import "../assets/css/social.css";
 
 import { useUserData } from "../hooks/useUserData";
+import { useGetRecipes } from "../hooks/useGetRecipes";
 import Sidebar from "../components/sidebar";
 import Search from "../components/socials/search";
 import { RecipeCard } from "../components/recipecard";
 
+
+
 export default function Home({ userId }) {
   const { userData, loading, error } = useUserData(userId);
   const [followingRecipes, setFollowingRecipes] = useState([]);
+  const { recipes: trendingRecipes, loading: loadingTrending, error: errorTrending } = useGetRecipes();
+
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const closeModal = () => setSelectedRecipe(null);
+
   const db = getFirestore(app);
 
   useEffect(() => {
@@ -87,6 +96,68 @@ export default function Home({ userId }) {
             ) : (
               <p>No recipes from users you follow yet.</p>
             )}
+
+            {/* Trending Recipes Section */}
+            <h2 style={{ marginTop: "3rem" }}>🔥 Trending Recipes:</h2>
+              {loadingTrending ? (
+                <p>Loading trending recipes…</p>
+              ) : errorTrending ? (
+                <p>Error loading trending recipes: {errorTrending}</p>
+              ) : (
+                <>
+                  <div className="recipe-grid">
+                    {trendingRecipes.map((recipe, index) => (
+                      <div key={index} className="recipe-card">
+                        <img
+                          src={recipe.photoUrl || 'var(--placeholder-image)'}
+                          alt={recipe.title}
+                          className="recipe-image"
+                        />
+                        <div className="recipe-details">
+                          <h2>{recipe.title}</h2>
+                          <p className="rating"><strong>⭐ {recipe.rating}</strong></p>
+                          <h4>Ingredients:</h4>
+                          <ul>
+                            {recipe.ingredients.slice(0, 4).map((ingredient, i) => (
+                              <li key={i}>{ingredient}</li>
+                            ))}
+                          </ul>
+                          <button className="view-recipe-button" onClick={() => setSelectedRecipe(recipe)}>
+                            View full recipe →
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* MODAL */}
+                  {selectedRecipe && (
+                    <div className="modal-overlay" onClick={closeModal}>
+                      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                        <button className="modal-close" onClick={closeModal}>×</button>
+                        <img src={selectedRecipe.photoUrl} alt={selectedRecipe.title} className="modal-image" />
+                        <h2>{selectedRecipe.title}</h2>
+                        <p className="rating"><strong>⭐ {selectedRecipe.rating}</strong></p>
+                        <h4>Ingredients:</h4>
+                        <ul>
+                          {selectedRecipe.ingredients.map((ingredient, i) => (
+                            <li key={i}>{ingredient}</li>
+                          ))}
+                        </ul>
+                        <h4>Instructions:</h4>
+                        <ol>
+                          {selectedRecipe.instructions?.map((step, i) => (
+                            <li key={i}>{step}</li>
+                          ))}
+                        </ol>
+                      </div>
+                    </div>
+                  )}
+              </>
+            )}
+
+            
+            
           </>
         )}
       </div>

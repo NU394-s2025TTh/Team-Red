@@ -36,11 +36,13 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   gap: 2rem;
   padding: 1rem;
+
+  
 }
 
 .recipe-card {
   background: var(--card-bg-color);
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--card-shadow);
   display: flex;
@@ -204,3 +206,36 @@ body {
     padding: 1rem;
   }
 }
+
+.horizontal-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem 0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.trending-recipe-card {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  background: var(--card-bg-color);
+  box-shadow: var(--card-shadow);
+  border-radius: 12px;
+  padding: 1rem;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trending-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+}
+
+
+

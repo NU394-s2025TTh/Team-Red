@@ -1,0 +1,25 @@
+.recipe-grid-horizontal {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 2rem;
+    padding: 1rem 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .recipe-card-horizontal {
+    background: var(--card-bg-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    position: relative;
+    max-height: var(--card-max-vh);
+    min-height: 400px;
+    justify-content: center;
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+  }
+  
+
