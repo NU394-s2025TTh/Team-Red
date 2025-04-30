@@ -83,7 +83,7 @@ export default function Login({ onLogin }) {
           <div className="input-container">
             <input
               type="text"
-              placeholder="Enter user ID"
+              placeholder="Enter username"
               value={userIdInput}
               onChange={(e) => setUserIdInput(e.target.value)}
               className="input"

@@ -18,12 +18,15 @@ import "./App.css";
 
 function App() {
   const [userId, setUserId] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   const handleLogin = (userId) => {
+    setUserId(userId);
     setUserId(userId);
   };
 
   const handleLogout = () => {
+    setUserId(null);
     setUserId(null);
     window.location.reload();
   };
