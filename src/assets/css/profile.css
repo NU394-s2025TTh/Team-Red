@@ -35,32 +35,26 @@
 
 .profile-page {
   background-color: white;
-  height: 100vh;
-  width: calc(100% - 250px);
-  margin-left: 250px;        
-
+  padding-left: 250px;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .profile-container {
   background: white;
-  width: 450px;
+  max-width: 500px;
+  width: 90%;
   margin: auto;
-  padding: 25px 20px;
+  padding: 30px 20px;
   border-radius: 15px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
-  
-  max-height: 90vh;
-  overflow-y: auto; 
 }
 
-
-/* Profile Picture */
 .profile-picture-wrapper {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .profile-picture {
@@ -83,10 +77,10 @@
 .upload-label {
   background-color: #4CAF50;
   color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 6px 12px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 /* Username */
@@ -96,7 +90,7 @@
   margin-top: 10px;
 }
 
-/* Followers / Following */
+/* Social */
 .profile-social {
   display: flex;
   justify-content: center;
@@ -119,8 +113,11 @@
 }
 
 /* Bio */
-.profile-bio p {
+.profile-bio {
   margin: 10px 0;
+}
+
+.profile-bio p {
   font-size: 16px;
 }
 
@@ -135,10 +132,11 @@
 .profile-input {
   width: 80%;
   margin: 8px auto;
-  padding: 8px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 14px;
+  display: block;
 }
 
 .bio-input {
