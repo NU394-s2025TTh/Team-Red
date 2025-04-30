@@ -1,13 +1,13 @@
 import React from "react";
 import { useUserData } from "../hooks/useUserData";
 import Sidebar from "../components/sidebar";
-import Search from "../components/socials/search"; 
+import Search from "../components/socials/search";
 
 export default function Home({ userId }) {
   const { userData, loading, error } = useUserData(userId);
 
   return (
-    <div className="App" style={{ minHeight: '100vh' }}>
+    <div className="App" style={{ minHeight: "100vh" }}>
       <Sidebar />
       <div className="content" style={{ padding: "2rem" }}>
         {loading && <p>Loading your data...</p>}
@@ -19,7 +19,6 @@ export default function Home({ userId }) {
             <p>This is your new home page.</p>
           </div>
         )}
-
         <Search />
       </div>
     </div>

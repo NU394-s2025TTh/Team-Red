@@ -1,40 +1,31 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { FiSearch } from "react-icons/fi";
+import { useUser } from "../../contexts/UserContext";
 import useSearchUser from "../../hooks/useSearchUser";
 import SuggestedUser from "./SuggestedUser";
-import "../../assets/css/Search.css";
 
-const Search = () => {
-  const searchRef = useRef(null);
-  const { user, isLoading, getUserProfile, setUser } = useSearchUser();
+export default function Search() {
+  const searchRef = useRef();
+  const { userId: currentUser } = useUser();
+  const { user: matchedUsers, isLoading, getUserProfile } = useSearchUser();
 
   const handleSearchUser = (e) => {
     e.preventDefault();
-    getUserProfile(searchRef.current.value);
+    const q = searchRef.current?.value.trim();
+    if (q) getUserProfile(q);
   };
 
   return (
     <div className="search-container">
-      <h1 className="search-title">Search for friends</h1>
-      <form className="search-form" onSubmit={handleSearchUser}>
-        <input
-          type="text"
-          placeholder="Enter username..."
-          ref={searchRef}
-          className="search-input"
-        />
-        <button type="submit" className="search-button" disabled={isLoading}>
-          {isLoading ? "Searching..." : <FiSearch size={20} />}
+      <h1>Search for friends</h1>
+      <form onSubmit={handleSearchUser}>
+        <input ref={searchRef} placeholder="Enter username…" />
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? "Searching…" : <FiSearch size={20} />}
         </button>
       </form>
 
-      {user && (
-        <div className="suggested-user">
-          <SuggestedUser user={user} setUser={setUser} />
-        </div>
-      )}
+      <SuggestedUser users={matchedUsers || []} currentUser={currentUser} />
     </div>
   );
-};
-
-export default Search;
+}

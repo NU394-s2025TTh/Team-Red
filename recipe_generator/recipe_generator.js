@@ -18,12 +18,9 @@ exports.generateDeepseekRecipe = onRequest(
         return res.status(405).send("Only POST requests allowed.");
       }
 
-      const { fridgecontents, spices, userPrompt } = req.body;
+      const { fridgecontents, spices = "undefined", userPrompt } = req.body;
       if (!fridgecontents) {
         return res.status(400).json({ error: "Missing fridge contents" });
-      }
-      if (!spices) {
-        spices = "undefined";
       }
 
       const apiKey = DEEPSEEK_API_KEY.value();
