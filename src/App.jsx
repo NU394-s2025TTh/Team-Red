@@ -18,7 +18,7 @@ import "./App.css";
 
 function App() {
   const [userId, setUserId] = useState(null);
-  const [userId, setUserId] = useState(null);
+  
 
   const handleLogin = (userId) => {
     setUserId(userId);

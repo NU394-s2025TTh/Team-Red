@@ -13,7 +13,7 @@ export default function Social({ userId }) {
   return (
     <div className="social-container">
       <Sidebar />
-      <Search />
+      
       <div className="main-content">
         <h1 className="page-header">🔥 Popular & Trending Recipes</h1>
 
