@@ -42,6 +42,8 @@ export function useUserData(userId) {
             protein: recipe.protein,
           })),
           spices: Array.isArray(data.spices) ? data.spices : [],
+          following: data.following || [],
+          followers: data.followers || []
         });
         setLoading(false);
       } else {
