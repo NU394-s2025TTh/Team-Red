@@ -3,6 +3,7 @@ import { FiSearch } from "react-icons/fi";
 import { useUser } from "../../contexts/UserContext";
 import useSearchUser from "../../hooks/useSearchUser";
 import SuggestedUser from "./SuggestedUser";
+import "../../assets/css/search.css";
 
 export default function Search() {
   const searchRef = useRef();
