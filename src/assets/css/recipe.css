@@ -321,13 +321,36 @@
   .friend-recipes-container {
     display: flex;
     overflow-x: auto;
-    gap: 1.5rem;
     padding-bottom: 1rem;
+    /* border: 1px solid var(--secondary-color); */
+    width: 100%;
+    padding: 0;
+    background-color: transparent;
   }
   
   .friend-recipe-card {
-    flex: 0 0 320px;
-    max-width: 350px;
+    display: flex;
+    flex: 0 0 auto;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    /* border: 1px solid var(--secondary-color); */
+    /* background-color: white; */
+    /* box-shadow: 0 1px 3px rgba(0,0,0,0.1); */
+    box-sizing: border-box; /* Include padding in width calculation */
+    flex-direction: column;
+    justify-content: center;
+    max-height: 80vh;
+    font-size: 100%;
+  }
+
+  .home-recipe-card-container .recipe-card {
+    width: 100%;
+    max-width: 200px;
+    max-height: 200px;
+    overflow: wrap;
+    text-align: center;
   }
 
   .recipe-details-wrapper .recipe-image {

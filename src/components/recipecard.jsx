@@ -4,7 +4,7 @@ import AddNewRecipe from './addnewrecipe';
 import { editRecipe } from '../hooks/useEditRecipe.jsx';
 import Placeholder from '../assets/branding/recipe-placeholder.png';
 
-export function RecipeCard({ recipes: propRecipes, onAddRecipe, showHeader = true }) {
+export function RecipeCard({ userId, recipes: propRecipes, onAddRecipe, showHeader = true }) {
   
   const [recipes, setRecipes] = useState(propRecipes);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
@@ -84,6 +84,7 @@ export function RecipeCard({ recipes: propRecipes, onAddRecipe, showHeader = tru
         <div className="modal-overlay">
           <div className="modal-content">
             <AddNewRecipe
+              userId={userId}
               onAddRecipe={onAddRecipe}
               onCloseForm={handleCloseForm}
             />

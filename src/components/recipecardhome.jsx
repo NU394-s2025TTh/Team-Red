@@ -46,7 +46,7 @@ export function RecipeCardHome({ recipes: propRecipes, onAddRecipe, showHeader =
   };
 
   return (
-    <div className="recipe-card-container" >
+    <div className="home-recipe-card-container" >
       {showHeader && <h1>Your Saved Recipes</h1>}
 
       <div className="recipe-card-list">
@@ -74,7 +74,6 @@ export function RecipeCardHome({ recipes: propRecipes, onAddRecipe, showHeader =
         ))}
       </div>
 
-      
 
       {showAddRecipeForm && (
         <div className="modal-overlay">

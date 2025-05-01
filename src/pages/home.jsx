@@ -84,8 +84,7 @@ export default function Home({ userId }) {
             <div className="friend-recipes-container">
               {followingRecipes.length ? (
                 Object.entries(recipesByFriend).map(([friend, recipes]) => {
-                  const randomIndex = Math.floor(Math.random() * recipes.length);
-                  const selectedRecipe = recipes[randomIndex];
+                  const selectedRecipe = recipes[recipes.length - 1];
 
                   return (
                     <div key={friend} className="friend-recipe-card" style={{ marginBottom: "2.5rem" }}>

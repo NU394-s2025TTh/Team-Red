@@ -24,6 +24,10 @@ h1 {
     margin-bottom: 1rem;
 }
 
+.content {
+    margin-left: var(--sidebar-width)
+}
+
 /*@import 'styles.css'; at the top of css files to use thse*/
 /* to use, ex. var(--secondary-color)*/
 

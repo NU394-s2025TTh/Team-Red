@@ -37,7 +37,7 @@ export default function Saved( { userId, onLogout } ) {
 
       {userData && (
         <div>
-        <RecipeCard recipes={recipes} onAddRecipe={handleAddRecipe} />
+        <RecipeCard userId={userId} recipes={recipes} onAddRecipe={handleAddRecipe} />
       </div>
     )}
 
