@@ -4,7 +4,7 @@ import AddNewRecipe from './addnewrecipe';
 import { editRecipe } from '../hooks/useEditRecipe.jsx';
 import Placeholder from '../assets/branding/recipe-placeholder.png';
 
-export function RecipeCard({ recipes: propRecipes, onAddRecipe, showHeader = true }) {
+export function RecipeCardHome({ recipes: propRecipes, onAddRecipe, showHeader = true }) {
   
   const [recipes, setRecipes] = useState(propRecipes);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
@@ -74,11 +74,7 @@ export function RecipeCard({ recipes: propRecipes, onAddRecipe, showHeader = tru
         ))}
       </div>
 
-      <div className="add-recipe-button-container">
-        <button className="add-recipe-button" onClick={handleAddRecipeClick}>
-          Add New Recipe
-        </button>
-      </div>
+      
 
       {showAddRecipeForm && (
         <div className="modal-overlay">
@@ -95,8 +91,8 @@ export function RecipeCard({ recipes: propRecipes, onAddRecipe, showHeader = tru
         <RecipeDetailsModal
           recipe={selectedRecipe}
           onClose={handleCloseModal}
-          onSave={handleSave}
-          canEdit={true}       
+          onSave={handleSave}       // use our wrapped save
+          canEdit={false}
         />
       )}
     </div>

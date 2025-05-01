@@ -3,7 +3,7 @@ import '../assets/css/recipe.css';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
 
-function RecipeDetailsModal({ recipe, onClose, onSave }) {
+function RecipeDetailsModal({ recipe, onClose, onSave, canEdit }) {
   const { userId, handleLogout } = useContext(UserContext);
 
   const [isEditing, setIsEditing] = useState(false);
@@ -116,7 +116,9 @@ function RecipeDetailsModal({ recipe, onClose, onSave }) {
 
           <div className="recipe-modal-footer">
             <button onClick={handleSave} className="save-button">Save Changes</button>
-            <button onClick={() => setIsEditing(false)} className="cancel-button">Cancel</button>
+            {canEdit && (
+                <button onClick={() => setIsEditing(true)} className="edit-button">Edit Recipe</button>
+            )}
           </div>
         </div>
       ) : (
@@ -143,7 +145,9 @@ function RecipeDetailsModal({ recipe, onClose, onSave }) {
             <p>Fat: {recipe.fat}</p>
           </div>
 
-          <button onClick={() => setIsEditing(true)} className="edit-button">Edit Recipe</button>
+          {canEdit && (
+            <button onClick={() => setIsEditing(true)} className="edit-button">Edit Recipe</button>
+          )}
         </div>
       )}
     </div>

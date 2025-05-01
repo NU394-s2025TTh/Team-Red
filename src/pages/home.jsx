@@ -7,7 +7,7 @@ import { useUserData } from "../hooks/useUserData";
 import { useGetRecipes } from "../hooks/useGetRecipes";
 import Sidebar from "../components/sidebar";
 import Search from "../components/socials/search";
-import { RecipeCard } from "../components/recipecard";
+import { RecipeCardHome } from "../components/recipecardhome";
 
 
 
@@ -81,21 +81,26 @@ export default function Home({ userId }) {
 
             {/* show each friend’s recipes in its own section */}
             <h2>Recipes from People You Follow:</h2>
-            {followingRecipes.length ? (
-              Object.entries(recipesByFriend).map(([friend, recipes]) => (
-                <div key={friend} style={{ marginBottom: "2.5rem" }}>
-                  <h3 style={{ marginBottom: "1rem" }}>{friend}’s Recipes</h3>
+              {followingRecipes.length ? (
+                Object.entries(recipesByFriend).map(([friend, recipes]) => {
+                  const randomIndex = Math.floor(Math.random() * recipes.length);
+                  const selectedRecipe = recipes[randomIndex];
 
-                  <RecipeCard
-                    recipes={recipes}
-                    onAddRecipe={() => {}}  // no save button!!
-                    showHeader={false}
-                  />
-                </div>
-              ))
-            ) : (
-              <p>No recipes from users you follow yet.</p>
-            )}
+                  return (
+                    <div key={friend} style={{ marginBottom: "2.5rem" }}>
+                      <h3 style={{ marginBottom: "1rem" }}>{friend}</h3>
+
+                      <RecipeCardHome
+                        recipes={[selectedRecipe]} // wrap in array
+                        onAddRecipe={() => {}}
+                        showHeader={false}
+                      />
+                    </div>
+                  );
+                })
+              ) : (
+                <p>No recipes from users you follow yet.</p>
+              )}
 
             {/* Trending Recipes Section */}
             <h2 style={{ marginTop: "3rem" }}>🔥 Trending Recipes:</h2>
