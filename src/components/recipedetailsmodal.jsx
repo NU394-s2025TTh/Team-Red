@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../assets/css/recipe.css';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
+import Placeholder from "../assets/branding/recipe-placeholder.png";
 
 function RecipeDetailsModal({ recipe, onClose, onSave, canEdit }) {
   const { userId, handleLogout } = useContext(UserContext);
@@ -22,7 +23,7 @@ function RecipeDetailsModal({ recipe, onClose, onSave, canEdit }) {
       title,
       ingredients: ingredients.split('\n'),
       instructions: instructions.split('\n'),
-      photo: photo || "/default-photo.png",
+      photo: photo || Placeholder,
       calories,
       carbs,
       protein,
@@ -45,7 +46,7 @@ function RecipeDetailsModal({ recipe, onClose, onSave, canEdit }) {
               className="recipe-title-input"
             />
           </h2>
-          <img src={photo || "/none.png"} alt={title} className="recipe-image" />
+          {/* <img src={photo || Placeholder} className="recipe-image" /> */}
           <div className="recipe-edit-section">
             <h3>Ingredients:</h3>
             <textarea
@@ -122,9 +123,9 @@ function RecipeDetailsModal({ recipe, onClose, onSave, canEdit }) {
           </div>
         </div>
       ) : (
-        <div>
+        <div className="recipe-details-wrapper">
           <h1>{title}</h1>
-          <img src={photo || "/none.png"} alt={title} className="recipe-image" />
+          <img src={photo || Placeholder} className="recipe-image" />
           <h3>Ingredients:</h3>
           <ul>
             {recipe.ingredients.map((ingredient, index) => (

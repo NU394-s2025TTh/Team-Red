@@ -76,10 +76,10 @@ h1 {
   box-sizing: border-box; /* Include padding in width calculation */
 }
 
-.recipe-card {
-  flex: 0 0 auto; /* Prevent cards from shrinking and allow horizontal scrolling */
+.chat-box .recipe-card {
+  display: flex;
+  flex: 0 0 auto;
   max-width: 100%;
-  /* border: 1px solid var(--secondary-color); */
   border: none;
   border-radius: 8px;
   padding: 1rem;
@@ -87,16 +87,31 @@ h1 {
   background-color: white;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   box-sizing: border-box; /* Include padding in width calculation */
+  flex-direction: column;
+  justify-content: center;
+  max-height: 80vh;
+  font-size: 100%;
+}
+
+.recipe-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.recipe-card h4 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
 }
 
 .recipe-image {
-  width: 30%;
-  max-width: 30%;
+  width: 25%;
+  max-width: 25%;
   height: auto;
   padding: 1.5rem;
   border-radius: 6px;
-  margin: 0 auto 0.5rem auto;
-  display: block;
+  margin: 0.5rem auto 0.5rem auto;
+  /* display: block; */
   object-fit: cover;
 }
 

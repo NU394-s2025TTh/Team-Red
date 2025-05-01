@@ -134,6 +134,8 @@
       max-width: none;
       padding: 1rem;
       padding-bottom: 1.2rem;
+      max-height: 90vh;
+      overflow-y: auto;
     }
 
     .recipe-details-modal h2,
@@ -307,9 +309,43 @@
     justify-content: center;
     align-items: center;
     padding: 0;
+    z-index: 999;
   }
 
   .recipe-details-modal .close-button:hover {
     background-color: var(--primary-color);
     color: white;
+    z-index: 999;
+  }
+
+  .friend-recipes-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+  }
+  
+  .friend-recipe-card {
+    flex: 0 0 320px;
+    max-width: 350px;
+  }
+
+  .recipe-details-wrapper .recipe-image {
+    padding: 0;
+    object-fit: fill;
+    /* display: block; */
+    width: 50%;
+    max-width: 75px;
+    height: auto;
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    /* border: 1px solid var(--secondary-color); */
+    z-index: -5;
+  }
+
+  .recipe-details-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }

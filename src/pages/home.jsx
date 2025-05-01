@@ -81,17 +81,18 @@ export default function Home({ userId }) {
 
             {/* show each friend’s recipes in its own section */}
             <h2>Recipes from People You Follow:</h2>
+            <div className="friend-recipes-container">
               {followingRecipes.length ? (
                 Object.entries(recipesByFriend).map(([friend, recipes]) => {
                   const randomIndex = Math.floor(Math.random() * recipes.length);
                   const selectedRecipe = recipes[randomIndex];
 
                   return (
-                    <div key={friend} style={{ marginBottom: "2.5rem" }}>
+                    <div key={friend} className="friend-recipe-card" style={{ marginBottom: "2.5rem" }}>
                       <h3 style={{ marginBottom: "1rem" }}>{friend}</h3>
 
                       <RecipeCardHome
-                        recipes={[selectedRecipe]} // wrap in array
+                        recipes={[selectedRecipe]} 
                         onAddRecipe={() => {}}
                         showHeader={false}
                       />
@@ -101,6 +102,8 @@ export default function Home({ userId }) {
               ) : (
                 <p>No recipes from users you follow yet.</p>
               )}
+            </div>
+
 
             {/* Trending Recipes Section */}
             <h2 style={{ marginTop: "3rem" }}>🔥 Trending Recipes:</h2>
@@ -135,7 +138,7 @@ export default function Home({ userId }) {
                     ))}
                   </div>
 
-                  {/* MODAL */}
+                  
                   {selectedRecipe && (
                     <div className="modal-overlay" onClick={closeModal}>
                       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
