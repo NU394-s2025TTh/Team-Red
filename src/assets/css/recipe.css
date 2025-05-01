@@ -134,6 +134,8 @@
       max-width: none;
       padding: 1rem;
       padding-bottom: 1.2rem;
+      max-height: 90vh;
+      overflow-y: auto;
     }
 
     .recipe-details-modal h2,
@@ -307,9 +309,66 @@
     justify-content: center;
     align-items: center;
     padding: 0;
+    z-index: 999;
   }
 
   .recipe-details-modal .close-button:hover {
     background-color: var(--primary-color);
     color: white;
+    z-index: 999;
+  }
+
+  .friend-recipes-container {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    /* border: 1px solid var(--secondary-color); */
+    width: 100%;
+    padding: 0;
+    background-color: transparent;
+  }
+  
+  .friend-recipe-card {
+    display: flex;
+    flex: 0 0 auto;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    /* border: 1px solid var(--secondary-color); */
+    /* background-color: white; */
+    /* box-shadow: 0 1px 3px rgba(0,0,0,0.1); */
+    box-sizing: border-box; /* Include padding in width calculation */
+    flex-direction: column;
+    justify-content: center;
+    max-height: 80vh;
+    font-size: 100%;
+  }
+
+  .home-recipe-card-container .recipe-card {
+    width: 100%;
+    max-width: 200px;
+    max-height: 200px;
+    overflow: wrap;
+    text-align: center;
+  }
+
+  .recipe-details-wrapper .recipe-image {
+    padding: 0;
+    object-fit: fill;
+    /* display: block; */
+    width: 50%;
+    max-width: 75px;
+    height: auto;
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    /* border: 1px solid var(--secondary-color); */
+    z-index: -5;
+  }
+
+  .recipe-details-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }

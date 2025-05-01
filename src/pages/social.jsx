@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "../assets/css/social.css";
 import Sidebar from "../components/sidebar";
 import { useGetRecipes } from "../hooks/useGetRecipes";
-import Search from "../components/socials/search";
+
 
 export default function Social({ userId }) {
   const { recipes, loading, error } = useGetRecipes();

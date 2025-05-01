@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import '../assets/css/recipe.css';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
+import Placeholder from "../assets/branding/recipe-placeholder.png";
 
-function RecipeDetailsModal({ recipe, onClose, onSave }) {
+function RecipeDetailsModal({ recipe, onClose, onSave, canEdit }) {
   const { userId, handleLogout } = useContext(UserContext);
 
   const [isEditing, setIsEditing] = useState(false);
@@ -22,7 +23,7 @@ function RecipeDetailsModal({ recipe, onClose, onSave }) {
       title,
       ingredients: ingredients.split('\n'),
       instructions: instructions.split('\n'),
-      photo: photo || "/default-photo.png",
+      photo: photo || Placeholder,
       calories,
       carbs,
       protein,
@@ -45,7 +46,7 @@ function RecipeDetailsModal({ recipe, onClose, onSave }) {
               className="recipe-title-input"
             />
           </h2>
-          <img src={photo || "/none.png"} alt={title} className="recipe-image" />
+          {/* <img src={photo || Placeholder} className="recipe-image" /> */}
           <div className="recipe-edit-section">
             <h3>Ingredients:</h3>
             <textarea
@@ -116,13 +117,15 @@ function RecipeDetailsModal({ recipe, onClose, onSave }) {
 
           <div className="recipe-modal-footer">
             <button onClick={handleSave} className="save-button">Save Changes</button>
-            <button onClick={() => setIsEditing(false)} className="cancel-button">Cancel</button>
+            {canEdit && (
+                <button onClick={() => setIsEditing(true)} className="edit-button">Edit Recipe</button>
+            )}
           </div>
         </div>
       ) : (
-        <div>
+        <div className="recipe-details-wrapper">
           <h1>{title}</h1>
-          <img src={photo || "/none.png"} alt={title} className="recipe-image" />
+          <img src={photo || Placeholder} className="recipe-image" />
           <h3>Ingredients:</h3>
           <ul>
             {recipe.ingredients.map((ingredient, index) => (
@@ -143,7 +146,9 @@ function RecipeDetailsModal({ recipe, onClose, onSave }) {
             <p>Fat: {recipe.fat}</p>
           </div>
 
-          <button onClick={() => setIsEditing(true)} className="edit-button">Edit Recipe</button>
+          {canEdit && (
+            <button onClick={() => setIsEditing(true)} className="edit-button">Edit Recipe</button>
+          )}
         </div>
       )}
     </div>

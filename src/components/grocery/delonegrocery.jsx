@@ -3,6 +3,7 @@ import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 import { app } from "../../firebaseconfig";
 import '../../assets/css/AddDelItem.css';
 
+
 const db = getFirestore(app);
 
 export function DelOneGrocery({ item, quantity, setQuantity, userId }) {

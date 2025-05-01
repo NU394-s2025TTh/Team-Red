@@ -15,12 +15,17 @@ body {
     /* margin-top: -2rem; */
     height: 100vh;
     overflow-x: hidden;
+    
 }
 
 h1 {
     color: var(--primary-color);
     font-size: 2rem;
     margin-bottom: 1rem;
+}
+
+.content {
+    margin-left: var(--sidebar-width)
 }
 
 /*@import 'styles.css'; at the top of css files to use thse*/
