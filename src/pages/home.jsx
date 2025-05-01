@@ -8,6 +8,7 @@ import { useGetRecipes } from "../hooks/useGetRecipes";
 import Sidebar from "../components/sidebar";
 import Search from "../components/socials/search";
 import { RecipeCardHome } from "../components/recipecardhome";
+import { addRecipe } from '../components/addRecipe';
 
 
 
@@ -15,11 +16,28 @@ export default function Home({ userId }) {
   const { userData, loading, error } = useUserData(userId);
   const [followingRecipes, setFollowingRecipes] = useState([]);
   const { recipes: trendingRecipes, loading: loadingTrending, error: errorTrending } = useGetRecipes();
+  const [saved, setSaved] = useState([]);
 
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const closeModal = () => setSelectedRecipe(null);
 
   const db = getFirestore(app);
+
+  const handleAddToRecipesSocial = (recipe) => {
+    addRecipe(
+      userId,
+      recipe.title,
+      recipe.ingredients,
+      recipe.instructions,
+      0,
+      0,
+      0,
+      0
+    );
+    setSaved((prevSaved) => [...prevSaved, recipe.title]);
+  };
+
+  const isSaved = (title) => saved.includes(title);
 
   useEffect(() => {
     const fetchFollowingRecipes = async () => {
@@ -158,6 +176,13 @@ export default function Home({ userId }) {
                           ))}
                         </ol>
                       </div>
+                      <button
+                        className="save-recipe-button"
+                        disabled={isSaved(selectedRecipe.title)}
+                        onClick={() => handleAddToRecipesSocial(selectedRecipe)}
+                      >
+                        {isSaved(selectedRecipe.title) ? "Saved" : "Save Recipe"}
+                      </button>
                     </div>
                   )}
               </>

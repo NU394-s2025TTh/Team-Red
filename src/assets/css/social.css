@@ -205,6 +205,12 @@ body {
   .recipe-details {
     padding: 1rem;
   }
+
+  .save-recipe-button {
+    position: static;
+    transform: none;
+    margin-top: 1rem;
+  }
 }
 
 .horizontal-scroll-container {
@@ -237,5 +243,28 @@ body {
   aspect-ratio: 16 / 9;
 }
 
+.save-recipe-button {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  height: var(--card-btn-height);
+  padding: 0 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary-color);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background .2s;
+  width: calc(20% - 2rem);
+  text-align: center;
+}
+
+.save-recipe-button:hover {
+  background: var(--primary-color);
+}
 
 

@@ -17,10 +17,10 @@ export default function AddNewRecipe({ userId, onAddRecipe, onCloseForm }) {
       ingredients: ingredients.split('\n'),
       instructions: instructions.split('\n'),
       photo: photo || "/none.png",
-      cal: 0,
-      protein: 0,
-      fat: 0,
-      carbs: 0,
+      cal: calories,
+      protein: protein,
+      fat: fat,
+      carbs: carbs,
     };
 
     const result = await addRecipe(
@@ -35,7 +35,7 @@ export default function AddNewRecipe({ userId, onAddRecipe, onCloseForm }) {
     );
 
     if (result.success) {
-      onAddRecipe(recipeObj); // optional: update UI locally
+      onAddRecipe(recipeObj); 
       onCloseForm();
     } else {
       alert("Failed to add recipe: " + result.error);

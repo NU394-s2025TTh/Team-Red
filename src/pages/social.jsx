@@ -2,13 +2,31 @@ import React, { useState } from 'react';
 import "../assets/css/social.css";
 import Sidebar from "../components/sidebar";
 import { useGetRecipes } from "../hooks/useGetRecipes";
+import { addRecipe } from '../components/addRecipe';
 
 
 export default function Social({ userId }) {
   const { recipes, loading, error } = useGetRecipes();
   const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [saved, setSaved] = useState([]);
 
   const closeModal = () => setSelectedRecipe(null);
+
+  const handleAddToRecipesSocial = (recipe) => {
+    addRecipe(
+      userId,
+      recipe.title,
+      recipe.ingredients,
+      recipe.instructions,
+      0,
+      0,
+      0,
+      0
+    );
+    setSaved((prevSaved) => [...prevSaved, recipe.title]);
+  };
+
+  const isSaved = (title) => saved.includes(title);
 
   return (
     <div className="social-container">
@@ -65,7 +83,15 @@ export default function Social({ userId }) {
                 <li key={i}>{step}</li>
               ))}
             </ol>
+            
           </div>
+          <button
+              className="save-recipe-button"
+              disabled={isSaved(selectedRecipe.title)}
+              onClick={() => handleAddToRecipesSocial(selectedRecipe)}
+            >
+              {isSaved(selectedRecipe.title) ? "Saved" : "Save Recipe"}
+          </button>
         </div>
       )}
     </div>
