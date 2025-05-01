@@ -9,6 +9,7 @@ export function RecipeCardHome({ recipes: propRecipes, onAddRecipe, showHeader =
   const [recipes, setRecipes] = useState(propRecipes);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [showAddRecipeForm, setShowAddRecipeForm] = useState(false);
+  const [saved, setSaved] = useState([]);
 
   useEffect(() => {
     setRecipes(propRecipes);
@@ -45,6 +46,22 @@ export function RecipeCardHome({ recipes: propRecipes, onAddRecipe, showHeader =
     setSelectedRecipe(updatedRecipe);
   };
 
+  const addFriendRecipes = (recipe) => {
+    addRecipe(
+      userId,
+      recipe.title,
+      recipe.ingredients,
+      recipe.instructions,
+      recipe.cal,
+      recipe.protein,
+      recipe.fat,
+      recipe.carbs
+    );
+    setSaved((prevSaved) => [...prevSaved, recipe.title]);
+  };
+
+  const isSaved = (title) => saved.includes(title);
+
   return (
     <div className="home-recipe-card-container" >
       {showHeader && <h1>Your Saved Recipes</h1>}
@@ -70,7 +87,9 @@ export function RecipeCardHome({ recipes: propRecipes, onAddRecipe, showHeader =
               }}
             />
             <h3>{recipe.title}</h3>
+            
           </div>
+       
         ))}
       </div>
 

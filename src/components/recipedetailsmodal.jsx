@@ -3,8 +3,9 @@ import '../assets/css/recipe.css';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
 import Placeholder from "../assets/branding/recipe-placeholder.png";
+import { addRecipe } from "./addRecipe";
 
-function RecipeDetailsModal({ recipe, onClose, onSave, canEdit }) {
+function RecipeDetailsModal({ recipe, onClose, onSave, canEdit}) {
   const { userId, handleLogout } = useContext(UserContext);
 
   const [isEditing, setIsEditing] = useState(false);
@@ -16,6 +17,7 @@ function RecipeDetailsModal({ recipe, onClose, onSave, canEdit }) {
   const [carbs, setCarbs] = useState(recipe.carbs);
   const [protein, setProtein] = useState(recipe.protein);
   const [fat, setFat] = useState(recipe.fat);
+  const [saved, setSaved] = useState([]);
 
   const handleSave = () => {
     const updatedRecipe = {
@@ -25,13 +27,15 @@ function RecipeDetailsModal({ recipe, onClose, onSave, canEdit }) {
       instructions: instructions.split('\n'),
       photo: photo || Placeholder,
       calories,
-      carbs,
       protein,
       fat,
+      carbs,
     };
     onSave(userId, updatedRecipe); 
     setIsEditing(false); 
   };
+
+  
 
   return (
     <div className="recipe-details-modal">
@@ -117,9 +121,7 @@ function RecipeDetailsModal({ recipe, onClose, onSave, canEdit }) {
 
           <div className="recipe-modal-footer">
             <button onClick={handleSave} className="save-button">Save Changes</button>
-            {canEdit && (
-                <button onClick={() => setIsEditing(true)} className="edit-button">Edit Recipe</button>
-            )}
+           
           </div>
         </div>
       ) : (
