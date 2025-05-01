@@ -8,6 +8,10 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0);
   font-family: Arial, sans-serif;
   margin: 0 auto;
+  display:flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
 }
 
 /* Desktop styles */
@@ -37,6 +41,7 @@
   scroll-behavior: smooth;
   gap: 12px;
   padding: 8px 0;
+  flex: 1 1 auto;
 }
 
 .data-card .add-item-button-container {
@@ -44,14 +49,25 @@
   justify-content: center;
   align-items: center;
   margin-top: 8px;
+  flex: 0 0 auto;
+  position: sticky;
+  bottom: 0;
+  background: transparent;
+  padding: 0.75rem 0;
+  border-top: 1px solid #e0e0e0;
 }
 
 .data-card .scroll-buttons {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  margin: 1rem 0;
-  padding: 0 10px;
+  position: sticky;
+  z-index: 2;
+  background: inherit;
+  padding: .5rem 0;
+  margin: 0;
+  position: sticky;
+  bottom: 2.5rem;
   /* border: 1px solid var(--secondary-color); */
 }
 
